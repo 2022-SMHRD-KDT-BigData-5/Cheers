@@ -3,8 +3,34 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.domain.MemberDAO">
-<insert id ="insertMember" parameterType="com.smhrd.domain.Member">
-	insert into test values (#{id}, #{pw}, #{nick})
-</insert>
+	<insert id="insertMember"
+		parameterType="com.smhrd.domain.Member">
+		insert into test values (#{id}, #{pw}, #{nick})
+	</insert>
+
+	<select id="selectMember"
+		parameterType="com.smhrd.domain.Member"
+		resultType="com.smhrd.domain.Member">
+		select * from test where id=#{id} and pw=#{pw}
+	</select>
+
+	<update id="updateMember"
+		parameterType="com.smhrd.domain.Member">
+		update test set pw=#{pw}, nick=#{nick},
+		where id=#{id}
+	</update>
+
+	<select id="selectALL" resultType="com.smhrd.domain.Member">
+		select * from test
+	</select>
+
+	<delete id="deleteMember" parameterType="String"> <!-- 삭제해서 반환하지 않음 -->
+		delete from test where id=#{id}
+	</delete>
+
+	<select id="selectEmail" parameterType="String"
+		resultType="String">
+		select id from test where id=#{id}
+	</select>
 
 </mapper>
