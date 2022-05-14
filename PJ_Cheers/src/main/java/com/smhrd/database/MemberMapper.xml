@@ -11,7 +11,7 @@
 	<select id="selectMember"
 		parameterType="com.smhrd.domain.Member"
 		resultType="com.smhrd.domain.Member">
-		select * from test where id=#{id} and pw=#{pw}
+		select * from test where t_id=#{id} and t_pw=#{pw}
 	</select>
 
 	<update id="updateMember"

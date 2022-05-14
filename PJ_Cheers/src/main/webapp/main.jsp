@@ -60,7 +60,7 @@
 							<h1>로그인 한 세션아이디를 출력해주세요</h1>
 						</c:when>
 						<c:otherwise>
-							<h1>${loginMember.id}님 환영합니다.</h1>
+							<h1>${loginMember.nick}님 환영합니다.</h1>
 						</c:otherwise>
 					</c:choose>
 					
