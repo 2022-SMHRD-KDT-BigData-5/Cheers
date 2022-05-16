@@ -39,7 +39,7 @@ public class UpdateCon extends HttpServlet {
 
 			// 수정된 값으로 loginMember 세션 값을 재설정
 			session.setAttribute("loginMember", m_vo); // 이거 안적으면 수정 전 내용그대로임
-			response.sendRedirect("main.jsp");
+			response.sendRedirect("index_test.jsp");
 		} else {
 			System.out.println("회원정보 수정 실패");
 			response.sendRedirect("mypage.jsp");

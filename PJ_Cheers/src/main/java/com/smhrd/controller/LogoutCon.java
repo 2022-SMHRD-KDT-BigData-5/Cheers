@@ -17,7 +17,7 @@ public class LogoutCon extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.removeAttribute("loginMember");
 		// 메인으로 페이지 이동
-		response.sendRedirect("main.jsp");
+		response.sendRedirect("index_test.jsp");
 	}
 
 }
