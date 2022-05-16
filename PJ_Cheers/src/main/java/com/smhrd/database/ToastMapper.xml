@@ -5,10 +5,8 @@
 <mapper namespace="com.smhrd.domain.ToastDAO">
 	
 	<insert id="insertPost" parameterType="com.smhrd.domain.Toast">
-		insert into toast values (#{toast_no}, #{member_id}, #{contents}, #{toast_date})
+		insert into table2 values ( #{member_id}, #{contents})
 	</insert>
-	<insert id="uploadImg" parameterType="com.smhrd.domain.Toast">
-		insert into toast_up values(#{toast_no), #{t_file_no}, #{t_file_path}, #{t_file_name}, #{t_file_server})
-	</insert>
+	
 	
 </mapper>

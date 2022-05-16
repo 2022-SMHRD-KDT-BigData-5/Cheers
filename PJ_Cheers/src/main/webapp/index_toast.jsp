@@ -21,16 +21,16 @@
 		<tr>
 			<td>멤버id</td>
 			<td>
-				${loginMember.id}
+				<input type="text" value="${loginMember.id}" name="member_id">
 			</td>
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td><input type="text"></td>
+			<td><input type="text" name="contents"></td>
 		</tr>
 		<tr>
 			<td>날짜</td>
-			<td><span name="toast_date"></span></td>
+			<td>${toast.toast_date}</td>
 		</tr>
 
 	</table>

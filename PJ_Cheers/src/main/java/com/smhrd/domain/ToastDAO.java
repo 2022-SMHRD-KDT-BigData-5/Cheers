@@ -15,13 +15,13 @@ public class ToastDAO {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 
 		int cnt1 = 0;
-		int cnt2 = 0;
+//		int cnt2 = 0;
 		
 		try {
 			cnt1 = sqlSession.insert("com.smhrd.domain.ToastDAO.insertPost", toast);
-			cnt2 = sqlSession.insert("com.smhrd.domain.ToastDAO.uploadImg", toast);
+//			cnt2 = sqlSession.insert("com.smhrd.domain.ToastDAO.uploadImg", toast);
 			
-			if (cnt1 > 0 && cnt2 > 0) {
+			if (cnt1 > 0 ) {	//조건문 안에 && cnt2 > 0 넣어야 함
 				sqlSession.commit();
 			} else {
 				sqlSession.rollback();

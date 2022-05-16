@@ -20,6 +20,13 @@ public class Toast {
 	private ArrayList<Toast_com> tc;
 
 	
+	
+	public Toast(String member_id, String contents) {
+		super();
+		this.member_id = member_id;
+		this.contents = contents;
+	}
+
 	public Toast(BigDecimal toast_no, String member_id, String contents, Timestamp toast_date) {
 		super();
 		this.toast_no = toast_no;
