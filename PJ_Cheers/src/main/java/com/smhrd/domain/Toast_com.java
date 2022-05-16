@@ -1,7 +1,7 @@
 package com.smhrd.domain;
 
 import java.math.BigDecimal;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class Toast_com {
 	
@@ -36,6 +36,21 @@ public class Toast_com {
 	}
 	public Timestamp getTc_date() {
 		return tc_date;
+	}
+	public void setTc_no(BigDecimal tc_no) {
+		this.tc_no = tc_no;
+	}
+	public void setTc_img(String tc_img) {
+		this.tc_img = tc_img;
+	}
+	public void setTc_contents(String tc_contents) {
+		this.tc_contents = tc_contents;
+	}
+	public void setTc_zzan(int tc_zzan) {
+		this.tc_zzan = tc_zzan;
+	}
+	public void setTc_date(Timestamp tc_date) {
+		this.tc_date = tc_date;
 	}
 	
 	

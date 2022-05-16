@@ -14,10 +14,14 @@ public class ToastDAO {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 
-		int cnt = 0;
+		int cnt1 = 0;
+		int cnt2 = 0;
+		
 		try {
-			cnt = sqlSession.insert("com.smhrd.domain.ToastDAO.insertPost", toast);
-			if (cnt > 0) {
+			cnt1 = sqlSession.insert("com.smhrd.domain.ToastDAO.insertPost", toast);
+			cnt2 = sqlSession.insert("com.smhrd.domain.ToastDAO.uploadImg", toast);
+			
+			if (cnt1 > 0 && cnt2 > 0) {
 				sqlSession.commit();
 			} else {
 				sqlSession.rollback();
@@ -28,7 +32,7 @@ public class ToastDAO {
 		} finally {
 			sqlSession.close();
 		}
-		return cnt;
+		return cnt1;
 	
 	}
 	

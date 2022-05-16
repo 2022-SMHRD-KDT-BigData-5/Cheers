@@ -40,6 +40,12 @@
   	<description></description>
   	<servlet-class>com.smhrd.controller.UpdateCon</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>InsertPostCon</servlet-name>
+  	<display-name>InsertPostCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.InsertPostCon</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>JoinCon</servlet-name>
   	<url-pattern>/JoinCon</url-pattern>
@@ -63,5 +69,9 @@
   <servlet-mapping>
   	<servlet-name>UpdateCon</servlet-name>
   	<url-pattern>/UpdateCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>InsertPostCon</servlet-name>
+  	<url-pattern>/InsertPostCon</url-pattern>
   </servlet-mapping>
 </web-app>
