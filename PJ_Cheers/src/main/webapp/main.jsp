@@ -27,7 +27,7 @@
 						<a href="select.jsp">전체회원정보</a>
 					</c:if>
 					<a href="LogoutCon">로그아웃</a>
-					<a href="update.jsp">개인정보수정</a>
+					<a href="mypage.jsp">개인정보수정</a>
 				</c:otherwise>
 			</c:choose> </nav></header>
 
