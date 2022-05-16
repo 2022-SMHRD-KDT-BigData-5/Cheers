@@ -20,7 +20,7 @@ public class JoinCon extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		//
-		String id = request.getParameter("email");
+		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String nick = request.getParameter("nick");
 
@@ -35,13 +35,13 @@ public class JoinCon extends HttpServlet {
 			// response.sendRedirect("joinSuccess.jsp");
 			// 회원가입한 회원의 정보 중에서 email 넘겨 페이지 이동
 			// forwarding 방식으로 정보 담기
-			RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("index_test.jsp");
 			request.setAttribute("joinemail", id);
 			rd.forward(request, response);
 
 		} else {
 			System.out.println("회원가입 실패");
-			response.sendRedirect("main.jsp");
+			response.sendRedirect("Join.jsp");
 		}
 	}
 

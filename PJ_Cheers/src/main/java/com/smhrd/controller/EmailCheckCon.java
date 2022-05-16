@@ -17,10 +17,10 @@ public class EmailCheckCon extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String id = request.getParameter("id");
+		String id2 = request.getParameter("checkid");
 		
 		MemberDAO dao = new MemberDAO();
-		boolean check = dao.emailCheck(id);
+		boolean check = dao.emailCheck(id2);
 		//check : 사용할 수 있는 아이디 -> true
 		//		  사용할 수 없는 아이디 -> false
 		

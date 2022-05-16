@@ -81,7 +81,7 @@
 									<c:choose>
 										<c:when test="${empty loginMember}">
 											<!--if절 (조건작성!) - if~else문  -->
-											<li class="dropdown"><a href="JoinCon">회원가입</a></li>
+											<li class="dropdown"><a href="Join.jsp">회원가입</a></li>
 											<li class="dropdown"><a href="Login.jsp">로그인</a></li>
 										</c:when>
 
@@ -91,7 +91,7 @@
 												<!-- 단순 if문 -->
 												<a href="select.jsp">전체회원정보</a>
 											</c:if>
-											<li>${loginMember.nick}님 환영합니다.</li>
+											<li><a>${loginMember.nick}님 환영합니다.</a></li>
 											<li><a href="LogoutCon">로그아웃</a></li>
 											<li><a href="mypage.jsp">회원정보</a></li>
 											<li><a href="mypage.jsp">즐겨찾기</a></li>
@@ -123,6 +123,7 @@
 											<ul class="dropdown-menu">
 												<li><a href="toast.html">work page</a></li>
 												<li><a href="work1.html">work page Two</a></li>
+												<li><a href="index_toast.jsp">게시판테스트페이지</a></li>
 											</ul></li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown" role="button" aria-haspopup="true">같이볼래?</a>

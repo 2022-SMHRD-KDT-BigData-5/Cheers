@@ -36,7 +36,8 @@ public class InsertPostCon extends HttpServlet {
 		int cnt = dao.insertPost(t_vo);
 
 		if (cnt > 0) {
-			System.out.println("게시물 작성 성공");
+			System.out.println("게시물 작성 성공-메인으로");
+			response.sendRedirect("index_test.jsp");
 
 			
 //			RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
@@ -46,8 +47,8 @@ public class InsertPostCon extends HttpServlet {
 		} else {
 			System.out.println(member_id);
 			System.out.println(contents);
-			System.out.println("게시물 작성 실패");
-			response.sendRedirect("main.jsp");
+			System.out.println("게시물 작성 실패-작성 페이지로");
+			response.sendRedirect("index_toast.jsp");
 		}
 	
 		

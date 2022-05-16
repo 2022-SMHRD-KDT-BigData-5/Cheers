@@ -24,7 +24,7 @@
 	</select>
 
 	<delete id="deleteMember" parameterType="String"> <!-- 삭제해서 반환하지 않음 -->
-		delete from test where id=#{id}
+		delete from test where t_id=#{id}
 	</delete>
 
 	<select id="selectEmail" parameterType="String"

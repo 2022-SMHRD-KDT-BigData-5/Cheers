@@ -133,7 +133,7 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 					sqlSession.commit();
 				}else {
 					check = true;
-					sqlSession.rollback(); //select는 커밋/롤백 생략해도 됨
+					sqlSession.commit(); //select는 커밋/롤백 생략해도 됨
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
