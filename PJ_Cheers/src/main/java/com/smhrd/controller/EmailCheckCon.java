@@ -17,8 +17,8 @@ public class EmailCheckCon extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String id2 = request.getParameter("checkid");
-		
+		String id2 = request.getParameter("id");
+		System.out.println("IdCheckCon");
 		MemberDAO dao = new MemberDAO();
 		boolean check = dao.emailCheck(id2);
 		//check : 사용할 수 있는 아이디 -> true
