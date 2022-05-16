@@ -16,8 +16,7 @@
 
 	<update id="updateMember"
 		parameterType="com.smhrd.domain.Member">
-		update test set pw=#{pw}, nick=#{nick},
-		where id=#{id}
+		update test set t_pw=#{pw}, t_nick=#{nick} where t_id=#{id}
 	</update>
 
 	<select id="selectALL" resultType="com.smhrd.domain.Member">
@@ -30,7 +29,7 @@
 
 	<select id="selectEmail" parameterType="String"
 		resultType="String">
-		select id from test where id=#{id}
+		select t_id from test where t_id=#{id}
 	</select>
 
 </mapper>
