@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.domain.ToastDAO">
+	
+	<insert id="insertPost" parameterType="com.smhrd.domain.Toast">
+		insert into toast values (#{toast_no}, #{member_id}, #{contents}, #{toast_date})
+	</insert>
+	<insert id="uploadImg" parameterType="com.smhrd.domain.Toast">
+		insert into toast_up values() select  from toast where 
+	</insert>
+	
+</mapper>
