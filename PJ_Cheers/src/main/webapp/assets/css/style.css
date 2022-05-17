@@ -1101,7 +1101,8 @@ tr{
 .table_name{
     text-align: center;
 }
-.join_note{
+.join_note,
+.login_note{
     height: 20px;
     text-align: center;
 }
