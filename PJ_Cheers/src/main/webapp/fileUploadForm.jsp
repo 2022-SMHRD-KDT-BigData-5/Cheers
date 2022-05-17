@@ -22,7 +22,7 @@
 
         파일 : <input type="file" name=file><br />
 
-        <input type="submit" value="file upload"> 
+        <input type="submit" value="업로드.."> 
 
     </form>
 

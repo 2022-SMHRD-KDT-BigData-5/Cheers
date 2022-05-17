@@ -1,66 +1,38 @@
-<%@page import="java.util.Enumeration"%>
-
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
-
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-
-    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page import="com.oreilly.servlet.MultipartRequest,com.oreilly.servlet.multipart.DefaultFileRenamePolicy,java.util.*,java.io.*" %>
+<%@ page import="java.sql.*" %>
 
 <%
-
-    String path = "C:\\uploadFolder";
-
-    //String path = application.getRealPath("fileFolder"); 
-
-   //getRealPath를 사용하면 경로값이 null로 잡힌다. 이유를 아시는분 쪽지 부탁드립니다.
-
+ request.setCharacterEncoding("euc-kr");
+ String realFolder = "";
+ String filename1 = "";
+ int maxSize = 1024*1024*5;
+ String encType = "euc-kr";
+ String savefile = "img";
+ ServletContext scontext = getServletContext();
+ realFolder = scontext.getRealPath(savefile);
  
+ try{
+  MultipartRequest multi=new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
 
-    int size = 1024 * 1024 * 10;
-    String file = "";
-
-    try{
-
-        MultipartRequest multi = new MultipartRequest(request,path,size,"EUC-KR",new DefaultFileRenamePolicy());
-
-        
-
-        Enumeration files = multi.getFileNames();
-
-        String str = (String)files.nextElement();
-
-        
-
-        file = multi.getFilesystemName(str);
-
-    }catch(Exception e)
-
-    {
-
-        e.printStackTrace();
-
-    }
-
+  Enumeration<?> files = multi.getFileNames();
+     String file1 = (String)files.nextElement();
+     filename1 = multi.getFilesystemName(file1);
+ } catch(Exception e) {
+  e.printStackTrace();
+ }
+ realFolder = "img";
+ String fullpath = realFolder + "/" + filename1;
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
-
-<head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-
 <title>Insert title here</title>
-
 </head>
-
 <body>
-
-    file upload success!
-
+<img src="<%=fullpath%>" width=512 height=384></img>
 </body>
-
 </html>
+
+
