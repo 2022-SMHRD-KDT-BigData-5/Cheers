@@ -38,7 +38,7 @@ public class LoginCon extends HttpServlet {
 		} else {
 			// 로그인을 실패했다면
 			System.out.println("로그인 실패");
-			response.sendRedirect("main.jsp");
+			response.sendRedirect("Login.jsp");
 		}
 
 	}

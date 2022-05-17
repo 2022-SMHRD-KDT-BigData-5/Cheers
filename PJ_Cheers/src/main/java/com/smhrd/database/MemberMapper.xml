@@ -5,31 +5,31 @@
 <mapper namespace="com.smhrd.domain.MemberDAO">
 	<insert id="insertMember"
 		parameterType="com.smhrd.domain.Member">
-		insert into test values (#{id}, #{pw}, #{nick})
+		insert into member values (#{id}, #{pw}, #{nick})
 	</insert>
 
 	<select id="selectMember"
 		parameterType="com.smhrd.domain.Member"
 		resultType="com.smhrd.domain.Member">
-		select * from test where t_id=#{id} and t_pw=#{pw}
+		select * from member where member_id=#{id} and member_pw=#{pw}
 	</select>
 
 	<update id="updateMember"
 		parameterType="com.smhrd.domain.Member">
-		update test set t_pw=#{pw}, t_nick=#{nick} where t_id=#{id}
+		update member set member_pw=#{pw}, member_nick=#{nick} where member_id=#{id}
 	</update>
 
 	<select id="selectALL" resultType="com.smhrd.domain.Member">
-		select * from test
+		select * from member
 	</select>
 
 	<delete id="deleteMember" parameterType="String"> <!-- 삭제해서 반환하지 않음 -->
-		delete from test where t_id=#{id}
+		delete from member where member_id=#{id}
 	</delete>
 
 	<select id="selectEmail" parameterType="String"
 		resultType="String">
-		select t_id from test where t_id=#{id}
+		select member_id from member where member_id=#{id}
 	</select>
 
 </mapper>
