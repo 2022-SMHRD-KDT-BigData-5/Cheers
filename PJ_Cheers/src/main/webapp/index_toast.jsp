@@ -13,24 +13,14 @@
 	<form action="InsertPostCon">
 	<table>
 		<tr>
-			<td>번호</td>
-			<td>
-				${toast.toast_no}
-			</td>
-		</tr>
-		<tr>
 			<td>멤버id</td>
 			<td>
-				<input type="text" value="${loginMember.id}" name="member_id">
+				${loginMember.id}
 			</td>
 		</tr>
 		<tr>
 			<td>내용</td>
 			<td><input type="text" name="contents"></td>
-		</tr>
-		<tr>
-			<td>날짜</td>
-			<td>${toast.toast_date}</td>
 		</tr>
 
 	</table>
