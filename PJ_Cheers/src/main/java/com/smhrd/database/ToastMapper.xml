@@ -13,4 +13,8 @@
 	<delete id = "deletePost" parameterType="String">
 		delete from toast where toast_no = #{toast_no}
 	</delete>
+	<insert id="addComment" parameterType="com.smhrd.domain.Toast_com">
+        insert into toast_com values (tc_no_seq.nextval, #{toast_no}, #{member_id}, #{tc_contents}, 0, sysdate)
+    </insert>
+	
 </mapper>

@@ -79,5 +79,24 @@ public class ToastDAO {
 			}
 			return cnt;
 		}
+		
+		//댓글 추가
+		public int addComment(Toast_com tc) {
+			SqlSession sqlSession = sqlSessionFactory.openSession();
+			int commNum = 0;
+			try {
+				commNum = sqlSession.insert("com.smhrd.domain.ToastDAO.addComment", tc);
+				
+				if(commNum!=0) {
+					sqlSession.commit();
+					
+				}else {
+					sqlSession.rollback();
+				}
+			}finally {
+				sqlSession.close();
+			}
+			return commNum;
+		}
 
 }
