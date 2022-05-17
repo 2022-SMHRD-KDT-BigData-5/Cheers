@@ -35,7 +35,19 @@
 				<tr>
 				<td><img src = '<c:out value="${rc.recipe_img}" />' ></td>
 				<td><c:out value="${rc.recipe_name}" /></td>
-				<td><c:out value="${rc.recipe_base}" /></td>
+				<td>
+				<c:if test = "${rc.recipe_base eq '10'}">
+				<span>맥주</span>
+				</c:if >
+				<c:if test = "${rc.recipe_base eq '20'}">
+				<span>소주</span>
+				</c:if >
+				<c:if test = "${rc.recipe_base eq '30'}">
+				<span>기타</span>
+				</c:if >
+				
+				<c:out value="${rc.recipe_base}" />
+				</td>
 				<td><c:out value="${rc.recipe_ing}" /></td>
 				<td><c:out value="${rc.recipe_how}" /></td>
 				</tr>

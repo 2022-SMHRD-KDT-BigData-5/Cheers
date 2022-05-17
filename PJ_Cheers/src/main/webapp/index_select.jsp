@@ -1,4 +1,5 @@
 
+<%@page import="com.smhrd.domain.Toast_com"%>
 <%@page import="com.smhrd.domain.Toast"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.domain.ToastDAO"%>
@@ -7,8 +8,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	ToastDAO dao = new ToastDAO();
+
 	List<Toast> postList = dao.selectAll();
 	pageContext.setAttribute("postList",postList);
+	
 %>
 
 
@@ -19,6 +22,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<table>
 		<caption>
 			<h2>랜선짠 게시물 조회</h2>
@@ -28,29 +32,39 @@
 			<td>회원아이디</td>
 			<td>내용</td>
 			<td>작성일자</td>
+			<td>댓글</td>
 		</tr>
 
 		<c:forEach var="p" items="${postList}">
 			<tr>
 				<td><c:out value="${p.toast_no}" /></td>
 				<td><c:out value="${p.member_id}" /></td>
-				<td><c:out value="${p.contents}" /></td>
 				<td><c:out value="${p.toast_date}" /></td>
+				<td><c:out value="${p.contents}" /></td>
 
-				<c:choose>
-					<c:when test="${loginMember.id eq p.member_id}">
-						<td>
+				<td>
+					<c:choose>
+						<c:when test="${loginMember.id eq p.member_id}">
 							<a href="DeleteCon?toast_no=${p.toast_no}">삭제</a>
-						</td>						
-					</c:when>
-				</c:choose>
-				
-			</tr>
-			<!-- 댓글작성 기능 추가요망
-			<tr>
-				<td>***댓글작성</td>
-			</tr>
+						</c:when>
+					</c:choose>
+				</td>
+
+				<!-- 댓글작성 기능 추가요망
+			
+			<td>***댓글작성</td>
+		
 			 -->
+				<form action="AddCommentCon">
+					<td>
+						<input type="text" name="tc_contents" placeholder="댓글을 작성해주세요.">
+						<!-- <a href="AddCommentCon?toast_no=${p.toast_no}&tc_contents=${tc_contents}">댓글 추가</a> -->
+						<input type="hidden" name="toast_no" value="${p.toast_no}">
+						<input type="submit" value="댓글작성">
+					</td>
+				</form>
+						
+			</tr>
 		</c:forEach>
 
 	</table>

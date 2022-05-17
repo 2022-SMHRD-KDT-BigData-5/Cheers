@@ -37,9 +37,9 @@ public class InsertPostCon extends HttpServlet {
 //		Timestamp toast_date = Timestamp.valueOf(request.getParameter("toast_date"));
 	
 //		Toast t_vo = new Toast(toast_no, member_id, contents, toast_date);
-		Toast t_vo = new Toast(member_id, contents);
+		Toast toast = new Toast(member_id, contents);
 		ToastDAO dao = new ToastDAO();
-		int cnt = dao.insertPost(t_vo);
+		int cnt = dao.insertPost(toast);
 
 		if (cnt > 0) {
 			System.out.println("게시물 작성 성공-조회 페이지로");
