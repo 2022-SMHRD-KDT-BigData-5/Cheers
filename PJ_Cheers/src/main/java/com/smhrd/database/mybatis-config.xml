@@ -17,14 +17,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <mappers>
     	<mapper resource = "com/smhrd/database/MemberMapper.xml" />  
-<<<<<<< HEAD
     	<mapper resource = "com/smhrd/database/ToastMapper.xml" /> 
-    	<mapper resource = "com/smhrd/database/UploadMapper.xml"/>
-=======
-    	<mapper resource = "com/smhrd/database/ToastMapper.xml" />
-    	
+    	<mapper resource = "com/smhrd/database/UploadMapper.xml"/> 	
     	<mapper resource = "com/smhrd/database/RecipeMapper.xml" />
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-5/Cheers.git
+
     </mappers>
  
 </configuration>
