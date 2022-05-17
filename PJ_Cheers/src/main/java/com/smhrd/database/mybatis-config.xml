@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <mappers>
     	<mapper resource = "com/smhrd/database/MemberMapper.xml" />  
     	<mapper resource = "com/smhrd/database/ToastMapper.xml" /> 
+    	<mapper resource = "com/smhrd/database/UploadMapper.xml"/>
     </mappers>
  
 </configuration>
