@@ -83,8 +83,8 @@
 									<c:choose>
 										<c:when test="${empty loginMember}">
 											<!--if절 (조건작성!) - if~else문  -->
-											<li class="dropdown"><a href="Join.jsp">회원가입</a></li>
-											<li class="dropdown"><a href="Login.jsp">로그인</a></li>
+											<li class="dropdown"><a href="join2.jsp">회원가입</a></li>
+											<li class="dropdown"><a href="login2.jsp">로그인</a></li>
 										</c:when>
 
 										<c:otherwise>
