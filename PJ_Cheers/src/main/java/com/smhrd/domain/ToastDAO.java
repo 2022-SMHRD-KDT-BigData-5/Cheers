@@ -1,5 +1,7 @@
 package com.smhrd.domain;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -12,7 +14,6 @@ public class ToastDAO {
 	//게시물 작성
 	public int insertPost(Toast toast) {
 
-		
 
 		int cnt = 0;
 //		int cnt2 = 0;

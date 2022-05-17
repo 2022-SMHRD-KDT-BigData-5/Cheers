@@ -26,7 +26,7 @@ public class DeleteCon extends HttpServlet {
 		} else {
 			System.out.println("회원삭제 실패");
 		}
-		response.sendRedirect("select.jsp");
+		response.sendRedirect("LogoutCon");
 
 	}
 
