@@ -5,8 +5,7 @@
 <mapper namespace="com.smhrd.domain.ToastDAO">
 	
 	<insert id="insertPost" parameterType="com.smhrd.domain.Toast">
-		insert into toast values (#{member_id}, #{contents})
+		insert into toast values (toast_no_seq.nextVal ,#{member_id}, #{contents}, sysdate)
 	</insert>
-	
 	
 </mapper>
