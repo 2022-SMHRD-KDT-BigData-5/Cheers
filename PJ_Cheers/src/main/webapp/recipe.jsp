@@ -106,10 +106,10 @@
                             </div><br>
                         </div>
                         <div class="main_service_area">
-                            <div class="single_service_area">
+                            <div class="single_service_area" id ="r1">
                                 <!-- 레시피 스따뚜 -->
                                 <div class="row">
-                                    <button class="hatu"><img src="assets/images/hatu.png"></a></button>
+                                    <button class="hatu"><img src="assets/images/hatu.png"></button>
                                     <div class="col-sm-6">
                                         <div class="signle_service_left">
                                             <img src="assets/images/더티호.jpg" alt="더티호" />
@@ -135,7 +135,7 @@
                             <div class="single_service_area">
                                 <!-- 레시피 스따뚜 -->
                                 <div class="row">
-                                    <button class="hatu"><img src="assets/images/hatu.png"></a></button>
+                                    <button class="hatu"><img src="assets/images/hatu.png"></button>
                                     <div class="col-sm-6">
                                         <div class="signle_service_left">
                                             <img src="assets/images/메로나소주.jpg" alt="메로나소주" />
