@@ -20,9 +20,11 @@
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td><input type="text" name="contents"></td>
+			<td><textarea cols=60 row=3 name="contents"></textarea></td>
 		</tr>
-
+		<tr>
+			<td><input type="button" value="이미지업로드"></td>
+		</tr>
 	</table>
 		
 		<input type="submit" value="등록">

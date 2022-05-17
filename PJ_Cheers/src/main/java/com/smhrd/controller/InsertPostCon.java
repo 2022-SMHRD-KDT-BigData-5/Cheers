@@ -42,8 +42,8 @@ public class InsertPostCon extends HttpServlet {
 		int cnt = dao.insertPost(t_vo);
 
 		if (cnt > 0) {
-			System.out.println("게시물 작성 성공-메인으로");
-			response.sendRedirect("index_test.jsp");
+			System.out.println("게시물 작성 성공-조회 페이지로");
+			response.sendRedirect("index_select.jsp");
 
 			
 //			RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
