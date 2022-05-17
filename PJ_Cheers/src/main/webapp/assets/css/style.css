@@ -1088,6 +1088,19 @@ ul li.filter{
 a{
     color:black;
 }
-.ro.g-3{
-    
+.join,
+.login{
+    font-family: 'Noto Sans KR', sans-serif;
+    color:#000;
+
+}
+tr{
+    height: 45px;
+}
+.table_name{
+    text-align: center;
+}
+.join_note{
+    height: 20px;
+    text-align: center;
 }
