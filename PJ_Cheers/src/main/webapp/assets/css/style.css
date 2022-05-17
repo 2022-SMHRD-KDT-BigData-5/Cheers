@@ -497,8 +497,9 @@ input::-ms-input-placeholder {
 }
 
 .menu-scroll .main_menu_bg{
-    margin-top: 0px;
-    background-color: transparent;
+    margin-top: 10px;
+    background-color: #fff;
+    /*background-color: transparent; */
     height: 120px; /* 기본값 80*/
 }
 .menu-scroll .main_menu_bg .nave_menu {
@@ -1088,6 +1089,20 @@ ul li.filter{
 a{
     color:black;
 }
-.ro.g-3{
-    
+.join,
+.login{
+    font-family: 'Noto Sans KR', sans-serif;
+    color:#000;
+
+}
+tr{
+    height: 45px;
+}
+.table_name{
+    text-align: center;
+}
+.join_note,
+.login_note{
+    height: 20px;
+    text-align: center;
 }

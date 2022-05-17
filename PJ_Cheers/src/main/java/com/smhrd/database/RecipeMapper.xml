@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.domain.RecipeDAO">
+
+	<select id="getRecipe"
+		parameterType="com.smhrd.domain.Recipe"
+		resultType="com.smhrd.domain.Recipe">
+		select * from recipe where recipe_no=#{no}
+	</select>
+	
+	<select id="getAllRecipe" resultType="com.smhrd.domain.Recipe">
+		select * from recipe
+	</select>
+
+</mapper>
