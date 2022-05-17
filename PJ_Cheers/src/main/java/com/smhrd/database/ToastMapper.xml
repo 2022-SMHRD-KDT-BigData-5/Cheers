@@ -7,8 +7,8 @@
 	<insert id="insertPost" parameterType="com.smhrd.domain.Toast">
 		insert into toast values (toast_no_seq.nextval ,#{member_id}, #{contents}, sysdate)
 	</insert>
-	<select id="selectAll" resultType="com.smhrd.domain.Toast">
-		select * from toast
+	<select id="selectPost" resultType="com.smhrd.domain.Toast">
+		select * from toast order by toast_no
 	</select>
 	<delete id = "deletePost" parameterType="String">
 		delete from toast where toast_no = #{toast_no}
@@ -16,5 +16,7 @@
 	<insert id="addComment" parameterType="com.smhrd.domain.Toast_com">
         insert into toast_com values (tc_no_seq.nextval, #{toast_no}, #{member_id}, #{tc_contents}, 0, sysdate)
     </insert>
-	
+	<select id="selectComment" parameterType="String" resultType="com.smhrd.domain.Toast_com">
+		select * from toast where toast_no=#{toast_no} order by tc_no
+	</select>
 </mapper>

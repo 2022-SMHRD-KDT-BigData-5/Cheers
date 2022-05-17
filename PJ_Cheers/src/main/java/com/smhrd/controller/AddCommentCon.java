@@ -35,9 +35,6 @@ public class AddCommentCon extends HttpServlet {
 		String tc_contents = request.getParameter("tc_contents");	
 //		Timestamp tc_date = Timestamp.valueOf(request.getParameter("tc_date"));
 		
-		System.out.println(member_id);
-		System.out.println(toast_no);
-		System.out.println(tc_contents);
 		Toast_com tc = new Toast_com(toast_no, member_id, tc_contents);
 		
 		ToastDAO dao = new ToastDAO();
