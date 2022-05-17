@@ -48,6 +48,11 @@ public class Toast {
 
 
 
+	public Toast(String contents) {
+		super();
+		this.contents = contents;
+	}
+
 	public BigDecimal getToast_no() {
 		return toast_no;
 	}
