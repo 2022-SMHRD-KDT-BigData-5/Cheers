@@ -1090,7 +1090,8 @@ a{
     color:black;
 }
 .join,
-.login{
+.login,
+.update{
     font-family: 'Noto Sans KR', sans-serif;
     color:#000;
 
@@ -1102,7 +1103,11 @@ tr{
     text-align: center;
 }
 .join_note,
-.login_note{
+.login_note,
+.update_note{
     height: 20px;
     text-align: center;
+}
+.update_nick{
+    width: 300px;
 }
