@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smhrd.domain.MemberDAO;
+import com.smhrd.domain.ToastDAO;
 
 public class DeleteCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,17 +16,17 @@ public class DeleteCon extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String id = request.getParameter("id");
+		String toast_no = request.getParameter("toast_no");
 
-		MemberDAO dao = new MemberDAO();
-		int cnt = dao.deleteMember(id);
+		ToastDAO dao = new ToastDAO();
+		int cnt = dao.deletePost(toast_no);
 
 		if (cnt > 0) {
-			System.out.println("회원삭제 성공");
+			System.out.println("게시물 삭제 성공");
 		} else {
-			System.out.println("회원삭제 실패");
+			System.out.println("게시물 삭제 실패");
 		}
-		response.sendRedirect("LogoutCon");
+		response.sendRedirect("index_select.jsp");
 
 	}
 
