@@ -113,7 +113,7 @@
 
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="aboutus.html">about us</a></li>
-										<li class="dropdown"><a href="recipe.html">마셔볼래</a></li>
+										<li class="dropdown"><a href="recipe.jsp">마셔볼래</a></li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown" role="button" aria-haspopup="true">같이마실래?</a>
 											<ul class="dropdown-menu">
