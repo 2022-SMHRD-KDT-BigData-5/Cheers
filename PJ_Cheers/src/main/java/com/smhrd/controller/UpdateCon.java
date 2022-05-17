@@ -42,7 +42,7 @@ public class UpdateCon extends HttpServlet {
 			response.sendRedirect("index_test.jsp");
 		} else {
 			System.out.println("회원정보 수정 실패");
-			response.sendRedirect("mypage.jsp");
+			response.sendRedirect("update2.jsp");
 		}
 
 	}

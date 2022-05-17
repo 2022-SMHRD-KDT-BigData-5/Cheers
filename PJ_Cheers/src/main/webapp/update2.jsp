@@ -126,11 +126,11 @@
 											<!--el표기법  -->
 											<tr>
 												<td><input type="password" name="pw"
-													placeholder="변경할 pw를 입력하세요" style="border: none;"></td>
+													placeholder="변경할 pw를 입력하세요" style="border: none;" value="${loginMember.pw}"></td>
 											</tr>
 											<tr>
 												<td><input type="text" name="nick"
-													placeholder="변경할 닉네임을 입력하세요" style="border: none;"
+													placeholder="변경할 닉네임을 입력하세요" style="border: none;" value="${loginMember.nick}"
 													class="update_nick"></td>
 											</tr>
 											<tr>
