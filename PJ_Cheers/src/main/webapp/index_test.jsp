@@ -93,23 +93,19 @@
 											</c:if>
 											<li><a>${loginMember.nick}님 환영합니다.</a></li>
 											<li><a href="LogoutCon">로그아웃</a></li>
-											<li><a href="mypage.jsp">회원정보</a></li>
-											<li><a href="mypage.jsp">즐겨찾기</a></li>
+											<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-haspopup="true">마이페이지</a>
+											<ul class="dropdown-menu">
+												<li><a href="mypage.jsp">즐겨찾기</a></li>
+												<li><a href="mypage.jsp">회원정보 수정</a></li>
+												<li><a href="DeleteCon?id=${loginMember.id}">회원 탈퇴</a></li>
+											</ul></li>
 										</c:otherwise>
 										</c:choose>
 									</ul>
 									</li>
 									</ul>
 
-									<!-- <ul class="nav navbar-nav navbar-right">
-										<li class="dropdown"><a href="mypage.jsp">로그인</a></li>
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-haspopup="true">마이페이지</a>
-											<ul class="dropdown-menu">
-												<li><a href="mypage.jsp">회원정보</a></li>
-												<li><a href="mypage.jsp">즐겨찾기</a></li>
-											</ul></li>
-									</ul> -->
 								</div>
 
 								<div class="collapse navbar-collapse"
@@ -117,7 +113,7 @@
 
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="aboutus.html">about us</a></li>
-										<li class="dropdown"><a href="recipe.html">마셔볼래</a></li>
+										<li class="dropdown"><a href="recipe.jsp">마셔볼래</a></li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown" role="button" aria-haspopup="true">같이마실래?</a>
 											<ul class="dropdown-menu">
