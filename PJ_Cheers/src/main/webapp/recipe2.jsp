@@ -1,7 +1,16 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.smhrd.domain.Recipe"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.domain.RecipeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="com.smhrd.domain.Member"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	RecipeDAO dao = new RecipeDAO();
+	List<Recipe> recipeList = dao.getAllRecipe();
+	pageContext.setAttribute("recipeList", recipeList);
+%>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -89,6 +98,33 @@
     <!--End of header -->
 
     <!-- Service Section -->
+    
+    <table>
+			<caption>
+				<h2>레시피</h2>
+			</caption>
+			<tr>
+				<td>레시피 이미지</td>
+				<td>레시피 이름</td>
+				<td>레시피 베이스</td>
+				<td>레시피 재료</td>
+				<td>레시피 제조방법</td>
+			</tr>
+			<!-- 2.모든 회원의 이메일(email),전화번호(tel),주소(address)를 출력하시오. -->
+			
+			<c:forEach var = "rc" items = "${recipeList}">
+				<tr>
+				<td><c:out value="${rc.recipe_img}" /></td>
+				<td><c:out value="${rc.recipe_name}" /></td>
+				<td><c:out value="${rc.recipe_base}" /></td>
+				<td><c:out value="${rc.recipe_ing}" /></td>
+				<td><c:out value="${rc.recipe_how}" /></td>
+				</tr>
+			</c:forEach>
+
+
+		</table>
+    
     <section id="service" class="service sections margin-top-120">
         <div class="container">
             <div class="row">
@@ -129,6 +165,7 @@
                             </div><!-- End of single service area -->
 
                         </div>
+                        
 
                         <!-- footer Section -->
                         <footer id="footer" class="footer">
@@ -155,6 +192,7 @@
                         <div class="scrollup">
                             <a href="#"><i class="fa fa-chevron-up"></i></a>
                         </div>
+                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
                         <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
                         <script src="assets/js/vendor/bootstrap.min.js"></script>

@@ -497,8 +497,9 @@ input::-ms-input-placeholder {
 }
 
 .menu-scroll .main_menu_bg{
-    margin-top: 0px;
-    background-color: transparent;
+    margin-top: 10px;
+    background-color: #fff;
+    /*background-color: transparent; */
     height: 120px; /* 기본값 80*/
 }
 .menu-scroll .main_menu_bg .nave_menu {
