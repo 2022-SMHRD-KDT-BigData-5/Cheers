@@ -17,7 +17,7 @@ public class DeleteCon extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String toast_no = request.getParameter("toast_no");
-
+		
 		ToastDAO dao = new ToastDAO();
 		int cnt = dao.deletePost(toast_no);
 
