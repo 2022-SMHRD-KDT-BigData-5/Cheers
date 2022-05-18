@@ -40,12 +40,12 @@ public class ToastDAO {
 	}
 
 	// 전체 게시물 조회
-	public List<Toast> selectAll() {
+	public List<Toast> selectPost() {
 
 		List<Toast> postList = null;
 
 		try {
-			postList = sqlSession.selectList("com.smhrd.domain.ToastDAO.selectAll");
+			postList = sqlSession.selectList("com.smhrd.domain.ToastDAO.selectPost");
 
 			if (postList != null) {
 				sqlSession.commit();
@@ -99,4 +99,28 @@ public class ToastDAO {
 			return commNum;
 		}
 
+		// 전체 댓글 조회
+		public List<Toast_com> selectComment(String tonm) {
+
+			List<Toast_com> commList = null;
+
+			try {
+				commList = sqlSession.selectList("com.smhrd.domain.ToastDAO.selectComment",tonm);
+
+				if (commList != null) {
+					sqlSession.commit();
+				} else {
+					sqlSession.rollback();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				sqlSession.close();
+			}
+
+			return commList;
+		}
+		
+		
 }

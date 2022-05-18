@@ -30,6 +30,13 @@ public class Toast_com {
 		this.tc_date = tc_date;
 	}
 	
+	
+	
+	public Toast_com(String toast_no) {
+		super();
+		this.toast_no = toast_no;
+	}
+
 	public BigDecimal getTc_no() {
 		return tc_no;
 	}
