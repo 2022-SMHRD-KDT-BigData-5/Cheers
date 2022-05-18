@@ -11,16 +11,22 @@ public class Toast {
 	private String member_id;	//작성자
 	private String contents;	//내용
 	private Timestamp toast_date;	//작성일자
+	private ArrayList<Toast_com> tc;
 	
 	private BigDecimal t_file_no;
 	private String t_file_path;
 	private String t_file_name;
 	private String t_file_server;
 
-	private ArrayList<Toast_com> tc;
+	
+	
+	
+	public Toast(BigDecimal toast_no, String member_id) {
+		super();
+		this.toast_no = toast_no;
+		this.member_id = member_id;
+	}
 
-	
-	
 	public Toast(String member_id, String contents) {
 		super();
 		this.member_id = member_id;

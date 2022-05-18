@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.domain.ToastDAO">
 	
-	
+	<!-- 게시물 -->
 	<insert id="insertPost" parameterType="com.smhrd.domain.Toast">
 		insert into toast values (toast_no_seq.nextval ,#{member_id}, #{contents}, sysdate)
 	</insert>
@@ -13,6 +13,8 @@
 	<delete id = "deletePost" parameterType="String">
 		delete from toast where toast_no = #{toast_no}
 	</delete>
+	
+	<!-- 댓글 -->
 	<insert id="addComment" parameterType="com.smhrd.domain.Toast_com">
         insert into toast_com values (tc_no_seq.nextval, #{toast_no}, #{member_id}, #{tc_contents}, 0, sysdate)
     </insert>
@@ -23,8 +25,24 @@
 		AND t.toast_no=#{toast_no} 
 		ORDER BY tc.tc_no 
 	</select>
-	
 	<delete id="deleteComment" parameterType="String">
 		delete from toast_com where tc_no = #{tc_no}
 	</delete>
+	
+	<!-- 짠 -->
+	<insert id="addZzan" parameterType="com.smhrd.domain.Toast">
+        insert into toast_zzan values (toast_zzan_zzan_no_seq.nextval ,#{toast_no}, #{member_id})
+    </insert>
+	<!-- 
+	<select id="getZzan" resultType="String" parameterType="int">
+        select zzan_no from toast_zzan where toast_no=#{toast_no}
+    </select>
+	 -->
+	<update id="zzan" parameterType="String">
+		update toast_zzan set zzan_no=zzan_no+1 where toast_no=#{toast_no} 
+	</update>
+	<update id="diszzan" parameterType="String">
+		update toast_zzan set zzan_no=zzan_no-1 where toast_no=#{toast_no} 
+	</update>
+	
 </mapper>
