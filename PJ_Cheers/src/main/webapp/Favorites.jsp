@@ -1,14 +1,15 @@
+<%@page import="com.smhrd.domain.FavoritesDAO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
-<%@page import="com.smhrd.domain.Recipe"%>
+<%@page import="com.smhrd.domain.Favorites"%>
 <%@page import="java.util.List"%>
-<%@page import="com.smhrd.domain.RecipeDAO"%>
+<%@page import="com.smhrd.domain.FavoritesDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-RecipeDAO dao = new RecipeDAO();
-List<Recipe> recipeList = dao.getAllRecipe();
-pageContext.setAttribute("recipeList", recipeList);
+FavoritesDAO dao = new FavoritesDAO();
+//List<Favorites> favList = dao.getFav();
+pageContext.setAttribute("favList", favList);
 %>
 
 <!doctype html>
@@ -109,7 +110,7 @@ pageContext.setAttribute("recipeList", recipeList);
 				<div class="col-sm-12">
 					<div class="head_title text-center">
 						<h1>
-							<a href="recipe_home.jsp">home recipe</a>
+							<a href="favorite.jsp">my recipe</a>
 						</h1>
 					</div>
 					<!-- End of head title -->

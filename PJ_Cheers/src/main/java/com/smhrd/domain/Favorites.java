@@ -17,6 +17,14 @@ public class Favorites {
 		this.recipe_no = recipe_no;
 		this.fav_date = fav_date;
 	}
+	
+	public Favorites(String member_id, int recipe_no) {
+		super();
+		
+		this.member_id = member_id;
+		this.recipe_no = recipe_no;
+		
+	}
 
 	public BigDecimal getFav_no() {
 		return fav_no;

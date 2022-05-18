@@ -133,7 +133,8 @@ pageContext.setAttribute("recipeList", recipeList);
 								<!-- 레시피 반복 스따뚜 -->
 								<c:forEach var="rc" items="${recipeList}">
 									<div class="row">
-										<button class="hatu">
+										<a href="FavorietesCon?recipe_no=${rc.recipe_no}">즐겨찾기테스트</a>
+										<button class="hatu" onClick="location.href='FavorietesCon?recipe_no=${rc.recipe_no}'">
 											<img src="assets/images/hatu.png">
 										</button>
 										<div class="col-sm-6">
