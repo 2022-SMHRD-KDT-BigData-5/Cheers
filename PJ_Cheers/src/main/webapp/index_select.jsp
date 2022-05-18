@@ -14,7 +14,6 @@
 	
 %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,9 +52,10 @@
 
 				<form action="AddCommentCon">
 					<td><input type="text" name="tc_contents"
-						placeholder="댓글을 작성해주세요."> <input type="hidden"
-						name="toast_no" value="${p.toast_no}"> <input
-						type="submit" value="댓글추가"></td>
+						placeholder="댓글을 작성해주세요."> 
+						<input type="hidden" name="toast_no" value="${p.toast_no}"> 
+						<input type="submit" value="댓글추가">
+						</td>
 				</form>
 			</tr>
 			<tr>
@@ -86,6 +86,7 @@
 							<td><c:out value="${c.tc_contents}" /></td>
 							<td><c:out value="${c.tc_zzan}" /></td>
 							<td><c:out value="${c.tc_date}" /></td>
+							<td><a href ="DeleteCommentCon?tc_no=${c.tc_no} ">댓글 삭제</a></td>
 						</tr>
 					</c:when>
 				</c:choose>

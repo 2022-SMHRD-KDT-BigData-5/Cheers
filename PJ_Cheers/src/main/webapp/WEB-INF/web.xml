@@ -70,6 +70,18 @@
   	<description></description>
   	<servlet-class>com.smhrd.controller.FavorietesCon</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UpdateCommentCon</servlet-name>
+  	<display-name>UpdateCommentCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.UpdateCommentCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DeleteCommentCon</servlet-name>
+  	<display-name>DeleteCommentCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.DeleteCommentCon</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>JoinCon</servlet-name>
   	<url-pattern>/JoinCon</url-pattern>
@@ -113,5 +125,13 @@
   <servlet-mapping>
   	<servlet-name>FavorietesCon</servlet-name>
   	<url-pattern>/FavorietesCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateCommentCon</servlet-name>
+  	<url-pattern>/UpdateCommentCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteCommentCon</servlet-name>
+  	<url-pattern>/DeleteCommentCon</url-pattern>
   </servlet-mapping>
 </web-app>

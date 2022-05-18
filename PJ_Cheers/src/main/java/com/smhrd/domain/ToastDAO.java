@@ -125,6 +125,23 @@ public class ToastDAO {
 
 			return commList;
 		}
-		
-		
-}
+
+		// 댓글 삭제
+		public int deleteComment(String tc_no) {
+			int cnt = 0;
+			try {
+				cnt = sqlSession.delete("com.smhrd.domain.ToastDAO.deleteComment", tc_no);
+
+				if(cnt>0) {
+					sqlSession.commit();
+				}else {
+					sqlSession.rollback();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}
+			return cnt;
+		}
+	}

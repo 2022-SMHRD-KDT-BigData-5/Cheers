@@ -23,4 +23,8 @@
 		AND t.toast_no=#{toast_no} 
 		ORDER BY tc.tc_no 
 	</select>
+	
+	<delete id="deleteComment" parameterType="String">
+		delete from toast_com where tc_no = #{tc_no}
+	</delete>
 </mapper>
