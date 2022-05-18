@@ -138,7 +138,13 @@
 					<!-- End of head title -->
 					<div class="insert_btn" align=right>
 						<button type="button" style="border: none;">
-							<a href=toast2.html>작성</a>
+						<form action="toast2.html">
+							<c:forEach var="t" items="${postList}">
+								<input type="hidden" value="${t.toast_no}">
+							</c:forEach>
+							<input type="submit" value="작성">
+						</form>
+							<a href="toast2.html">작성</a>
 						</button>
 					</div>
 					<hr color='#c06c84'>
@@ -172,9 +178,10 @@
 										<input type="hidden" name="toast_no" value="${p.toast_no}">
 										<input type="submit" value="등록" style="border: none;">
 									</form>
-									 <details align="left">
-                                    <summary style="color:brown; cursor: pointer;">♥ 댓글 ♥</summary>
-									<%
+									<details align="left">
+										<summary style="color: brown; cursor: pointer;">♥ 댓글
+											♥</summary>
+										<%
 			String toast_no = "";
 			for(int i=0;i<postList.size();i++){
 				toast_no = postList.get(i).getToast_no().toString();
@@ -182,24 +189,27 @@
 				List<Toast_com> commList = dao.selectComment(toast_no);
 				pageContext.setAttribute("commList",commList);
 			%>
-									<c:forEach var="c" items="${commList}">
-										<c:choose>
-											<c:when test="${p.toast_no eq c.toast_no}">
-												 <table width="100%">
-												<tr>
-                                            <td width="5%"><button style="border: none;background-color: white;">🥂</button></td>
-                                            <td width="25%"><label><c:out value="${c.member_id}" /></label></td>
-                                            <td><span><c:out value="${c.tc_contents}" /></span></td>
-                                            <td align="right" width="15%"><a href ="DeleteCommentCon?tc_no=${c.tc_no} ">삭제</a></td>
-                                        </tr>
-                                        </table>
-											</c:when>
-										</c:choose>
-									</c:forEach>
-									</details>
-									<%
+										<c:forEach var="c" items="${commList}">
+											<c:choose>
+												<c:when test="${p.toast_no eq c.toast_no}">
+													<table width="100%">
+														<tr>
+															<td width="5%"><button
+																	style="border: none; background-color: white;">🥂</button></td>
+															<td width="25%"><label><c:out
+																		value="${c.member_id}" /></label></td>
+															<td><span><c:out value="${c.tc_contents}" /></span></td>
+															<td align="right" width="15%"><a
+																href="DeleteCommentCon?tc_no=${c.tc_no} ">삭제</a></td>
+														</tr>
+													</table>
+												</c:when>
+											</c:choose>
+										</c:forEach>
+										<%
 			}	
 			%>
+									</details>
 									<p></p>
 									<hr color='#c06c84'>
 								</c:forEach>

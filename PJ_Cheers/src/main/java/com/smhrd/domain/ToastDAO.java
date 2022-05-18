@@ -82,7 +82,7 @@ public class ToastDAO {
 		
 		//댓글 추가
 		public int addComment(Toast_com tc) {
-			SqlSession sqlSession = sqlSessionFactory.openSession();
+//			SqlSession sqlSession = sqlSessionFactory.openSession();
 			int commNum = 0;
 			try {
 				commNum = sqlSession.insert("com.smhrd.domain.ToastDAO.addComment", tc);
@@ -162,7 +162,7 @@ public class ToastDAO {
 //		}
 		public int addZzan(Toast toast) {
 			
-			SqlSession sqlSession = sqlSessionFactory.openSession();
+//			SqlSession sqlSession = sqlSessionFactory.openSession();
 			int zzan = 0;
 			try {
 				zzan = sqlSession.insert("com.smhrd.domain.ToastDAO.addZzan", toast);
@@ -181,7 +181,7 @@ public class ToastDAO {
 		
 		//짠 수정
 		public int updateZzan(String Toast_no, String status) {
-			SqlSession sqlSession = sqlSessionFactory.openSession();
+//			SqlSession sqlSession = sqlSessionFactory.openSession();
 			int cnt = 0;
 
 			try {

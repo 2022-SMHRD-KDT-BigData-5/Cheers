@@ -53,14 +53,14 @@
 					</c:choose>
 				</td>
 
-				<td><button id='zzan'>게시글짠</button><span>${zzan}</span></td>
+				<!-- <td><button id='zzan'>게시글짠</button><span>${zzan}</span></td> -->
 
-				<form action="AddCommentCon">
-					<td><input type="text" name="tc_contents"
-						placeholder="댓글을 작성해주세요."> 
+				<form action="PostZzanCon">
+					<td>
+						<input type="hidden" name="member_id" value="${loginMember.id}"> 
 						<input type="hidden" name="toast_no" value="${p.toast_no}"> 
-						<input type="submit" value="댓글추가">
-						</td>
+						<input type="submit" value="짠">
+					</td>
 				</form>
 			</tr>
 			<tr>
@@ -92,6 +92,14 @@
 							<td><c:out value="${c.tc_zzan}" /></td>
 							<td><c:out value="${c.tc_date}" /></td>
 							<td><a href ="DeleteCommentCon?tc_no=${c.tc_no} ">댓글 삭제</a></td>
+							
+							<!-- 
+							<form action="PostZzanCon">
+								<input type="hidden" value="">
+								<input type="hidden" value="">
+								<input type="submit" value="댓글짠">
+							</form>
+							 -->
 						</tr>
 					</c:when>
 				</c:choose>

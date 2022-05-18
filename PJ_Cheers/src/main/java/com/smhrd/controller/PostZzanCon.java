@@ -3,6 +3,7 @@ package com.smhrd.controller;
 import java.io.IOException;
 
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import com.smhrd.domain.Member;
 import com.smhrd.domain.Toast;
 import com.smhrd.domain.ToastDAO;
-import com.smhrd.domain.Toast_com;
 
 
 
@@ -36,21 +36,21 @@ public class PostZzanCon extends HttpServlet {
 		
 		System.out.println("[PostZzanCon]");
 		
+		BigDecimal toast_no = new BigDecimal(request.getParameter("toast_no"));	
+		
 		HttpSession session =  request.getSession();
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		String member_id = loginMember.getId();
 			
-		String toast_no = request.getParameter("toast_no");	
-		
 		Toast toast = new Toast(toast_no, member_id);
 		
 		ToastDAO dao = new ToastDAO();
 		int cnt = dao.addZzan(toast);
 		
 		if (cnt > 0) {
-			System.out.println("댓글 작성 성공");
+			System.out.println("짠 추가 성공");
 		} else {
-			System.out.println("댓글 작성 실패");
+			System.out.println("짠 추가 실패");
 		}
 		response.sendRedirect("index_select.jsp");
 		
