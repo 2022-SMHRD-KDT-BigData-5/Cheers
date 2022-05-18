@@ -81,7 +81,7 @@ pageContext.setAttribute("recipeList", recipeList);
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="aboutus.html">about us</a></li>
-										<li class="dropdown"><a href="recipe.html">마셔볼래</a></li>
+										<li class="dropdown"><a href="recipe_home.jsp">마셔볼래</a></li>
 										<li class="dropdown"><a href="toast.html">같이마실래?</a></li>
 										<li class="dropdown"><a href="soto.html">같이볼래?</a></li>
 										<li><a href="contact.html">contact</a></li>
@@ -109,7 +109,7 @@ pageContext.setAttribute("recipeList", recipeList);
 				<div class="col-sm-12">
 					<div class="head_title text-center">
 						<h1>
-							<a href="recipe.html">home recipe</a>
+							<a href="recipe_home.jsp">home recipe</a>
 						</h1>
 					</div>
 					<!-- End of head title -->
@@ -117,11 +117,12 @@ pageContext.setAttribute("recipeList", recipeList);
 						<div class="base_btn">
 							<div class="base_controls">
 								<button type="button" class="base_soju">
-									<a href="recipe_soju.html">소주</a>
+									<a href="recipe_base20.jsp">소주</a>
 								</button>
 								<button type="button" class="base_macju">
-									<a href="recipe_macju.html">맥주</a>
+									<a href="recipe_base10.jsp">맥주</a>
 								</button>
+						
 							</div>
 							<br>
 						</div>

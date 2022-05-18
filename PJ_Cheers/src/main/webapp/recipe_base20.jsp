@@ -109,7 +109,7 @@ pageContext.setAttribute("recipeList", recipeList);
 				<div class="col-sm-12">
 					<div class="head_title text-center">
 						<h1>
-							<a href="recipe.html">home recipe</a>
+							<a href="recipe_home.jsp">home recipe</a>
 						</h1>
 					</div>
 					<!-- End of head title -->
@@ -117,10 +117,10 @@ pageContext.setAttribute("recipeList", recipeList);
 						<div class="base_btn">
 							<div class="base_controls">
 								<button type="button" class="base_soju">
-									<a href="recipe_soju.html">소주</a>
+									<a href="recipe_base20.jsp">소주</a>
 								</button>
 								<button type="button" class="base_macju">
-									<a href="recipe_macju.html">맥주</a>
+									<a href="recipe_base10.jsp">맥주</a>
 								</button>
 							</div>
 							<br>
@@ -131,6 +131,7 @@ pageContext.setAttribute("recipeList", recipeList);
 
 								<!-- 레시피 반복 스따뚜 -->
 								<c:forEach var="rc" items="${recipeList}">
+								<c:if test="${rc.recipe_base eq '20'}">
 									<div class="row">
 										<button class="hatu">
 											<img src="assets/images/hatu.png">
@@ -150,13 +151,10 @@ pageContext.setAttribute("recipeList", recipeList);
 												</h3>
 												<h5>
 													base : <span class="recipe_base"><c:if
-															test="${rc.recipe_base eq '10'}">
-															<span>맥주</span>
-														</c:if> <c:if test="${rc.recipe_base eq '20'}">
+															test="${rc.recipe_base eq '20'}">
 															<span>소주</span>
-														</c:if> <c:if test="${rc.recipe_base eq '30'}">
-															<span>혼합</span>
-														</c:if></span>
+														</c:if> 
+														
 												</h5>
 												<div class="separator2"></div>
 												<span>♡ 준비물 ♡</span><br> <span class="recipe_ing"><c:out
@@ -169,7 +167,8 @@ pageContext.setAttribute("recipeList", recipeList);
 
 										</div>
 									</div>
-								</c:forEach>
+								</c:if>	
+								</c:forEach>	
 
 
 
