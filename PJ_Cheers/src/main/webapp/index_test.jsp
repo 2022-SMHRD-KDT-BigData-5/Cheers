@@ -120,7 +120,7 @@
 											<ul class="dropdown-menu">
 												<li><a href="toast.html">work page</a></li>
 												<li><a href="work1.html">work page Two</a></li>
-												<li><a href="index_select.jsp">게시판조회페이지</a></li>
+												<li><a href="toast1.jsp">게시판조회페이지</a></li>
 											</ul></li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown" role="button" aria-haspopup="true">같이볼래?</a>

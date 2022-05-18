@@ -88,7 +88,7 @@ a{}
     clear: both;
 }
 img {
-    max-width: 100%;
+    max-width: 50%;
 }
 textarea,
 input[type="text"],
@@ -1110,4 +1110,18 @@ tr{
 }
 .update_nick{
     width: 300px;
+}
+.add_com{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.toast_com_select{
+    text-align: left;
+}
+.toast_label{
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+.toast_input,
+.toast_label{
+    margin: .4rem 0;
 }
