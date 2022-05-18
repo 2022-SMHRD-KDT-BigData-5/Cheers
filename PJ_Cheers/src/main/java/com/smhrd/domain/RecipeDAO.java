@@ -37,5 +37,27 @@ public class RecipeDAO {
 		}
 		return recipeList;
 	}
+	
+	// 즐겨찾기레시피정보
+	public List<Recipe> getFavRecipe(){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<Recipe> favRecipeList = null;
+		try {
+			favRecipeList = sqlSession.selectList("com.smhrd.domain.RecipeDAO.getFavRecipe");
+			if(favRecipeList != null) {
+				System.out.println("마이레시피조회 성공");
+				sqlSession.commit();
+			} else {
+				System.out.println("마이레시피조회 실패");
+				sqlSession.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return favRecipeList;
+	}// 즐겨찾기레시피정보
 
 }

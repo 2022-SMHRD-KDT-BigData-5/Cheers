@@ -1,14 +1,13 @@
-<%@page import="com.smhrd.domain.FavoritesDAO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
-<%@page import="com.smhrd.domain.Favorites"%>
 <%@page import="java.util.List"%>
-<%@page import="com.smhrd.domain.FavoritesDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="com.smhrd.domain.Favorites"%>
+<%@page import="com.smhrd.domain.FavoritesDAO"%>
 <%
 FavoritesDAO dao = new FavoritesDAO();
-//List<Favorites> favList = dao.getFav();
+List<Favorites> favList = dao.getFav();
 pageContext.setAttribute("favList", favList);
 %>
 
@@ -115,16 +114,6 @@ pageContext.setAttribute("favList", favList);
 					</div>
 					<!-- End of head title -->
 					<div>
-						<div class="base_btn">
-							<div class="base_controls">
-								<button type="button" class="base_soju">
-									<a href="recipe_base20.jsp">소주</a>
-								</button>
-								<button type="button" class="base_macju">
-									<a href="recipe_base10.jsp">맥주</a>
-								</button>
-						
-							</div>
 							<br>
 						</div>
 						<div class="main_service_area">
@@ -132,14 +121,15 @@ pageContext.setAttribute("favList", favList);
 
 
 								<!-- 레시피 반복 스따뚜 -->
-								<c:forEach var="rc" items="${recipeList}">
+								<c:forEach var="fr" items="${favList}">
+								<c:if test="${fr.member_id eq loginMember.id}">
 									<div class="row">
 										<button class="hatu">
 											<img src="assets/images/hatu.png">
 										</button>
 										<div class="col-sm-6">
 											<div class="signle_service_left">
-												<img src='<c:out value="${rc.recipe_img}" />'
+												<img src='<c:out value="${fr.recipe_img}" />'
 													alt="recipe_name" />
 											</div>
 										</div>
@@ -148,29 +138,30 @@ pageContext.setAttribute("favList", favList);
 												<br> <br> <br>
 												<h3>
 													<span class="recipe_name"><c:out
-															value="${rc.recipe_name}" /></span>
+															value="${fr.recipe_name}" /></span>
 												</h3>
 												<h5>
 													base : <span class="recipe_base"><c:if
-															test="${rc.recipe_base eq '10'}">
+															test="${fr.recipe_base eq '10'}">
 															<span>맥주</span>
-														</c:if> <c:if test="${rc.recipe_base eq '20'}">
+														</c:if> <c:if test="${fr.recipe_base eq '20'}">
 															<span>소주</span>
-														</c:if> <c:if test="${rc.recipe_base eq '30'}">
+														</c:if> <c:if test="${fr.recipe_base eq '30'}">
 															<span>혼합</span>
 														</c:if></span>
 												</h5>
 												<div class="separator2"></div>
 												<span>♡ 준비물 ♡</span><br> <span class="recipe_ing"><c:out
-														value="${rc.recipe_ing}" /></span><br> <br> <span>♥
+														value="${fr.recipe_ing}" /></span><br> <br> <span>♥
 													제조방법 ♥</span><br>
 												<p class="recipe_how">
-													<c:out value="${rc.recipe_how}" />
+													<c:out value="${fr.recipe_how}" />
 												</p>
 											</div>
 
 										</div>
 									</div>
+									</c:if>
 								</c:forEach>
 
 

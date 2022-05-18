@@ -1,6 +1,8 @@
 package com.smhrd.controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +27,7 @@ public class FavorietesCon extends HttpServlet {
 		String member_id = loginMember.getId();
 		
 		
-		int recipe_no = Integer.parseInt(request.getParameter("recipe_no"));
+		BigDecimal recipe_no = new BigDecimal(request.getParameter("recipe_no"));
 		
 		Favorites fav = new Favorites(member_id, recipe_no);		
 		FavoritesDAO dao = new FavoritesDAO();

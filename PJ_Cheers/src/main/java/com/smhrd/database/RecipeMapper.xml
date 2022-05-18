@@ -13,5 +13,9 @@
 	<select id="getAllRecipe" resultType="com.smhrd.domain.Recipe">
 		select * from recipe
 	</select>
+	
+	<select id="getFavRecipe" parameterType="String" resultType="com.smhrd.domain.Recipe">
+		select * from recipe r, favorites f where r.recipe_no = f.recipe_no and f.member_id = #{member_id}
+	</select>
 
 </mapper>

@@ -30,18 +30,28 @@ public class FavoritesDAO {
 	}// 레시피즐겨찾기추가 끝
 	
 	
-	// 마이레시피 조회
+	// 즐겨찾기테이블정보
 	public List<Favorites> getFav(){
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		List<Favorites> favList = null;
 		try {
 			favList = sqlSession.selectList("com.smhrd.domain.FavoritesDAO.getFav");
+			System.out.println(favList.get(0));
+//			if(favList != null) {
+//				System.out.println("마이레시피조회 성공");
+//				sqlSession.commit();
+//			} else {
+//				System.out.println("마이레시피조회 실패");
+//				sqlSession.rollback();
+//			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			sqlSession.close();
 		}
 		return favList;
-	}
+	}// 즐겨찾기테이블정보
+	
 
 }

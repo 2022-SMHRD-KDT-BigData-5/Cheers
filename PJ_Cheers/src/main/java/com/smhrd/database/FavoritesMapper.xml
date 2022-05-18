@@ -9,8 +9,13 @@
 		insert into favorites values (fav_no_seq.nextval, #{member_id}, #{recipe_no}, sysdate)
 	</insert>
 	
-	<select id="getFav" parameterType="String" resultType="com.smhrd.domain.Favorites">
-		select * from Favorites where member_id = #{member_id}
+	<select id="getFavR" resultType="com.smhrd.domain.Favorites">
+		select * from favorites
 	</select>
+	
+	<select id="getFav" resultType="com.smhrd.domain.Favorites">
+		select recipe.recipe_no, recipe.recipe_base, recipe.recipe_name, recipe.recipe_how, recipe.recipe_ing, recipe.recipe_img, favorites.fav_no, favorites.member_id, favorites.fav_date from recipe inner join favorites on recipe.recipe_no = favorites.recipe_no
+	</select>
+	
 
 </mapper>
