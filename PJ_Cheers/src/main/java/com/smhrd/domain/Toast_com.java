@@ -10,9 +10,10 @@ public class Toast_com {
 	private String toast_no;	//게시물 번호
 	private String member_id;	//작성자
 	private String tc_contents;	//내용
+	private int tc_zzan;
 	private Timestamp tc_date;	//작성일자
 	
-	
+	private Toast_com() {}
 	
 	public Toast_com(String toast_no, String member_id, String tc_contents) {
 		super();
@@ -61,6 +62,15 @@ public class Toast_com {
 	public void setTc_contents(String tc_contents) {
 		this.tc_contents = tc_contents;
 	}
+	
+	public int getTc_zzan() {
+		return tc_zzan;
+	}
+
+	public void setTc_zzan(int tc_zzan) {
+		this.tc_zzan = tc_zzan;
+	}
+
 	public Timestamp getTc_date() {
 		return tc_date;
 	}

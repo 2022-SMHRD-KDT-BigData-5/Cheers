@@ -101,15 +101,19 @@ public class ToastDAO {
 
 		// 전체 댓글 조회
 		public List<Toast_com> selectComment(String tonm) {
-
+			
+			sqlSession = sqlSessionFactory.openSession();
 			List<Toast_com> commList = null;
 
 			try {
+				System.out.println(tonm);
 				commList = sqlSession.selectList("com.smhrd.domain.ToastDAO.selectComment",tonm);
 
 				if (commList != null) {
+					System.out.println("댓글 조회 성공");
 					sqlSession.commit();
 				} else {
+					System.out.println("댓글 조회 실패");
 					sqlSession.rollback();
 				}
 
