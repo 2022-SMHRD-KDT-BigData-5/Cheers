@@ -120,7 +120,7 @@
 				<div class="col-sm-12">
 					<div class="head_title text-center">
 						<h1>
-							<a href="toast1.html">같이마실래?</a>
+							<a href="toast1.jsp">같이마실래?</a>
 						</h1>
 						<div style="height: 30px;"></div>
 					</div>
@@ -128,7 +128,7 @@
 					<div>
 						<div class="main_service_area">
 							<div class="single_service_area"></div>
-							<form action="InsertPostCon">
+							<form action="InsertPostCon" enctype="multipart/form-data" method="post">
 								<table width="100%" height="400px">
 									<tr style="height: 10px">
 										<td width="45%"><input type="file" id="image"
@@ -154,7 +154,7 @@
 										<td colspan="2" align="right"><div class="insert_btn"
 												align=right>
 												<button type="button" style="border: none;">
-												<input type="submit" value="등록">
+												<input type="submit" name= "upload" value="등록">
 												</button>
 											</div></td>
 									</tr>

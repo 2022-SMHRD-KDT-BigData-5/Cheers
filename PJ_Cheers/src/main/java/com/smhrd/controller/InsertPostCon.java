@@ -34,7 +34,7 @@ public class InsertPostCon extends HttpServlet {
 
 		MultipartRequest multi=null;
 		int maxSize = 1024 * 1024 * 10;
-		String t_file_path = request.getSession().getServletContext().getRealPath("/img/");
+		String t_file_path ="C:/img";
 		
 		
 		
