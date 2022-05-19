@@ -1072,6 +1072,7 @@ ul li.filter{
 /* 버튼 사이즈 지정 */
 
 .hatu{
+	margin-left: 95%;
     width: 40px;
     background-color: white;
     border: none;

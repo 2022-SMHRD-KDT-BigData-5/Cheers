@@ -1,14 +1,15 @@
+<%@page import="com.smhrd.domain.Favorites"%>
+<%@page import="com.smhrd.domain.FavoritesDAO"%>
+<%@page import="java.math.BigDecimal"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="com.smhrd.domain.Favorites"%>
-<%@page import="com.smhrd.domain.FavoritesDAO"%>
 <%
 FavoritesDAO dao = new FavoritesDAO();
-List<Favorites> favList = dao.getFav();
-pageContext.setAttribute("favList", favList);
+List<Favorites> infoList = dao.getinfo();
+pageContext.setAttribute("infoList", infoList);
 %>
 
 <!doctype html>
@@ -43,8 +44,26 @@ pageContext.setAttribute("favList", favList);
 <link rel="stylesheet" href="assets/css/responsive.css" />
 
 <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<style>
+img{
+	max-width: 100%; 
+}
+</style>
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+						<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+						<script src="assets/js/vendor/bootstrap.min.js"></script>
+
+						<script src="assets/js/jquery.easing.1.3.js"></script>
+
+						<script src="assets/js/plugins.js"></script>
+						<script src="assets/js/main.js"></script>
+						
+						
+
+
 	<!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -109,11 +128,21 @@ pageContext.setAttribute("favList", favList);
 				<div class="col-sm-12">
 					<div class="head_title text-center">
 						<h1>
-							<a href="favorite.jsp">my recipe</a>
+							<a href="recipe_home.jsp">home recipe</a>
 						</h1>
 					</div>
 					<!-- End of head title -->
 					<div>
+						<div class="base_btn">
+							<div class="base_controls">
+								<button type="button" class="base_soju">
+									<a href="recipe_base20.jsp">소주</a>
+								</button>
+								<button type="button" class="base_macju">
+									<a href="recipe_base10.jsp">맥주</a>
+								</button>
+
+							</div>
 							<br>
 						</div>
 						<div class="main_service_area">
@@ -121,53 +150,176 @@ pageContext.setAttribute("favList", favList);
 
 
 								<!-- 레시피 반복 스따뚜 -->
-								<c:forEach var="fr" items="${favList}">
-								<c:if test="${fr.member_id eq loginMember.id}">
+								
+						
+								<c:forEach var="rc" items="${infoList}">
+								<c:if test="${rc.member_id eq loginMember.id}">
 									<div class="row">
-										<button class="hatu">
-											<img src="assets/images/hatu.png">
-										</button>
 										<div class="col-sm-6">
 											<div class="signle_service_left">
-												<img src='<c:out value="${fr.recipe_img}" />'
+												<img src='<c:out value="${rc.recipe_img}" />'
 													alt="recipe_name" />
 											</div>
 										</div>
 										<div class="col-sm-5 col-sm-push-1">
 											<div class="single_service">
-												<br> <br> <br>
+												<br> <br>
+												<c:if test="${rc.status eq null}">
+													<button type="button" class="hatu" id="hatu">
+														<img src="assets/images/hatu.png" />
+														</button>
+												</c:if>
+												<c:if test="${rc.status eq '1'}">
+													<button type="button" class="hatu" id="hattu">
+														<img src="assets/images/hattu.png" />
+														</button>
+												</c:if>
+												
+
+												<input type = "hidden" value = '<c:out value="${rc.recipe_no}" />'></input>
+												
 												<h3>
 													<span class="recipe_name"><c:out
-															value="${fr.recipe_name}" /></span>
+															value="${rc.recipe_name}" /></span>
 												</h3>
 												<h5>
 													base : <span class="recipe_base"><c:if
-															test="${fr.recipe_base eq '10'}">
+															test="${rc.recipe_base eq '10'}">
 															<span>맥주</span>
-														</c:if> <c:if test="${fr.recipe_base eq '20'}">
+														</c:if> <c:if test="${rc.recipe_base eq '20'}">
 															<span>소주</span>
-														</c:if> <c:if test="${fr.recipe_base eq '30'}">
+														</c:if> <c:if test="${rc.recipe_base eq '30'}">
 															<span>혼합</span>
 														</c:if></span>
 												</h5>
 												<div class="separator2"></div>
 												<span>♡ 준비물 ♡</span><br> <span class="recipe_ing"><c:out
-														value="${fr.recipe_ing}" /></span><br> <br> <span>♥
+														value="${rc.recipe_ing}" /></span><br> <br> <span>♥
 													제조방법 ♥</span><br>
 												<p class="recipe_how">
-													<c:out value="${fr.recipe_how}" />
-												</p>
+													<c:out value="${rc.recipe_how}" />
+												</p> 
 											</div>
 
 										</div>
 									</div>
 									</c:if>
 								</c:forEach>
+			
+			<script>					
+		//즐겨찾기
+        $(document).on("click", "#hatu", function(){ 
+        	
+        	console.log($(this).next().val());
+        	
+        	$.ajax({
+        		data: {status: "0", recipe_no : $(this).next().val()},
+        		url: "FavoriteAjaxCon",
+        		method: "get",
+        		method : "GET",
+    			dataType : "text",
+    			context : this,  //success 안에서 this(#like)를 사용하고 싶은 경우
+    			success: function(data){
+    				//$('#like+span').text(data)
+    				$(this).html("<img src='assets/images/hattu.png'>")
+					//$("#hatu").add("onClick", "location.href='FavoriteAjaxCon?status="hattu"'")
+    	            $(this).attr("id", "hattu")
+    			},
+    			error: function(){
+    				alert("통신실패!")
+    			} 
+    		})
+        	
+        	
+        });
+		
+      //즐겨찾기 취소
+        $(document).on("click", "#hattu", function(){ 
+        	$.ajax({
+        		data: {status: "1", recipe_no : $(this).next().val()},
+        		url: "FavoriteAjaxCon",
+        		method: "get",
+        		method : "GET",
+    			dataType : "text",
+    			context : this, 
+    			success: function(data){   				
+    				$(this).html("<img src='assets/images/hatu.png'>")
+    	            $(this).attr("id", "hatu")
+					
+    			},
+    			error: function(){
+    				alert("통신실패!")
+    			}
+            
+    		})
+        });
+		
+		/* $(document).on("click", "#hattu", function(){            
+            $("#hattu").html("<img src='assets/images/hatu.png'>")
+            //location.href='FavoriteAjaxCon?status=hattu&recipe_no=${rc.recipe_no}'
+			$(this).attr("id", "hatu")
+			
+        }) */
+	</script>					
+										<!-- <script>					
+		//하뚜로 바꾸자
+        /* $(document).on("click", "#hatu", function(){            
+            $("#hatu").html("<img src='assets/images/hattu.png'>")
+			$(this).attr("id", "hattu")
+        })
+		
+		$(document).on("click", "#hattu", function(){            
+            $("#hattu").html("<img src='assets/images/hatu.png'>")
+			$(this).attr("id", "hatu") */
+        })
+	</script> -->
+								
+								<!-- <script>
+								
+								$(document).on("click", "#hatu", function(){ 
+									
+									$(document).on("click", "#hatu", function(){            
+							            $("#hatu").html("<img src='assets/images/hattu.png'>")
+										$(this).attr("id", "hattu")
+							        })
+									
+									$.ajax({
+										data : {status : "hatu", recipe_no : "${rc.recipe_no}"},
+										url : "FavoriteAjaxCon",
+										method : "GET",
+										dataType : "text",
+										context : this,  //success 안에서 this(#like)를 사용하고 싶은 경우
+										success: function(data){
+											//$('#like+span').text(data)
+											$('#hatu').html(data"<img src='assets/images/hattu.png'>")
+								            $(this).attr('id','hattu')	
+										},
+										error: function(){
+											alert("통신실패!")
+										}
+									})
+								 });
+								
+								 $(document).on("click","#hattu",function(){ 
+								        $.ajax({
+											data : {status : "hattu", recipe_no : ${rc.recipe_no}},
+											url : "LikeAjaxCon",
+											method : "GET",
+											dataType : "text",
+											context : this,
+											success: function(data){
+													//$('#dislike+span').text(data)
+										            $('#hattu').html(data"<img src='assets/images/hatu.png'>")
+										            $(this).attr('id','hatu')
+											},
+											error: function(){
+												alert("통신실패!")
+											}
+										})
 
-
-
-
-
+								    });
+								</script> -->
+								
 							</div>
 							<!-- End of single service area -->
 
@@ -202,7 +354,7 @@ pageContext.setAttribute("favList", favList);
 						<div class="scrollup">
 							<a href="#"><i class="fa fa-chevron-up"></i></a>
 						</div>
-						<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+						<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 						<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
 						<script src="assets/js/vendor/bootstrap.min.js"></script>
@@ -211,5 +363,39 @@ pageContext.setAttribute("favList", favList);
 
 						<script src="assets/js/plugins.js"></script>
 						<script src="assets/js/main.js"></script>
+						
+						<script>
+						$(document).on("click", "#hatu", function(){            
+							$.ajax({
+								data : {status : "hatu", recipe_no : ${rc.recipe_no}},
+								url : "LikeAjaxCon",
+								method : "GET",
+								dataType : "text",
+								context : this,  //success 안에서 this(#like)를 사용하고 싶은 경우
+								success: function(data){
+									$('#like+span').text(data)
+									$(this).text('좋아요 취소')
+						            $(this).attr('id','dislike')	
+								},
+								error: function(){
+									alert("통신실패!")
+								}
+							})
+						</script>	 -->
+		<!-- <script>					
+		//하뚜로 바꾸자
+        /* $(document).on("click", "#hatu", function(){            
+            $("#hatu").html("<img src='assets/images/hattu.png'>")
+			$(this).attr("id", "hattu")
+        })
+		
+		$(document).on("click", "#hattu", function(){            
+            $("#hattu").html("<img src='assets/images/hatu.png'>")
+			$(this).attr("id", "hatu") */
+        })
+	</script> -->	
+	
+						
+						
 </body>
 </html>
