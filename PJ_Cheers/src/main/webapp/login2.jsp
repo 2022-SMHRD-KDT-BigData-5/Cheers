@@ -62,34 +62,22 @@
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
                                     </button>
-                                    <a class="navbar-brand" href="index.html">
+                                    <a class="navbar-brand" href="index_test.jsp">
                                         <img src="assets/images/logo.png" />
                                     </a>
                                 </div>
 
                                 <!-- Collect the nav links, forms, and other content for toggling -->
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="aboutus.html">about us</a></li>
-                                        <li class="dropdown"><a href="recipe.html">마셔볼래</a>
-                                        </li>
-                                        <li class="dropdown"><a href="toast.html" class="dropdown-toggle"
-                                                data-toggle="dropdown" role="button" aria-haspopup="true">같이마실래?</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="toast.html">work page</a></li>
-                                                <li><a href="work1.html">work page Two</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                                role="button" aria-haspopup="true">같이볼래?</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="soto.html">blog page</a></li>
-                                                <li><a href="bloginner.html">singleblog page</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">contact</a></li>
-                                    </ul>
-                                </div>
+                               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+									<ul class="nav navbar-nav navbar-right">
+
+										<li><a href="aboutus.html">about us</a></li>
+										<li><a href="recipe_home.jsp">마셔볼래</a></li>
+										<li><a href="toast1.jsp">같이마실래?</a></li>
+										<li><a href="soto1.jsp">같이볼래?</a></li>
+										<li><a href="contact.html">contact</a></li>
+									</ul>
+								</div>
                             </div>
                         </nav>
                     </div>
