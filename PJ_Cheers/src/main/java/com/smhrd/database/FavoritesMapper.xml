@@ -9,13 +9,59 @@
 		insert into favorites values (fav_no_seq.nextval, #{member_id}, #{recipe_no}, sysdate)
 	</insert>
 	
-	<select id="getFavR" resultType="com.smhrd.domain.Favorites">
+<!-- 	<select id="getFavR" resultType="com.smhrd.domain.Favorites">
 		select * from favorites
-	</select>
+	</select> -->
 	
 	<select id="getFav" resultType="com.smhrd.domain.Favorites">
 		select recipe.recipe_no, recipe.recipe_base, recipe.recipe_name, recipe.recipe_how, recipe.recipe_ing, recipe.recipe_img, favorites.fav_no, favorites.member_id, favorites.fav_date from recipe inner join favorites on recipe.recipe_no = favorites.recipe_no
 	</select>
+	
+	<!-- <select id="checkFav" parameterType="String" resultType="com.smhrd.domain.Favorites">
+	select recipe_no from favorites where member_id=${id}
+	</select> -->
+	
+	<select id="checkFav" parameterType="com.smhrd.domain.Favorites" resultType="com.smhrd.domain.Favorites">
+	 select recipe_no from favorites where member_id=${member_id} and recipe_no=${recipe_no}
+	</select>
+	
+	<insert id="fav"
+		parameterType="com.smhrd.domain.Favorites">
+		insert into favorites values (fav_no_seq.nextval, #{member_id}, #{recipe_no}, sysdate, 1)		
+	</insert>
+	
+	<update id="stat"
+	parameterType= "bigdecimal">
+	update recipe set status = 1 where recipe_no=#{recipe_no}
+	</update>
+	
+	<select id="getfavno" 
+	parameterType="com.smhrd.domain.Favorites"
+	resultType="com.smhrd.domain.Favorites"
+	>
+	select fav_no from favorites where member_id=#{member_id} and recipe_no =#{recipe_no}
+	</select>
+	
+	<delete id="unfav"
+		parameterType="bigdecimal">
+		delete from favorites where fav_no = #{fav_no}
+	</delete>
+	
+	<update id="unstat"
+	parameterType= "bigdecimal">
+	update recipe set status = 0 where recipe_no=#{recipe_no}
+	</update>
+	
+	<select id="getinfo" resultType="com.smhrd.domain.Favorites">
+	select recipe.recipe_no, recipe.recipe_base, recipe.recipe_name,
+	recipe.recipe_how, recipe.recipe_ing, recipe.recipe_img,
+	favorites.fav_no, favorites.member_id, favorites.fav_date,
+	favorites.status
+	from recipe
+	left outer join favorites
+	on recipe.recipe_no = favorites.recipe_no
+    </select>
+	
 	
 
 </mapper>

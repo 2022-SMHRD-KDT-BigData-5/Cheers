@@ -10,9 +10,10 @@ public class Recipe {
 	private String recipe_how;
 	private String recipe_ing;
 	private String recipe_img;
+	private String status;
 	
-	public Recipe(BigDecimal recipe_no, BigDecimal recipe_base, String recipe_name, String recipe_how, String recipe_ing,
-			String recipe_img) {
+	public Recipe(BigDecimal recipe_no, BigDecimal recipe_base, String recipe_name, String recipe_how,
+			String recipe_ing, String recipe_img, String status) {
 		super();
 		this.recipe_no = recipe_no;
 		this.recipe_base = recipe_base;
@@ -20,17 +21,7 @@ public class Recipe {
 		this.recipe_how = recipe_how;
 		this.recipe_ing = recipe_ing;
 		this.recipe_img = recipe_img;
-	}
-	
-	public Recipe(BigDecimal recipe_base, String recipe_name, String recipe_how, String recipe_ing,
-			String recipe_img) {
-		super();
-		
-		this.recipe_base = recipe_base;
-		this.recipe_name = recipe_name;
-		this.recipe_how = recipe_how;
-		this.recipe_ing = recipe_ing;
-		this.recipe_img = recipe_img;
+		this.status = status;
 	}
 
 	public BigDecimal getRecipe_no() {
@@ -56,8 +47,10 @@ public class Recipe {
 	public String getRecipe_img() {
 		return recipe_img;
 	}
-	
-	
+
+	public String getStatus() {
+		return status;
+	}
 	
 	
 	
