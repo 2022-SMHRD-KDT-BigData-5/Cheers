@@ -87,35 +87,69 @@ img{
 											class="icon-bar"></span> <span class="icon-bar"></span> <span
 											class="icon-bar"></span>
 									</button>
-									<a class="navbar-brand" href="index.html"> <img
-										src="assets/images/logo.png" />
-									</a>
-								</div>
+									<a class="navbar-brand" href="index_test.jsp"> <img
+                              src="assets/images/logo.png" />
+                           </a>
 
-								<!-- Collect the nav links, forms, and other content for toggling -->
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+
+                        <div class="collapse navbar-collapse"
+                           id="bs-example-navbar-collapse-test">
+                           <ul class="nav navbar-nav navbar-right">
+                              <!-- 회원정보 -->
+                              <c:choose>
+                                 <c:when test="${empty loginMember}">
+                                    <!--if절 (조건작성!) - if~else문  -->
+                                    <li><a href="join2.jsp">회원가입</a></li>
+                                    <li><a href="login2.jsp">로그인</a></li>
+                                 </c:when>
+
+                                 <c:otherwise>
+                                    <!--else절  -->
+                                    <c:if test="${loginMember.id eq 'admin'}">
+                                       <!-- 단순 if문 -->
+                                       <a href="select1.jsp">전체회원정보</a>
+                                    </c:if>
+                                    <li><a>${loginMember.nick}님 환영합니다.</a></li>
+                                    <li><a href="LogoutCon">로그아웃</a></li>
+                                    <li class="dropdown"><a href="#"
+                                       class="dropdown-toggle" data-toggle="dropdown"
+                                       role="button" aria-haspopup="true">마이페이지</a>
+                                       <ul class="dropdown-menu">
+                                          <li><a href="Favorites.jsp">즐겨찾기</a></li>
+                                          <li><a href="update2.jsp">회원정보 수정</a></li>
+                                          <li><a href="DeleteCon?id=${loginMember.id}">회원
+                                                탈퇴</a></li>
+                                       </ul></li>
+                                 </c:otherwise>
+                              </c:choose>
+                           </ul>
 
 
+                        </div>
 
-								<div class="collapse navbar-collapse"
-									id="bs-example-navbar-collapse-1">
-									<ul class="nav navbar-nav navbar-right">
-										<li><a href="aboutus.html">about us</a></li>
-										<li class="dropdown"><a href="recipe_home.jsp">마셔볼래</a></li>
-										<li class="dropdown"><a href="toast.html">같이마실래?</a></li>
-										<li class="dropdown"><a href="soto.html">같이볼래?</a></li>
-										<li><a href="contact.html">contact</a></li>
-									</ul>
-								</div>
+                        <div class="collapse navbar-collapse"
+                           id="bs-example-navbar-collapse-1">
+                           <ul class="nav navbar-nav navbar-right">
 
-							</div>
-						</nav>
-					</div>
-				</div>
+                              <li><a href="aboutus.html">about us</a></li>
+                              <li><a href="recipe_home.jsp">마셔볼래</a></li>
+                              <li><a href="toast1.jsp">같이마실래?</a></li>
+                              <li><a href="soto1.jsp">같이볼래?</a></li>
+                              <li><a href="contact.html">contact</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </nav>
+               </div>
+            </div>
 
-			</div>
+         </div>
 
-		</div>
-	</header>
+      </div>
+   </header>
 	<!--End of header -->
 
 	<!-- Service Section -->
