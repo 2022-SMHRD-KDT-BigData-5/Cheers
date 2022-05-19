@@ -26,7 +26,7 @@
 			<td><textarea cols=60 rows=3 name="contents"></textarea></td>
 		</tr>
 		<tr>
-			<td><input type="file" name= "upload" value="이미지업로드"></td>
+			<td><input type="file"  value="이미지업로드"></td>
 		</tr>
 		
 	</table>
