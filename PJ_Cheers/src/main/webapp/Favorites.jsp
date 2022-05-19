@@ -166,9 +166,9 @@ img{
 						</h1>
 					</div>
 					<!-- End of head title -->
-					<div>
+					<!-- <div> -->
 						<div class="base_btn">
-							<div class="base_controls">
+							<!-- <div class="base_controls">
 								<button type="button" class="base_soju">
 									<a href="recipe_base20.jsp">소주</a>
 								</button>
@@ -176,7 +176,7 @@ img{
 									<a href="recipe_base10.jsp">맥주</a>
 								</button>
 
-							</div>
+							</div> -->
 							<br>
 						</div>
 						<div class="main_service_area">
