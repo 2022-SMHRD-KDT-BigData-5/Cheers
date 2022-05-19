@@ -62,6 +62,13 @@
 						<input type="submit" value="짠">
 					</td>
 				</form>
+				<form class="toast_com_insert" method="post" action="AddCommentCon" align="right">
+					<td>
+						<input type="text" name="tc_contents" placeholder="댓글을 작성해주세요." style="border: 5mm; width: 150px;">
+                        <input type="hidden" name="toast_no" value="${p.toast_no}">
+                        <input type="submit" value="등록" style="border: none;">
+                    </td>
+                </form>
 			</tr>
 			<tr>
 				<td>댓글번호</td>

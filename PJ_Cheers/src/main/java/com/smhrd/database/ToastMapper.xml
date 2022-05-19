@@ -19,9 +19,9 @@
         insert into toast_com values (tc_no_seq.nextval, #{toast_no}, #{member_id}, #{tc_contents}, 0, sysdate)
     </insert>
 	<select id="selectComment" parameterType="String" resultType="com.smhrd.domain.Toast_com">
-		SELECT * 
-		FROM toast t, toast_com tc 
-		WHERE t.toast_no=tc.toast_no 
+		SELECT tc.tc_no, tc.toast_no, m.member_nick, tc.tc_contents, tc.tc_zzan, tc.tc_date
+		FROM toast t, toast_com tc, member m
+		WHERE t.toast_no=tc.toast_no, tc.member_id=m.member_id
 		AND t.toast_no=#{toast_no} 
 		ORDER BY tc.tc_no DESC
 	</select>

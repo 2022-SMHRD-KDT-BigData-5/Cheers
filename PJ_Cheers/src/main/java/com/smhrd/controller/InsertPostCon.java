@@ -43,7 +43,7 @@ public class InsertPostCon extends HttpServlet {
 
 		if (cnt > 0) {
 			System.out.println("게시물 작성 성공-조회 페이지로");
-			response.sendRedirect("index_select.jsp");
+			response.sendRedirect("toast1.jsp");
 
 			
 //			RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
@@ -55,7 +55,7 @@ public class InsertPostCon extends HttpServlet {
 			System.out.println(contents);
 			
 			System.out.println("게시물 작성 실패-작성 페이지로");
-			response.sendRedirect("index_toast.jsp");
+			response.sendRedirect("toast2.jsp");
 		}
 	
 		

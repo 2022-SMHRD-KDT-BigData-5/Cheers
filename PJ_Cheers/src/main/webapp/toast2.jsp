@@ -134,8 +134,9 @@
 										<td width="45%"><input type="file" id="image"
 											accept="image/*" onchange="setThumbnail(event);"></td>
 										<td rowspan="2" align="center"><textarea cols="50"
-												rows="10" maxlength="500" placeholder="내용을 입력하세요."
-												style="border: none;"></textarea></td>
+												rows="10" maxlength="500" name="contents" placeholder="내용을 입력하세요."
+												style="border: none;"></textarea>
+										</td>
 									</tr>
 									<tr style="height: 200px">
 										<td align="center"><div id="image_container"></div>
@@ -153,7 +154,7 @@
 										<td colspan="2" align="right"><div class="insert_btn"
 												align=right>
 												<button type="button" style="border: none;">
-													<a href=완)toast1.html>게시물등록</a>
+												<input type="submit" value="등록">
 												</button>
 											</div></td>
 									</tr>

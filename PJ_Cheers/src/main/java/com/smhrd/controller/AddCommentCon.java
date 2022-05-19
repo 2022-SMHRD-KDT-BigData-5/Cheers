@@ -30,6 +30,7 @@ public class AddCommentCon extends HttpServlet {
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		String member_id = loginMember.getId();
 		
+		System.out.println(member_id);
 //		BigDecimal tc_no = new BigDecimal(request.getParameter("tc_no"));	
 		String toast_no = request.getParameter("toast_no");	
 		String tc_contents = request.getParameter("tc_contents");	
@@ -45,7 +46,7 @@ public class AddCommentCon extends HttpServlet {
 		} else {
 			System.out.println("댓글 작성 실패");
 		}
-		response.sendRedirect("index_select.jsp");
+		response.sendRedirect("toast1.jsp");
 		
 		
 	}
