@@ -86,10 +86,6 @@
 
 											<c:otherwise>
 												<!--else절  -->
-												<c:if test="${loginMember.id eq 'admin'}">
-													<!-- 단순 if문 -->
-													<a href="select1.jsp">전체회원정보</a>
-												</c:if>
 												<li><a>${loginMember.nick}님 환영합니다.</a></li>
 												<li><a href="LogoutCon">로그아웃</a></li>
 												<li class="dropdown"><a href="#"
@@ -97,6 +93,10 @@
 													role="button" aria-haspopup="true">마이페이지</a>
 													<ul class="dropdown-menu">
 														<li><a href="Favorites.jsp">즐겨찾기</a></li>
+												<c:if test="${loginMember.id eq 'admin'}">
+													<!-- 단순 if문 -->
+													<li><a href="select1.jsp">전체회원정보</a><li>
+												</c:if>
 														<li><a href="update2.jsp">회원정보 수정</a></li>
 														<li><a href="DeleteCon?id=${loginMember.id}">회원
 																탈퇴</a></li>
