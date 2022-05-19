@@ -124,6 +124,7 @@
 
 
 
+<<<<<<< HEAD
    <!-- Service Section -->
    <section id="service" class="service sections margin-top-120">
       <div class="container">
@@ -147,6 +148,37 @@
                      <div class="single_service_area" align="center">
                         <c:forEach var="p" items="${postList}">
                            <table style="width: 1000px;">
+=======
+	<!-- Service Section -->
+	<section id="service" class="service sections margin-top-120">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="head_title text-center">
+						<h1>
+							<a href="toast1.html">같이마실래?</a>
+						</h1>
+						<div style="height: 30px;"></div>
+					</div>
+					<!-- End of head title -->
+					<div class="insert_btn" align=right>
+						<button type="button" style="border: none;">
+						<form action="toast2.html">
+							<c:forEach var="t" items="${postList}">
+								<input type="hidden" value="${t.toast_no}">
+							</c:forEach>
+							<input type="submit" value="작성">
+						</form>
+							<a href="toast2.html">작성</a>
+						</button>
+					</div>
+					<hr color='#c06c84'>
+					<div>
+						<div class="main_service_area">
+							<div class="single_service_area" align="center">
+								<c:forEach var="p" items="${postList}">
+									<table style="width: 1000px;">
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-5/Cheers.git
 
 
                               <tr>
@@ -165,6 +197,7 @@
                            </table>
                            <p></p>
 
+<<<<<<< HEAD
                            <form class="toast_com_insert" method="post"
                               action="AddCommentCon" align="right">
                               <input type="text" name="tc_contents"
@@ -215,6 +248,58 @@
          </div>
       </div>
    </section>
+=======
+									<form class="toast_com_insert" method="post"
+										action="AddCommentCon" align="right">
+										<input type="text" name="tc_contents"
+											placeholder="댓글을 작성해주세요." style="border: 5mm; width: 400px;">
+										<input type="hidden" name="toast_no" value="${p.toast_no}">
+										<input type="submit" value="등록" style="border: none;">
+									</form>
+									<details align="left">
+										<summary style="color: brown; cursor: pointer;">♥ 댓글
+											♥</summary>
+										<%
+			String toast_no = "";
+			for(int i=0;i<postList.size();i++){
+				toast_no = postList.get(i).getToast_no().toString();
+				
+				List<Toast_com> commList = dao.selectComment(toast_no);
+				pageContext.setAttribute("commList",commList);
+			%>
+										<c:forEach var="c" items="${commList}">
+											<c:choose>
+												<c:when test="${p.toast_no eq c.toast_no}">
+													<table width="100%">
+														<tr>
+															<td width="5%"><button
+																	style="border: none; background-color: white;">🥂</button></td>
+															<td width="25%"><label><c:out
+																		value="${c.member_id}" /></label></td>
+															<td><span><c:out value="${c.tc_contents}" /></span></td>
+															<td align="right" width="15%"><a
+																href="DeleteCommentCon?tc_no=${c.tc_no} ">삭제</a></td>
+														</tr>
+													</table>
+												</c:when>
+											</c:choose>
+										</c:forEach>
+										<%
+			}	
+			%>
+									</details>
+									<p></p>
+									<hr color='#c06c84'>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 게시물 끝 -->
+			</div>
+		</div>
+	</section>
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-5/Cheers.git
 
 
 

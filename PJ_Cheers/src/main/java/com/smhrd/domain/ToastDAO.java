@@ -82,7 +82,7 @@ public class ToastDAO {
 		
 		//댓글 추가
 		public int addComment(Toast_com tc) {
-			SqlSession sqlSession = sqlSessionFactory.openSession();
+//			SqlSession sqlSession = sqlSessionFactory.openSession();
 			int commNum = 0;
 			try {
 				commNum = sqlSession.insert("com.smhrd.domain.ToastDAO.addComment", tc);
@@ -106,14 +106,11 @@ public class ToastDAO {
 			List<Toast_com> commList = null;
 
 			try {
-				System.out.println(tonm);
 				commList = sqlSession.selectList("com.smhrd.domain.ToastDAO.selectComment",tonm);
 
 				if (commList != null) {
-					System.out.println("댓글 조회 성공");
 					sqlSession.commit();
 				} else {
-					System.out.println("댓글 조회 실패");
 					sqlSession.rollback();
 				}
 
@@ -144,4 +141,66 @@ public class ToastDAO {
 			}
 			return cnt;
 		}
+		
+		//짠 생성
+//		public int getZzan(String Toast_no) {
+//			
+//			SqlSession sqlSession = sqlSessionFactory.openSession();
+//			int zzan = -1;
+//
+//			try {
+//				zzan = (int)sqlSession.selectOne("com.smhrd.domain.ToastDAO.getZzan", Toast_no);
+//				if(zzan!=-1) {
+//					sqlSession.commit();
+//				}else {
+//					sqlSession.rollback();
+//				}
+//			}finally {
+//				sqlSession.close();
+//			}
+//			return zzan;
+//		}
+		public int addZzan(Toast toast) {
+			
+//			SqlSession sqlSession = sqlSessionFactory.openSession();
+			int zzan = 0;
+			try {
+				zzan = sqlSession.insert("com.smhrd.domain.ToastDAO.addZzan", toast);
+				
+				if(zzan!=0) {
+					sqlSession.commit();
+					
+				}else {
+					sqlSession.rollback();
+				}
+			}finally {
+				sqlSession.close();
+			}
+			return zzan;
+		}
+		
+		//짠 수정
+		public int updateZzan(String Toast_no, String status) {
+//			SqlSession sqlSession = sqlSessionFactory.openSession();
+			int cnt = 0;
+
+			try {
+				if(status.equals("zzan")) {
+					System.out.println(Toast_no);
+					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.zzan", Toast_no);
+				}else {
+					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.diszzan", Toast_no);
+				}
+				if(cnt!=0) {
+					sqlSession.commit();
+				}else {
+					sqlSession.rollback();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return cnt;
+		}
+		
+		
 	}

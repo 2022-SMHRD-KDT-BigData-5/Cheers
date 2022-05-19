@@ -34,6 +34,8 @@
 				<td><b>회원아이디</b></td>
 				<td><b>작성일자</b></td>
 				<td><b>내용</b></td>
+				<td><b>삭제</b></td>
+				<td><b>추천</b></td>
 				<td><b>댓글</b></td>
 			</tr>
 
@@ -43,19 +45,22 @@
 				<td><c:out value="${p.toast_date}" /></td>
 				<td><c:out value="${p.contents}" /></td>
 
-				<td><c:choose>
+				<td>
+					<c:choose>
 						<c:when test="${loginMember.id eq p.member_id}">
 							<a href="DeleteCon?toast_no=${p.toast_no}">삭제</a>
 						</c:when>
-					</c:choose></td>
+					</c:choose>
+				</td>
 
+				<!-- <td><button id='zzan'>게시글짠</button><span>${zzan}</span></td> -->
 
-				<form action="AddCommentCon">
-					<td><input type="text" name="tc_contents"
-						placeholder="댓글을 작성해주세요."> 
+				<form action="PostZzanCon">
+					<td>
+						<input type="hidden" name="member_id" value="${loginMember.id}"> 
 						<input type="hidden" name="toast_no" value="${p.toast_no}"> 
-						<input type="submit" value="댓글추가">
-						</td>
+						<input type="submit" value="짠">
+					</td>
 				</form>
 			</tr>
 			<tr>
@@ -87,6 +92,14 @@
 							<td><c:out value="${c.tc_zzan}" /></td>
 							<td><c:out value="${c.tc_date}" /></td>
 							<td><a href ="DeleteCommentCon?tc_no=${c.tc_no} ">댓글 삭제</a></td>
+							
+							<!-- 
+							<form action="PostZzanCon">
+								<input type="hidden" value="">
+								<input type="hidden" value="">
+								<input type="submit" value="댓글짠">
+							</form>
+							 -->
 						</tr>
 					</c:when>
 				</c:choose>
@@ -99,6 +112,45 @@
 	</table>
 
 	<a href="index_toast.jsp">게시물 작성하는 페이지로 이동</a>
+	
+	<script>
+        $(document).on("click","#zzan",function(){ 
+			$.ajax({
+				data : {status : "zzan", toast_no : 1, loginMember : loginMember.id},
+				url : "PostZzanCon",
+				method : "GET",
+				dataType : "text",
+				context : this,
+				success: function(data){
+					$('#zzan+span').text(data)
+					$(this).text('좋아요 취소')
+		            $(this).attr('id','diszzan')	
+				},
+				error: function(){
+					alert("통신실패!")
+				}
+			})
+        });
+
+        $(document).on("click","#diszzan",function(){ 
+            $.ajax({
+				data : {status : "diszzan", toast_no : 1, loginMember : loginMember.id},
+				url : "PostZzanCon",
+				method : "GET",
+				dataType : "text",
+				context : this,
+				success: function(data){
+						$('#diszzan+span').text(data)
+			            $(this).text('좋아요')
+			            $(this).attr('id','zzan')
+				},
+				error: function(){
+					alert("통신실패!")
+				}
+			})
+    
+        });
+     </script> 
 
 </body>
 </html>
