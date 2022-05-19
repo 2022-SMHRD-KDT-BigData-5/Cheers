@@ -187,9 +187,9 @@ public class ToastDAO {
 			try {
 				if(status.equals("zzan")) {
 					System.out.println(Toast_no);
-					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.zzan", Toast_no);
+					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.plusZzan", Toast_no);
 				}else {
-					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.diszzan", Toast_no);
+					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.minusZzan", Toast_no);
 				}
 				if(cnt!=0) {
 					sqlSession.commit();

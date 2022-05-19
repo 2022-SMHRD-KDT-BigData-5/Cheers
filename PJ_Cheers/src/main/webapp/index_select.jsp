@@ -113,44 +113,7 @@
 
 	<a href="index_toast.jsp">게시물 작성하는 페이지로 이동</a>
 	
-	<script>
-        $(document).on("click","#zzan",function(){ 
-			$.ajax({
-				data : {status : "zzan", toast_no : 1, loginMember : loginMember.id},
-				url : "PostZzanCon",
-				method : "GET",
-				dataType : "text",
-				context : this,
-				success: function(data){
-					$('#zzan+span').text(data)
-					$(this).text('좋아요 취소')
-		            $(this).attr('id','diszzan')	
-				},
-				error: function(){
-					alert("통신실패!")
-				}
-			})
-        });
 
-        $(document).on("click","#diszzan",function(){ 
-            $.ajax({
-				data : {status : "diszzan", toast_no : 1, loginMember : loginMember.id},
-				url : "PostZzanCon",
-				method : "GET",
-				dataType : "text",
-				context : this,
-				success: function(data){
-						$('#diszzan+span').text(data)
-			            $(this).text('좋아요')
-			            $(this).attr('id','zzan')
-				},
-				error: function(){
-					alert("통신실패!")
-				}
-			})
-    
-        });
-     </script> 
 
 </body>
 </html>
