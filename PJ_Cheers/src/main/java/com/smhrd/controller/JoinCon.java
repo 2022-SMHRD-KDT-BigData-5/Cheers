@@ -35,7 +35,7 @@ public class JoinCon extends HttpServlet {
 			// response.sendRedirect("joinSuccess.jsp");
 			// 회원가입한 회원의 정보 중에서 email 넘겨 페이지 이동
 			// forwarding 방식으로 정보 담기
-			RequestDispatcher rd = request.getRequestDispatcher("index_test.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("index_test2.jsp");
 			request.setAttribute("joinemail", id);
 			rd.forward(request, response);
 

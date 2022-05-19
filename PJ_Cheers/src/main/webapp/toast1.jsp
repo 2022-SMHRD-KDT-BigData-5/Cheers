@@ -93,33 +93,24 @@
 
 
 
-								<div class="collapse navbar-collapse"
-									id="bs-example-navbar-collapse-1">
-									<ul class="nav navbar-nav navbar-right">
-										<li><a href="aboutus.html">about us</a></li>
-										<li class="dropdown"><a href="recipe.html">마셔볼래</a></li>
-										<li class="dropdown"><a href="toast.html"
-											class="dropdown-toggle" data-toggle="dropdown" role="button"
-											aria-haspopup="true">같이마실래?</a>
-											<ul class="dropdown-menu">
-												<li><a href="toast1.html">같이마실래?test</a></li>
-											</ul></li>
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-haspopup="true">같이볼래?</a>
-											<ul class="dropdown-menu">
-												<li><a href="soto1.html">같이볼래?test</a></li>
-											</ul></li>
-										<li><a href="contact.html">contact</a></li>
-									</ul>
-								</div>
-							</div>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-	<!--End of header -->
+                        <div class="collapse navbar-collapse"
+                           id="bs-example-navbar-collapse-1">
+                           <ul class="nav navbar-nav navbar-right">
+                              <li><a href="aboutus.html">about us</a></li>
+                              <li><a href="recipe.html">마셔볼래</a></li>
+                              <li><a href="toast1.jsp">같이마실래?</a></li>
+                              <li><a href="soto1.jsp">같이볼래?</a></li>
+                              <li><a href="contact.html">contact</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </nav>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+   <!--End of header -->
 
 
 
@@ -138,13 +129,13 @@
 					<!-- End of head title -->
 					<div class="insert_btn" align=right>
 						<button type="button" style="border: none;">
-						<form action="toast2.html">
+						<form action="index_toast.jsp">
 							<c:forEach var="t" items="${postList}">
 								<input type="hidden" value="${t.toast_no}">
 							</c:forEach>
 							<input type="submit" value="작성">
 						</form>
-							<a href="toast2.html">작성</a>
+							
 						</button>
 					</div>
 					<hr color='#c06c84'>
@@ -221,6 +212,91 @@
 			</div>
 		</div>
 	</section>
+   <!-- Service Section -->
+   <section id="service" class="service sections margin-top-120">
+      <div class="container">
+         <div class="row">
+            <div class="col-sm-12">
+               <div class="head_title text-center">
+                  <h1>
+                     <a href="toast1.jsp">같이마실래?</a>
+                  </h1>
+                  <div style="height: 30px;"></div>
+               </div>
+               <!-- End of head title -->
+               <div class="insert_btn" align=right>
+                  <button type="button" style="border: none;">
+                     <a href=toast2.jsp>작성</a>
+                  </button>
+               </div>
+               <hr color='#c06c84'>
+               <div>
+                  <div class="main_service_area">
+                     <div class="single_service_area" align="center">
+                        <c:forEach var="p" items="${postList}">
+                           <table width="100%">
+                              <tr>
+                                 <td align="left" width="45%">no.<c:out value="${p.toast_no}" /></td>
+                                 <td align="right"><button style="border:none; background-color: #fff;"><a href="toast3.jsp">수정</a></button><span> | </span><button style="border:none; background-color: #fff;"><a href="toast1.jsp">삭제</a></button></td>
+                              </tr>
+                              <tr>
+                              	<td colspan="2" align="right"><b><c:out value="${p.member_id}" /></b><span> | <c:out value="${p.toast_date}" /></span></td>
+                              </tr>
+                              <tr>
+                                 <td style="height: 300px;" align="center"><img src=게시물이미지 alt=게시물이미지 /></td>
+                                 <td style="vertical-align: top; padding: 2%"><c:out value="${p.contents}" /></td>
+                              </tr>
+                           </table>
+                           
+                           <!-- 댓글 작성 및 조회 -->
+                           <p></p>
+                           <form class="toast_com_insert" method="post" action="AddCommentCon" align="right">
+                              <input type="text" name="tc_contents" placeholder="댓글을 작성해주세요." style="border: 5mm; width: 400px;">
+                              <input type="hidden" name="toast_no" value="${p.toast_no}">
+                              <input type="submit" value="등록" style="border: none;">
+                           </form>
+                           <details align="left">
+                              <summary style="color: brown; cursor: pointer;">♥ 댓글 ♥</summary>
+                              	<%
+         							String toast_no = "";
+         							for(int i=0;i<postList.size();i++){
+            							toast_no = postList.get(i).getToast_no().toString();
+            
+            						List<Toast_com> commList = dao.selectComment(toast_no);
+           							pageContext.setAttribute("commList",commList);
+           						%>
+           						
+                              <c:forEach var="c" items="${commList}">
+                                 <c:choose>
+                                    <c:when test="${p.toast_no eq c.toast_no}">
+                                       <hr color='#c06c84'>
+                                       <table width="100%">
+                                          <tr>
+                                             <td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
+                                             <td width="20%"><c:out value="${c.tc_date}" /><br><b><c:out value="${c.member_id}" /></b></td>
+                                             <td><span><c:out value="${c.tc_contents}" /></span></td>
+                                             <td width="7%" align="right" ><a href="#">수정</a></td>
+                                             <td width="7%" align="right" ><a href="DeleteCommentCon?tc_no=${c.tc_no} ">삭제</a></td>
+                                          </tr>
+                                       </table>
+                                    </c:when>
+                                 </c:choose>
+                              </c:forEach>
+                              <%
+                              }
+                              %>
+                           </details>
+                           <p></p>
+                           <hr color='#c06c84'>
+                        </c:forEach>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- 게시물 끝 -->
+         </div>
+      </div>
+   </section>
 
 
 
