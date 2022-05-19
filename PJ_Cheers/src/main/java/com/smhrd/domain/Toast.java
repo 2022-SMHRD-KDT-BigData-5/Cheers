@@ -57,6 +57,13 @@ public class Toast {
 
 
 
+	public Toast(String t_file_path, String t_file_name, String t_file_server) {
+		super();
+		this.t_file_path = t_file_path;
+		this.t_file_name = t_file_name;
+		this.t_file_server = t_file_server;
+	}
+
 	public Toast(String contents) {
 		super();
 		this.contents = contents;
@@ -103,13 +110,27 @@ public class Toast {
 	public void setTc(ArrayList<Toast_com> tc) {
 		this.tc = tc;
 	}
-
 	public BigDecimal getZzan_no() {
 		return zzan_no;
 	}
 
 	public void setZzan_no(BigDecimal zzan_no) {
 		this.zzan_no = zzan_no;
+	}
+	public BigDecimal getT_file_no() {
+		return t_file_no;
+	}
+
+	public String getT_file_path() {
+		return t_file_path;
+	}
+
+	public String getT_file_name() {
+		return t_file_name;
+	}
+
+	public String getT_file_server() {
+		return t_file_server;
 	}
 	
 	
