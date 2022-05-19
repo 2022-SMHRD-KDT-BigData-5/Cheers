@@ -46,8 +46,8 @@
 	</update>
 	
 	<insert id="insertImg" parameterType="com.smhrd.domain.Toast">
-		insert into toast_up 
-		values (#{toast_no}, t_file_no_seq.nextval, #{t_file_path},#{t_file_name}, #{t_file_server})
+		insert into testupload
+		values (#{fileName}, #{FileRealName})
 			
 		
 	</insert>
