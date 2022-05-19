@@ -60,17 +60,9 @@
 						<input type="hidden" name="member_id" value="${loginMember.id}"> 
 						<input type="hidden" name="toast_no" value="${p.toast_no}"> 
 						<input type="submit" value="짠">
-<<<<<<< HEAD
 					</form>
 					
-					<c:choose>
-							<c:when test="${empty loginMember}">
-							</c:when>
-					</c:choose>							
 				</td>
-=======
-					</td>
-				</form>
 				<form class="toast_com_insert" method="post" action="AddCommentCon" align="right">
 					<td>
 						<input type="text" name="tc_contents" placeholder="댓글을 작성해주세요." style="border: 5mm; width: 150px;">
@@ -78,7 +70,6 @@
                         <input type="submit" value="등록" style="border: none;">
                     </td>
                 </form>
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-5/Cheers.git
 			</tr>
 			<tr>
 				<td>댓글번호</td>
@@ -133,7 +124,8 @@
                         <input type="hidden" value="${tm.toast_no}">
                      </c:forEach>
                      <input type="submit" value="게시물 작성하는 페이지로 이동">
-                  </form>
+    </form>
+							
 	
 	
 	
