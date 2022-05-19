@@ -100,7 +100,7 @@
 											<ul class="dropdown-menu">
 												<li><a href="Favorites.jsp">즐겨찾기</a></li>
 												<li><a href="update2.jsp">회원정보 수정</a></li>
-												<li><a href="DeleteCon?id=${loginMember.id}">회원 탈퇴</a></li>
+												<li><a href="DeleteMemberCon?id=${loginMember.id}">회원 탈퇴</a></li>
 											</ul></li>
 										</c:otherwise>
 										</c:choose>

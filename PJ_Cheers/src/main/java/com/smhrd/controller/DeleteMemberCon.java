@@ -1,6 +1,8 @@
 package com.smhrd.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,12 +24,19 @@ public class DeleteMemberCon extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.deleteMember(id);
 		if(cnt>0) {
+		
 			System.out.println("회원삭제 성공");
+			
+			
 		}
 		else {
 			System.out.println("회원삭제 실패");
 		}
-		response.sendRedirect("index_test2.jsp");
+		
+		
+	
+		
+	response.sendRedirect("index_test2.jsp");
 	}
 
 		

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -24,7 +25,7 @@ public class InsertPostCon extends HttpServlet {
 			throws ServletException, IOException {
 
 		System.out.println("[InsertPostCon]");
-
+		
 		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
@@ -37,7 +38,7 @@ public class InsertPostCon extends HttpServlet {
 //		Timestamp toast_date = Timestamp.valueOf(request.getParameter("toast_date"));
 
 //		Toast t_vo = new Toast(toast_no, member_id, contents, toast_date);
-	
+		
 		String t_file_path = "C:/PJ_Cheers/Upload";
 		int maxSize = 1024 * 1024 * 10;
 		String encording = "UTF-8";

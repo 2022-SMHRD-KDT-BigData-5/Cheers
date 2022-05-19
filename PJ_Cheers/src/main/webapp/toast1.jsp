@@ -113,7 +113,7 @@
    <!--End of header -->
 
 
-
+	
 
 	<!-- Service Section -->
 	<section id="service" class="service sections margin-top-120">
@@ -129,7 +129,7 @@
 					<!-- End of head title -->
 					<div class="insert_btn" align=right>
 						<button type="button" style="border: none;">
-						<form action="index_toast.jsp">
+						<form action="index_toast.jsp" enctype="multipart/form-data" method="post">
 							<c:forEach var="t" items="${postList}">
 								<input type="hidden" value="${t.toast_no}">
 							</c:forEach>
