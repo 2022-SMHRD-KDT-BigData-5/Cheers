@@ -45,4 +45,12 @@
 		update toast_zzan set zzan_no=zzan_no-1 where toast_no=#{toast_no} 
 	</update>
 	
+	<insert id="insertImg" parameterType="com.smhrd.domain.Toast">
+		insert into testupload
+		values (#{fileName}, #{FileRealName})
+			
+		
+	</insert>
+	
+	
 </mapper>

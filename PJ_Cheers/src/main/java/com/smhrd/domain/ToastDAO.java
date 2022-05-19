@@ -18,18 +18,24 @@ public class ToastDAO {
 	public int insertPost(Toast toast) {
 
 		int cnt = 0;
-//		int cnt2 = 0;
+		int cnt2 = 0;
 
 		try {
 			cnt = sqlSession.insert("com.smhrd.domain.ToastDAO.insertPost", toast);
-//			cnt2 = sqlSession.insert("com.smhrd.domain.ToastDAO.uploadImg", toast);
-
-			if (cnt > 0) { // 조건문 안에 && cnt2 > 0 넣어야 함
+			if (cnt > 0 ) { // 조건문 안에 && cnt2 > 0 넣어야 함
 				sqlSession.commit();
 			} else {
 				sqlSession.rollback();
 			}
-
+			
+			
+//			cnt2 = sqlSession.insert("com.smhrd.domain.ToastDAO.uploadImg", toast);
+//			if (cnt2 > 0 ) { 
+//				sqlSession.commit();
+//			} else {
+//				sqlSession.rollback();
+//			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -201,6 +207,29 @@ public class ToastDAO {
 			}
 			return cnt;
 		}
+//		
+		public int insertImg(Toast upload) { //실제파일이름, 
+			SqlSession sqlSession = sqlSessionFactory.openSession();
+			System.out.println(upload.toString());
+			int cnt = 0;
+			try {
+				cnt = sqlSession.insert("com.smhrd.domain.ToastDAO.insertImg", upload);
+				if (cnt > 0) {
+					sqlSession.commit();
+					System.out.println("db등록완료");
+				} else {
+					sqlSession.rollback();
+					System.out.println("db등록실패");
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				sqlSession.close();
+			}
+			return cnt;
+		}
+
 		
 		
 	}

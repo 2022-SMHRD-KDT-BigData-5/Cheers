@@ -117,8 +117,17 @@
 		</c:forEach>
 
 	</table>
-
-	<a href="index_toast.jsp">게시물 작성하는 페이지로 이동</a>
+	
+	<form action="index_toast.jsp" enctype="multipart/form-data" method="post">
+                     <c:forEach var="tm" items="${postList}">
+                        <input type="hidden" value="${tm.toast_no}">
+                     </c:forEach>
+                     <input type="submit" value="게시물 작성하는 페이지로 이동">
+                  </form>
+	
+	
+	
+	
 	
 	<script>
         $(document).on("click","#zzan",function(){ 
