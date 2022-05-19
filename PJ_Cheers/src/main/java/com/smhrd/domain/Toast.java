@@ -17,6 +17,9 @@ public class Toast {
 	private String t_file_path;
 	private String t_file_name;
 	private String t_file_server;
+	
+	private BigDecimal zzan_no;
+	
 
 	
 	
@@ -99,6 +102,14 @@ public class Toast {
 
 	public void setTc(ArrayList<Toast_com> tc) {
 		this.tc = tc;
+	}
+
+	public BigDecimal getZzan_no() {
+		return zzan_no;
+	}
+
+	public void setZzan_no(BigDecimal zzan_no) {
+		this.zzan_no = zzan_no;
 	}
 	
 	

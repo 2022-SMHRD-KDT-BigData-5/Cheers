@@ -55,13 +55,18 @@
 
 				<!-- <td><button id='zzan'>게시글짠</button><span>${zzan}</span></td> -->
 
-				<form action="PostZzanCon">
-					<td>
+				<td>
+					<form action="PostZzanCon">
 						<input type="hidden" name="member_id" value="${loginMember.id}"> 
 						<input type="hidden" name="toast_no" value="${p.toast_no}"> 
 						<input type="submit" value="짠">
-					</td>
-				</form>
+					</form>
+					
+					<c:choose>
+							<c:when test="${empty loginMember}">
+							</c:when>
+					</c:choose>							
+				</td>
 			</tr>
 			<tr>
 				<td>댓글번호</td>

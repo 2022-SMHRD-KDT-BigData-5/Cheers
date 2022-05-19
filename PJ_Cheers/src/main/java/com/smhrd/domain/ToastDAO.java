@@ -22,13 +22,19 @@ public class ToastDAO {
 
 		try {
 			cnt = sqlSession.insert("com.smhrd.domain.ToastDAO.insertPost", toast);
-//			cnt2 = sqlSession.insert("com.smhrd.domain.ToastDAO.uploadImg", toast);
 
 			if (cnt > 0) { // 조건문 안에 && cnt2 > 0 넣어야 함
 				sqlSession.commit();
 			} else {
 				sqlSession.rollback();
 			}
+			
+//			cnt2 = sqlSession.insert("com.smhrd.domain.ToastDAO.uploadImg", toast);
+//			if (cnt2 > 0) { // 조건문 안에 && cnt2 > 0 넣어야 함
+//				sqlSession.commit();
+//			} else {
+//				sqlSession.rollback();
+//			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -162,7 +168,6 @@ public class ToastDAO {
 //		}
 		public int addZzan(Toast toast) {
 			
-//			SqlSession sqlSession = sqlSessionFactory.openSession();
 			int zzan = 0;
 			try {
 				zzan = sqlSession.insert("com.smhrd.domain.ToastDAO.addZzan", toast);
