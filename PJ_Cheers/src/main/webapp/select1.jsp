@@ -1,7 +1,14 @@
+<%@page import="com.smhrd.domain.Member"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.domain.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="com.smhrd.domain.Member"%>
+<%
+	MemberDAO dao = new MemberDAO();
+	List<Member> memberList = dao.selectAll();
+	pageContext.setAttribute("memberList", memberList);
+%>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -42,6 +49,12 @@
 <link rel="stylesheet" href="assets/css/responsive.css" />
 
 <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<style>
+td {
+	text-align: center;
+}
+</style>
+
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
 	<!--[if lt IE 8]>
@@ -67,55 +80,28 @@
 											class="icon-bar"></span> <span class="icon-bar"></span> <span
 											class="icon-bar"></span>
 									</button>
-
-									<a class="navbar-brand" href="index_test.jsp"> <img
+									<a class="navbar-brand" href="index.html"> <img
 										src="assets/images/logo.png" />
 									</a>
-
 								</div>
-
-								<!-- Collect the nav links, forms, and other content for toggling -->
 
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-test">
 									<ul class="nav navbar-nav navbar-right">
-										<!-- 회원정보 -->
-										<c:choose>
-											<c:when test="${empty loginMember}">
-												<!--if절 (조건작성!) - if~else문  -->
-												<li><a href="join2.jsp">회원가입</a></li>
-												<li><a href="login2.jsp">로그인</a></li>
-											</c:when>
-
-											<c:otherwise>
-												<li><a>${loginMember.nick}님 환영합니다.</a></li>
-												<li><a href="LogoutCon">로그아웃</a></li>
-												<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">마이페이지</a>
-													<ul class="dropdown-menu">
-												<!--else절  -->
-												<c:if test="${loginMember.id eq 'admin'}">
-													<!-- 단순 if문 -->
-													<li><a href="select1.jsp">전체회원정보</a></li>
-												</c:if>
-														<li><a href="Favorites.jsp">즐겨찾기</a></li>
-														<li><a href="update2.jsp">회원정보 수정</a></li>
-														<li><a href="DeleteCon?id=${loginMember.id}">회원탈퇴</a></li>
-													</ul></li>
-											</c:otherwise>
-										</c:choose>
+										<li><a href="Join.html">회원가입</a></li>
+										<li><a href="Login.html">로그인</a></li>
 									</ul>
-
-
 								</div>
+
+
 
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
-
 										<li><a href="aboutus.html">about us</a></li>
-										<li><a href="recipe_home.jsp">마셔볼래</a></li>
-										<li><a href="toast1.jsp">같이마실래?</a></li>
-										<li><a href="soto1.jsp">같이볼래?</a></li>
+										<li><a href="recipe.html">마셔볼래</a></li>
+										<li><a href="완)toast1.html">같이마실래?</a></li>
+										<li><a href="완)soto1.html">같이볼래?</a></li>
 										<li><a href="contact.html">contact</a></li>
 									</ul>
 								</div>
@@ -123,72 +109,54 @@
 						</nav>
 					</div>
 				</div>
-
 			</div>
-
 		</div>
 	</header>
 	<!--End of header -->
-
-
-
-
-	<!-- Home Section -->
-	<section id="home" class="home">
+	<!-- Service Section -->
+	<section id="service" class="service sections margin-top-120">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12 ">
-					<div class="main_home_slider text-center">
-						<div class="single_home_slider">
-							<div class="home-overlay"></div>
-							<div class="main_home wow fadeInUp" data-wow-duration="700ms">
-								<h2>마셔볼래</h2>
-								<div class="separator"></div>
-								<p class="subtitle">
-									♡ 홈레시피 ♡ <br /> 맛있는 술을 쉽게 만들어 먹을 수 있게 레시피를 제공해주는 공간
-								</p>
-								<div class="home_btn">
-									<a href="recipe_home.jsp" class="btn">레시피 보러 가기</a>
-								</div>
-							</div>
-						</div>
-						<!-- End of single_home_slider -->
+				<div class="col-sm-12">
+					<div class="head_title text-center">
+						<h1>
+							<a href="완)toast1.html">회원정보관리</a>
+						</h1>
+						<div style="height: 30px;"></div>
+					</div>
+					<!-- End of head title -->
 
-						<div class="single_home_slider">
-							<div class="home-overlay"></div>
-							<div class="main_home wow fadeInUp" data-wow-duration="700ms">
-								<h2>같이마실래?</h2>
-								<div class="separator"></div>
-								<p class="subtitle">
-									♡ 랜선짠 ♡<br/> 따로 또 같이 즐기는 술 마시는 공간
-								</p>
-								<div class="home_btn">
-									<a href="toast1.jsp" class="btn">랜선짠 하러 가기</a>
-								</div>
-							</div>
+					<div class="main_service_area">
+						<div id="wrapper" class="single_service_area" align="center">
+							<nav id="Update">
+								<table width="80%" border="1px soild">
+									<tr>
+										<td style="width: 45%;"><b>email</b></td>
+										<td style="width: 45%;"><b>닉네임</b></td>
+										<td><b>삭제</b></td>
+									</tr>
+									<c:forEach var="m" items="${memberList}">
+										<tr>
+											<td><c:out value="${m.id}" /></td>
+											<td><c:out value="${m.nick}" /></td>
+											<td><a href="DeleteCon?id=${m.id}">삭제</a></td>
+										</tr>
+									</c:forEach>
+								</table>
+							</nav>
+							<p></p>
+								<button style="border:none;background-color:white;">
+									<a href="index_test.jsp" class="button next scrolly">되돌아가기</a>
+								</button>
 						</div>
-						<!-- End of single_home_slider -->
-
-						<div class="single_home_slider">
-							<div class="home-overlay"></div>
-							<div class="main_home wow fadeInUp" data-wow-duration="700ms">
-								<h2>같이볼래?</h2>
-								<div class="separator"></div>
-								<p class="subtitle">
-									♡ OTT매칭 ♡ <br /> 따로 또 같이 보면서 술을 즐기는 공간
-								</p>
-								<div class="home_btn">
-									<a href="soto1.jsp" class="btn">같이 보러 가기</a>
-								</div>
-							</div>
-						</div>
-						<!-- End of single_home_slider -->
 					</div>
 				</div>
+				<!-- 게시물 끝 -->
 			</div>
 		</div>
 	</section>
-	<!-- End of Home Section -->
+
+
 
 	<!-- footer Section -->
 	<footer id="footer" class="footer">
@@ -219,37 +187,46 @@
 		<a href="#"><i class="fa fa-chevron-up"></i></a>
 	</div>
 
+
+	<!-- jQuery -->
 	<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+
+	<!-- jQuery Bootstrap js  -->
 	<script src="assets/js/vendor/bootstrap.min.js"></script>
 
+	<!-- jQuery easing js  -->
 	<script src="assets/js/jquery.easing.1.3.js"></script>
+
+	<!-- jQuery masonry js  -->
 	<script src="assets/js/masonry/masonry.min.js"></script>
 	<script type="text/javascript">
-		$('.mixcontent').masonry();
-	</script>
+        $('.mixcontent').masonry();
+    </script>
 
-	<script src="assets/js/jquery.sliderPro.min.js"></script>
+	<!-- jQuery Mixitup  -->
+	<script src="assets/js/jquery.mixitup.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function($) {
-			$('#example3').sliderPro({
-				width : 960,
-				height : 200,
-				fade : true,
-				arrows : false,
-				buttons : true,
-				fullScreen : false,
-				shuffle : true,
-				smallSize : 500,
-				mediumSize : 1000,
-				largeSize : 3000,
-				thumbnailArrows : true,
-				autoplay : false,
-				thumbnailsContainerSize : 960
+//            jQuery('#').mixItUp({
+//                selectors: {
+//                    target: '.tile',
+//                    filter: '.filter'
+//                },
+//                animation: {
+//                    animateResizeContainer: false,
+//                    effects: 'fade scale'
+//                }
+//
+//            });
 
-			});
-		});
-	</script>
+    //           $('.mixitupId').mixItUp();
+    </script>
+
+
+
+	<!-- jQuery plugins  -->
 	<script src="assets/js/plugins.js"></script>
+
+	<!-- jQuery Main js  -->
 	<script src="assets/js/main.js"></script>
 
 </body>
