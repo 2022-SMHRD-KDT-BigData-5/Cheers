@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="com.smhrd.domain.Toast_com"%>
 <%@page import="com.smhrd.domain.Toast"%>
 <%@page import="java.util.List"%>
@@ -156,6 +157,8 @@
                   <div style="height: 30px;"></div>
                </div>
                <!-- End of head title -->
+
+               
                <div class="insert_btn" align=right>
                   <button type="button" style="border: none;">
                      <a href=toast2.jsp>작성</a>
@@ -186,18 +189,27 @@
                               <input type="text" name="tc_contents" placeholder="댓글을 작성해주세요." style="border: 5mm; width: 400px;">
                               <input type="hidden" name="toast_no" value="${p.toast_no}">
                               <input type="submit" value="등록" style="border: none;">
+                           
                            </form>
                            <details align="left">
-                              <summary style="color: brown; cursor: pointer;">♥ 댓글 ♥</summary>
-                                 <%
-                              String toast_no = "";
+                           
+                           <input type="hidden" id="t_no" value="${p.toast_no}">
+                           
+                           
+                             
+                             <summary style="color: brown; cursor: pointer;">♥ 댓글 ♥<span class="context"></span></summary>
+                                <%
+                                String toast_no="";
                               for(int i=0;i<postList.size();i++){
                                  toast_no = postList.get(i).getToast_no().toString();
             
                               List<Toast_com> commList = dao.selectComment(toast_no);
                                 pageContext.setAttribute("commList",commList);
+                                                          
+                                
+                                
                              %>
-                             
+                       
                               <c:forEach var="c" items="${commList}">
                                  <c:choose>
                                     <c:when test="${p.toast_no eq c.toast_no}">
@@ -305,6 +317,34 @@
 
    <!-- jQuery Main js  -->
    <script src="assets/js/main.js"></script>
+   
+   <script>
+   	function list
+   </script>
+   
+   <script type="text/javascript">
+ 
+    function ajaxTest(){
+    	
+      $.ajax({
+    	data: {toast_no : $('#t_no').val()},
+        type : "GET",
+        url : "CountCommentCon",
+        dataType : "text",
+        error : function() {
+          alert('통신실패!!');
+        },
+        success : function(data) {
+          $('.testcount').text(data);
+        }
+ 
+      });
+    }
+ 
+    ajaxTest();
+ 
+  </script>
+
 
 </body>
 </html>

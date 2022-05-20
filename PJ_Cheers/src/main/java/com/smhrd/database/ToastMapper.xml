@@ -47,6 +47,9 @@
 		update toast_zzan set zzan_no=zzan_no-1 where toast_no=#{toast_no} 
 	</update>
 	
-
+		<!--댓글개수 -->
+	<select id="countComment" parameterType="String" resultType="int">
+	select count(tc_no) from toast_com group by toast_no having toast_no = #{toast_no}; 
+	</select>
 	
 </mapper>

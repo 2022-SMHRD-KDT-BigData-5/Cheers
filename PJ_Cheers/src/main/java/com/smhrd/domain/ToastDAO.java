@@ -202,28 +202,26 @@ public class ToastDAO {
 			}
 			return cnt;
 		}
-//		
-		public int insertImg(Toast upload) { //실제파일이름, 
-			SqlSession sqlSession = sqlSessionFactory.openSession();
-			System.out.println(upload.toString());
-			int cnt = 0;
-			try {
-				cnt = sqlSession.insert("com.smhrd.domain.ToastDAO.insertImg", upload);
-				if (cnt > 0) {
-					sqlSession.commit();
-					System.out.println("db등록완료");
-				} else {
-					sqlSession.rollback();
-					System.out.println("db등록실패");
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				sqlSession.close();
+//	댓글수 카운트	
+	public int countComment(String toast_no) {
+		int cnt=0;
+		
+		try {
+			cnt=sqlSession.selectOne("com.hrd.domain.ToastDAO.countComment",toast_no);
+		if(cnt>0) {
+				System.out.println("댓글개수");
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
 			}
-			return cnt;
-		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}return cnt;
+		
+		
+	}
 
 		
 		

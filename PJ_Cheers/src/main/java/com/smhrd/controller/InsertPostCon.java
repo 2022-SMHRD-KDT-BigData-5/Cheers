@@ -37,7 +37,7 @@ public class InsertPostCon extends HttpServlet {
 		ServletContext scontext = getServletContext();
 		String path = "img";
 		String t_file_path = scontext.getRealPath(path);
-
+		System.out.println(t_file_path);
 		HttpSession session = request.getSession();
 		Member loginMember = (Member) session.getAttribute("loginMember");
 		String member_id = loginMember.getId(); // 아이디!!!

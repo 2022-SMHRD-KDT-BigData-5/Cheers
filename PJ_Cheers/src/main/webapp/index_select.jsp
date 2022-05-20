@@ -78,9 +78,7 @@
 				 -->
 				 
 				 <td>
-				 	
-				 	
-				 	</c:forEach>
+				 
 				 </td>
 				 
 				<form class="toast_com_insert" method="post" action="AddCommentCon" align="right">
