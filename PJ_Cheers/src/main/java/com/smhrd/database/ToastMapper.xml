@@ -8,7 +8,9 @@
 		insert into toast values (toast_no_seq.nextval ,#{member_id}, #{contents}, sysdate)
 	</insert>
 	<select id="selectPost" resultType="com.smhrd.domain.Toast">
-		select * from toast order by toast_no desc
+		select *
+		from toast 
+		order by toast_no desc
 	</select>
 	<delete id = "deletePost" parameterType="String">
 		delete from toast where toast_no = #{toast_no}

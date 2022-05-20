@@ -21,10 +21,24 @@ public class Toast {
 	private BigDecimal zzan_no;
 	
 	
+	
 	public Toast(BigDecimal toast_no, String member_id) {
 		super();
 		this.toast_no = toast_no;
 		this.member_id = member_id;
+	}
+
+	public Toast(BigDecimal toast_no, String member_id, String contents, Timestamp toast_date, BigDecimal t_file_no,
+			String t_file_path, String t_file_name, String t_file_server) {
+		super();
+		this.toast_no = toast_no;
+		this.member_id = member_id;
+		this.contents = contents;
+		this.toast_date = toast_date;
+		this.t_file_no = t_file_no;
+		this.t_file_path = t_file_path;
+		this.t_file_name = t_file_name;
+		this.t_file_server = t_file_server;
 	}
 
 	public Toast(String member_id, String contents) {
@@ -51,8 +65,20 @@ public class Toast {
 		this.t_file_server = t_file_server;
 	}
 
+	
 
 
+	public Toast(BigDecimal toast_no, String member_id, String contents, Timestamp toast_date, String t_file_path,
+			String t_file_name, String t_file_server) {
+		super();
+		this.toast_no = toast_no;
+		this.member_id = member_id;
+		this.contents = contents;
+		this.toast_date = toast_date;
+		this.t_file_path = t_file_path;
+		this.t_file_name = t_file_name;
+		this.t_file_server = t_file_server;
+	}
 
 	public Toast(String t_file_path, String t_file_name, String t_file_server) {
 		super();
@@ -128,6 +154,22 @@ public class Toast {
 
 	public String getT_file_server() {
 		return t_file_server;
+	}
+
+	public void setT_file_no(BigDecimal t_file_no) {
+		this.t_file_no = t_file_no;
+	}
+
+	public void setT_file_path(String t_file_path) {
+		this.t_file_path = t_file_path;
+	}
+
+	public void setT_file_name(String t_file_name) {
+		this.t_file_name = t_file_name;
+	}
+
+	public void setT_file_server(String t_file_server) {
+		this.t_file_server = t_file_server;
 	}
 	
 	

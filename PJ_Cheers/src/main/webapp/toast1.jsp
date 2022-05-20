@@ -81,7 +81,6 @@
                            <a class="navbar-brand" href="index_test.jsp"> <img
                               src="assets/images/logo.png" />
                            </a>
-
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -142,8 +141,6 @@
       </div>
    </header>
    <!--End of header -->
-   <!--End of header -->
-
 
 
 
@@ -178,7 +175,7 @@
                                  <td colspan="2" align="right"><b><c:out value="${p.member_id}" /></b><span> | <c:out value="${p.toast_date}" /></span></td>
                               </tr>
                               <tr>
-                                 <td style="height: 300px;" align="center"><img src= alt=게시물이미지 /></td>
+                                 <td style="height: 300px;" align="center"><img src='' alt="게시물이미지" /></td>
                                  <td style="vertical-align: top; padding: 2%"><c:out value="${p.contents}" /></td>
                               </tr>
                            </table>
