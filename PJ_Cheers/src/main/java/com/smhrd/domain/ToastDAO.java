@@ -227,4 +227,42 @@ public class ToastDAO {
 
 		
 		
+		// 댓글 수정
+		public int updateComment(Toast_com tc_co) {
+			int cnt = 0;
+			try {
+				cnt = sqlSession.update("com.smhrd.domain.ToastDAO.updateComment", tc_co);
+
+				if (cnt > 0) {
+					sqlSession.commit();
+				} else {
+					sqlSession.rollback();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				sqlSession.close();
+			}
+			return cnt;
+		}
+
+		// 게시글 수정
+		public int updatePost(Toast contents) {
+			int cnt = 0;
+			try {
+				cnt = sqlSession.update("com.smhrd.domain.ToastDAO.updatePost", contents);
+
+				if (cnt > 0) {
+					sqlSession.commit();
+				} else {
+					sqlSession.rollback();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				sqlSession.close();
+			}
+			return cnt;
+		}
 	}
+

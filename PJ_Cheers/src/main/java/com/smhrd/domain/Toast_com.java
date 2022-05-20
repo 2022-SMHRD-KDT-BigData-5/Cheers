@@ -32,6 +32,13 @@ public class Toast_com {
 	}
 	
 	
+
+	public Toast_com(BigDecimal tc_no, String tc_contents) {
+	super();
+	this.tc_no = tc_no;
+	this.tc_contents = tc_contents;
+}
+	
 	
 	public Toast_com(String toast_no) {
 		super();

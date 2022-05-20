@@ -238,7 +238,7 @@ img{
 												<span>♡ 준비물 ♡</span><br> <span class="recipe_ing"><c:out
 														value="${rc.recipe_ing}" /></span><br> <br> <span>♥
 													제조방법 ♥</span><br>
-												<p class="recipe_how">
+												<p class="recipe_how" style="white-space: pre-line;">
 													<c:out value="${rc.recipe_how}" />
 												</p> 
 											</div>
