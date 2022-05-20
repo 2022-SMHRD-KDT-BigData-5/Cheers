@@ -12,6 +12,8 @@
 	List<Toast> postList = dao.selectPost();
 	pageContext.setAttribute("postList",postList);
 	
+	
+	
 %>
 
 <!DOCTYPE html>
@@ -53,15 +55,34 @@
 					</c:choose>
 				</td>
 
-				<!-- <td><button id='zzan'>게시글짠</button><span>${zzan}</span></td> -->
-
-				<form action="PostZzanCon">
-					<td>
+				<!--
+				
+				<td><button id='zzan'>게시글짠</button><span>${zzan}</span></td>
+				
+				<td>
+					<form action="PostZzanCon">
 						<input type="hidden" name="member_id" value="${loginMember.id}"> 
 						<input type="hidden" name="toast_no" value="${p.toast_no}"> 
 						<input type="submit" value="짠">
-					</td>
-				</form>
+					</form>
+					
+				</td>
+				<td>
+					<form action="ZzanCon">
+						<input type="hidden" name="member_id" value="${loginMember.id}"> 
+						<input type="hidden" name="toast_no" value="${p.toast_no}"> 
+						<input type="submit" value="짠">
+					</form>
+				</td>
+				
+				 -->
+				 
+				 <td>
+				 	
+				 	
+				 	</c:forEach>
+				 </td>
+				 
 				<form class="toast_com_insert" method="post" action="AddCommentCon" align="right">
 					<td>
 						<input type="text" name="tc_contents" placeholder="댓글을 작성해주세요." style="border: 5mm; width: 150px;">
@@ -123,50 +144,14 @@
                         <input type="hidden" value="${tm.toast_no}">
                      </c:forEach>
                      <input type="submit" value="게시물 작성하는 페이지로 이동">
-                  </form>
+    </form>
+							
 	
 	
 	
 	
 	
-	<script>
-        $(document).on("click","#zzan",function(){ 
-			$.ajax({
-				data : {status : "zzan", toast_no : 1, loginMember : loginMember.id},
-				url : "PostZzanCon",
-				method : "GET",
-				dataType : "text",
-				context : this,
-				success: function(data){
-					$('#zzan+span').text(data)
-					$(this).text('좋아요 취소')
-		            $(this).attr('id','diszzan')	
-				},
-				error: function(){
-					alert("통신실패!")
-				}
-			})
-        });
 
-        $(document).on("click","#diszzan",function(){ 
-            $.ajax({
-				data : {status : "diszzan", toast_no : 1, loginMember : loginMember.id},
-				url : "PostZzanCon",
-				method : "GET",
-				dataType : "text",
-				context : this,
-				success: function(data){
-						$('#diszzan+span').text(data)
-			            $(this).text('좋아요')
-			            $(this).attr('id','zzan')
-				},
-				error: function(){
-					alert("통신실패!")
-				}
-			})
-    
-        });
-     </script> 
 
 </body>
 </html>

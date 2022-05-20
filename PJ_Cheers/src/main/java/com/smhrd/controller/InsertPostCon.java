@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,6 @@ import com.smhrd.domain.ToastDAO;
 import com.smhrd.domain.Upload;
 import com.smhrd.domain.UploadDAO;
 
-
 public class InsertPostCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,61 +29,47 @@ public class InsertPostCon extends HttpServlet {
 			throws ServletException, IOException {
 
 		System.out.println("[InsertPostCon]");
-		
+
 		request.setCharacterEncoding("UTF-8");
 
-		MultipartRequest multi=null;
+		MultipartRequest multi = null;
 		int maxSize = 1024 * 1024 * 10;
-		String t_file_path ="C:/img";
-		
-		
-		
+		ServletContext scontext = getServletContext();
+		String path = "img";
+		String t_file_path = scontext.getRealPath(path);
+
 		HttpSession session = request.getSession();
 		Member loginMember = (Member) session.getAttribute("loginMember");
-		String member_id = loginMember.getId(); //아이디!!!
-		
+		String member_id = loginMember.getId(); // 아이디!!!
+
 		try {
-			multi = new MultipartRequest(request, t_file_path, maxSize, "UTF-8",
-					new DefaultFileRenamePolicy());
+			multi = new MultipartRequest(request, t_file_path, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		String FileName= multi.getOriginalFileName("upload");
-		String FileRealName = multi.getFilesystemName("upload");
-		
+
+		String t_file_name = multi.getOriginalFileName("upload");
+		String t_file_realname = multi.getFilesystemName("upload");
+		t_file_path="./img";
 //		BigDecimal toast_no = new BigDecimal(request.getParameter("toast_no"));
 		String contents = multi.getParameter("contents");
-		System.out.println("con 콘텐츠"+contents);
+		System.out.println(contents);
 		System.out.println(member_id);
-		Toast toast = new Toast(member_id, contents);
+		Toast toast = new Toast(member_id, contents, t_file_path, t_file_name, t_file_realname);
 //		Timestamp toast_date = Timestamp.valueOf(request.getParameter("toast_date"));
-
 //		Toast t_vo = new Toast(toast_no, member_id, contents, toast_date);
-		
-		
-		
-		
-						
 //		Toast upload = new Toast(t_file_path, t_file_name, t_file_server);
 //		System.out.println(t_file_path+ t_file_name+ t_file_server);
-		Upload upload = new Upload(FileName,FileRealName);
-		UploadDAO dao1= new UploadDAO();
-		
-		
+		System.out.println(t_file_path);
+		System.out.println(t_file_name);
+		System.out.println(t_file_realname);
+
 		ToastDAO dao = new ToastDAO();
 		int cnt = dao.insertPost(toast);
-		int cnt2= dao1.insertUpload(upload);
-		
-		///////////////////////////////////////////////
 
 		if (cnt > 0) {
 			System.out.println("게시물 작성 성공-조회 페이지로");
 			response.sendRedirect("toast1.jsp");
-
-//			RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
-//			request.setAttribute("joinemail", id);
-//			rd.forward(request, response);
 
 		} else {
 			System.out.println(member_id);
@@ -96,3 +82,5 @@ public class InsertPostCon extends HttpServlet {
 	}
 
 }
+
+

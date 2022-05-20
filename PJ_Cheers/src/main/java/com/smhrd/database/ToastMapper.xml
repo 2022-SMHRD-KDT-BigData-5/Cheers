@@ -5,14 +5,19 @@
 	
 	<!-- 게시물 -->
 	<insert id="insertPost" parameterType="com.smhrd.domain.Toast">
-		insert into toast values (toast_no_seq.nextval ,#{member_id}, #{contents}, sysdate)
+		insert into toast values (toast_no_seq.nextval ,#{member_id}, #{contents}, sysdate ,#{t_file_path},#{t_file_name},#{t_file_realname})
 	</insert>
 	<select id="selectPost" resultType="com.smhrd.domain.Toast">
-		select * from toast order by toast_no desc
+		select *
+		from toast 
+		order by toast_no desc
 	</select>
 	<delete id = "deletePost" parameterType="String">
 		delete from toast where toast_no = #{toast_no}
 	</delete>
+	<update id="updatePost" parameterType="com.smhrd.domain.Toast">
+		update toast set toast_contents = #{contents}, toast_date = sysdate where toast_no = #{toast_no}
+	</update>
 	
 	<!-- 댓글 -->
 	<insert id="addComment" parameterType="com.smhrd.domain.Toast_com">
@@ -28,6 +33,9 @@
 	<delete id="deleteComment" parameterType="String">
 		delete from toast_com where tc_no = #{tc_no}
 	</delete>
+	<update id="updateComment" parameterType="com.smhrd.domain.Toast_com">
+		update toast_com set tc_contents=#{tc_contents}, tc_date=sysdate where tc_no = #{tc_no}
+	</update>
 	
 	<!-- 짠 -->
 	<insert id="addZzan" parameterType="com.smhrd.domain.Toast">
@@ -45,12 +53,6 @@
 		update toast_zzan set zzan_no=zzan_no-1 where toast_no=#{toast_no} 
 	</update>
 	
-	<insert id="insertImg" parameterType="com.smhrd.domain.Toast">
-		insert into testupload
-		values (#{fileName}, #{FileRealName})
-			
-		
-	</insert>
-	
+
 	
 </mapper>

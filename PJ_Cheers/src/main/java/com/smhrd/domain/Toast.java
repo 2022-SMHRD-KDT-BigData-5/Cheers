@@ -13,10 +13,9 @@ public class Toast {
 	private Timestamp toast_date;	//작성일자
 	private ArrayList<Toast_com> tc;
 	
-	private BigDecimal t_file_no;
 	private String t_file_path;
 	private String t_file_name;
-	private String t_file_server;
+	private String t_file_realname;
 
 	
 	
@@ -41,24 +40,42 @@ public class Toast {
 		this.toast_date = toast_date;
 	}
 	
-	public Toast(BigDecimal toast_no, BigDecimal t_file_no, String t_file_path, String t_file_name,
-			String t_file_server) {
+	
+
+	public Toast(String member_id, String contents, String t_file_path, String t_file_name, String t_file_realname) {
 		super();
-		this.toast_no = toast_no;
-		this.t_file_no = t_file_no;
+		this.member_id = member_id;
+		this.contents = contents;
 		this.t_file_path = t_file_path;
 		this.t_file_name = t_file_name;
-		this.t_file_server = t_file_server;
+		this.t_file_realname = t_file_realname;
 	}
 
-
-
-
-	public Toast(String t_file_path, String t_file_name, String t_file_server) {
+	
+	
+	
+	public Toast(BigDecimal toast_no, String member_id, String contents, Timestamp toast_date, String t_file_path,
+			String t_file_name, String t_file_realname) {
 		super();
+		this.toast_no = toast_no;
+		this.member_id = member_id;
+		this.contents = contents;
+		this.toast_date = toast_date;
 		this.t_file_path = t_file_path;
 		this.t_file_name = t_file_name;
-		this.t_file_server = t_file_server;
+		this.t_file_realname = t_file_realname;
+	}
+
+	public String getT_file_path() {
+		return t_file_path;
+	}
+
+	public String getT_file_name() {
+		return t_file_name;
+	}
+
+	public String getT_file_realname() {
+		return t_file_realname;
 	}
 
 	public Toast(String contents) {
@@ -108,22 +125,7 @@ public class Toast {
 		this.tc = tc;
 	}
 
-	public BigDecimal getT_file_no() {
-		return t_file_no;
-	}
 
-	public String getT_file_path() {
-		return t_file_path;
-	}
-
-	public String getT_file_name() {
-		return t_file_name;
-	}
-
-	public String getT_file_server() {
-		return t_file_server;
-	}
-	
 	
 	
 	

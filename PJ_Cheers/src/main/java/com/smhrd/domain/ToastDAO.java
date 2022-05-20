@@ -22,20 +22,15 @@ public class ToastDAO {
 
 		try {
 			cnt = sqlSession.insert("com.smhrd.domain.ToastDAO.insertPost", toast);
-			if (cnt > 0 ) { // 조건문 안에 && cnt2 > 0 넣어야 함
+
+			if (cnt > 0) { // 조건문 안에 && cnt2 > 0 넣어야 함
+
 				sqlSession.commit();
 			} else {
 				sqlSession.rollback();
 			}
 			
-			
-//			cnt2 = sqlSession.insert("com.smhrd.domain.ToastDAO.uploadImg", toast);
-//			if (cnt2 > 0 ) { 
-//				sqlSession.commit();
-//			} else {
-//				sqlSession.rollback();
-//			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -149,33 +144,15 @@ public class ToastDAO {
 		}
 		
 		//짠 생성
-//		public int getZzan(String Toast_no) {
-//			
-//			SqlSession sqlSession = sqlSessionFactory.openSession();
-//			int zzan = -1;
-//
-//			try {
-//				zzan = (int)sqlSession.selectOne("com.smhrd.domain.ToastDAO.getZzan", Toast_no);
-//				if(zzan!=-1) {
-//					sqlSession.commit();
-//				}else {
-//					sqlSession.rollback();
-//				}
-//			}finally {
-//				sqlSession.close();
-//			}
-//			return zzan;
-//		}
-		public int addZzan(Toast toast) {
+		public int getZzan(Toast toast) {
 			
-//			SqlSession sqlSession = sqlSessionFactory.openSession();
-			int zzan = 0;
+			SqlSession sqlSession = sqlSessionFactory.openSession();
+			int zzan = -1;
+
 			try {
-				zzan = sqlSession.insert("com.smhrd.domain.ToastDAO.addZzan", toast);
-				
-				if(zzan!=0) {
+				zzan = (int)sqlSession.selectOne("com.smhrd.domain.ToastDAO.getZzan", toast);
+				if(zzan!=-1) {
 					sqlSession.commit();
-					
 				}else {
 					sqlSession.rollback();
 				}
@@ -185,6 +162,24 @@ public class ToastDAO {
 			return zzan;
 		}
 		
+//		public int addZzan(Toast toast) {
+//			
+//			int zzan = 0;
+//			try {
+//				zzan = sqlSession.insert("com.smhrd.domain.ToastDAO.addZzan", toast);
+//				
+//				if(zzan!=0) {
+//					sqlSession.commit();
+//					
+//				}else {
+//					sqlSession.rollback();
+//				}
+//			}finally {
+//				sqlSession.close();
+//			}
+//			return zzan;
+//		}
+		
 		//짠 수정
 		public int updateZzan(String Toast_no, String status) {
 //			SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -193,9 +188,9 @@ public class ToastDAO {
 			try {
 				if(status.equals("zzan")) {
 					System.out.println(Toast_no);
-					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.zzan", Toast_no);
+					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.plusZzan", Toast_no);
 				}else {
-					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.diszzan", Toast_no);
+					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.minusZzan", Toast_no);
 				}
 				if(cnt!=0) {
 					sqlSession.commit();
@@ -232,4 +227,42 @@ public class ToastDAO {
 
 		
 		
+		// 댓글 수정
+		public int updateComment(Toast_com tc_co) {
+			int cnt = 0;
+			try {
+				cnt = sqlSession.update("com.smhrd.domain.ToastDAO.updateComment", tc_co);
+
+				if (cnt > 0) {
+					sqlSession.commit();
+				} else {
+					sqlSession.rollback();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				sqlSession.close();
+			}
+			return cnt;
+		}
+
+		// 게시글 수정
+		public int updatePost(Toast contents) {
+			int cnt = 0;
+			try {
+				cnt = sqlSession.update("com.smhrd.domain.ToastDAO.updatePost", contents);
+
+				if (cnt > 0) {
+					sqlSession.commit();
+				} else {
+					sqlSession.rollback();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				sqlSession.close();
+			}
+			return cnt;
+		}
 	}
+
