@@ -1,5 +1,6 @@
 package com.smhrd.domain;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -207,11 +208,12 @@ public class ToastDAO {
 		int cnt=0;
 		
 		try {
-			cnt=sqlSession.selectOne("com.hrd.domain.ToastDAO.countComment",toast_no);
+			cnt=sqlSession.selectOne("com.smhrd.domain.ToastDAO.countComment",toast_no);
 		if(cnt>0) {
 				System.out.println("댓글개수");
 				sqlSession.commit();
 			}else {
+				System.out.println("댓글개수 출력 실패");
 				sqlSession.rollback();
 			}
 		} catch (Exception e) {

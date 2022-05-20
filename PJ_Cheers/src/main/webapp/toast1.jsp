@@ -193,11 +193,11 @@
                            </form>
                            <details align="left">
                            
-                           <input type="hidden" id="t_no" value="${p.toast_no}">
+                           <!-- <input type="hidden" id="t_no" value="${p.toast_no}"> -->
                            
                            
                              
-                             <summary style="color: brown; cursor: pointer;">♥ 댓글 ♥<span class="context"></span></summary>
+                             <summary id="context" style="color: brown; cursor: pointer;">♥ 댓글 ♥</summary>
                                 <%
                                 String toast_no="";
                               for(int i=0;i<postList.size();i++){
@@ -211,11 +211,14 @@
                              %>
                        
                               <c:forEach var="c" items="${commList}">
-                                 <c:choose>
+                                <c:choose>
                                     <c:when test="${p.toast_no eq c.toast_no}">
+                                    
+                                    <input type="hidden" id="t_no" value="${c.toast_no}">
                                        <hr color='#c06c84'>
                                        <table width="100%">
                                           <tr>
+                                          
                                              <td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
                                              <td width="20%"><c:out value="${c.tc_date}" /><br><b><c:out value="${c.member_id}" /></b></td>
                                              <td><span><c:out value="${c.tc_contents}" /></span></td>
@@ -321,29 +324,57 @@
    <script>
    	function list
    </script>
-   
-   <script type="text/javascript">
- 
-    function ajaxTest(){
+
+
+<!-- 클릭출력 테스트 -->
+	<script>
+	$(document).on("click", "#context", function(){ 
+        	console.log($(this).next().val());
+        		
+        	$.ajax({
+        		data: {toast_no : $(this).next().val()},
+        		url: "CountCommentCon",
+        		method: "get",
+        		method : "GET",
+    			dataType : "text",
+    			context : this,  
+    			success: function(data){
+    				 $(this).text("♥ 댓글 ♥ " +data);
+    			},
+    			error: function(){
+    				alert("통신실패!")
+    			} 
+    		})     	
+        	
+        });
+        </script>
+
+	<!-- 동시출력 -->   
+<!--   <script type="text/javascript"> 
+
+   function ajaxTest(){
+    	
+    	//console.log("콘솔테스트" + $(this));
     	
       $.ajax({
     	data: {toast_no : $('#t_no').val()},
         type : "GET",
         url : "CountCommentCon",
         dataType : "text",
+        context: this,
         error : function() {
           alert('통신실패!!');
         },
         success : function(data) {
-          $('.testcount').text(data);
+          $('.context').text(data);
         }
  
       });
     }
  
-    ajaxTest();
+    ajaxTest(); 
  
-  </script>
+  </script> -->
 
 
 </body>
