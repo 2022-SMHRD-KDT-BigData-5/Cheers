@@ -288,72 +288,9 @@ img{
     		})
         });
 		
-		/* $(document).on("click", "#hattu", function(){            
-            $("#hattu").html("<img src='assets/images/hatu.png'>")
-            //location.href='FavoriteAjaxCon?status=hattu&recipe_no=${rc.recipe_no}'
-			$(this).attr("id", "hatu")
-			
-        }) */
-	</script>					
-										<!-- <script>					
-		//하뚜로 바꾸자
-        /* $(document).on("click", "#hatu", function(){            
-            $("#hatu").html("<img src='assets/images/hattu.png'>")
-			$(this).attr("id", "hattu")
-        })
-		
-		$(document).on("click", "#hattu", function(){            
-            $("#hattu").html("<img src='assets/images/hatu.png'>")
-			$(this).attr("id", "hatu") */
-        })
-	</script> -->
-								
-								<!-- <script>
-								
-								$(document).on("click", "#hatu", function(){ 
-									
-									$(document).on("click", "#hatu", function(){            
-							            $("#hatu").html("<img src='assets/images/hattu.png'>")
-										$(this).attr("id", "hattu")
-							        })
-									
-									$.ajax({
-										data : {status : "hatu", recipe_no : "${rc.recipe_no}"},
-										url : "FavoriteAjaxCon",
-										method : "GET",
-										dataType : "text",
-										context : this,  //success 안에서 this(#like)를 사용하고 싶은 경우
-										success: function(data){
-											//$('#like+span').text(data)
-											$('#hatu').html(data"<img src='assets/images/hattu.png'>")
-								            $(this).attr('id','hattu')	
-										},
-										error: function(){
-											alert("통신실패!")
-										}
-									})
-								 });
-								
-								 $(document).on("click","#hattu",function(){ 
-								        $.ajax({
-											data : {status : "hattu", recipe_no : ${rc.recipe_no}},
-											url : "LikeAjaxCon",
-											method : "GET",
-											dataType : "text",
-											context : this,
-											success: function(data){
-													//$('#dislike+span').text(data)
-										            $('#hattu').html(data"<img src='assets/images/hatu.png'>")
-										            $(this).attr('id','hatu')
-											},
-											error: function(){
-												alert("통신실패!")
-											}
-										})
 
-								    });
-								</script> -->
-								
+	</script>					
+										
 							</div>
 							<!-- End of single service area -->
 

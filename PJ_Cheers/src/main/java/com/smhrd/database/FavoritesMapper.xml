@@ -60,6 +60,7 @@
 	from recipe
 	left outer join favorites
 	on recipe.recipe_no = favorites.recipe_no
+	order by recipe_no asc
     </select>
 	
 	

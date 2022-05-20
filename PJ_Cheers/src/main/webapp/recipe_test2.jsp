@@ -189,10 +189,10 @@ img{
 								<c:forEach var="rc" items="${infoList}" varStatus="rcstat">
 								<c:if test="${rc.recipe_no ne tempname}">
 								<!-- 조건1 -->
-								
+								<c:out value="${rcstat.index}" /> / <c:out value="${rcstat.end}" />
 								<c:if test="${empty rc.member_id or loginMember.id eq rc.member_id}">
 								
-								
+								r1+<c:out value="${rc.member_id}" />
 									<div class="row">
 										<div class="col-sm-6">
 											<div class="signle_service_left">
@@ -252,7 +252,7 @@ img{
 									
 									<c:if test="${rc.member_id ne null and not empty rc.fav_no}">
 									<c:if test="${loginMember.id ne rc.member_id and not empty rc.fav_no}">
-									
+									r2+<c:out value="${rc.member_id}" />
 									
 									
 									<div class="row">

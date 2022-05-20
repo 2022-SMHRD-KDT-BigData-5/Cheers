@@ -1,3 +1,4 @@
+<%@page import="java.util.HashSet"%>
 <%@page import="com.smhrd.domain.Favorites"%>
 <%@page import="com.smhrd.domain.FavoritesDAO"%>
 <%@page import="java.math.BigDecimal"%>
@@ -184,10 +185,15 @@ img{
 
 
 								<!-- 레시피 반복 스따뚜 -->
-								
-						
-								<c:forEach var="rc" items="${infoList}">
+								<c:set var = "tempname" value=""/>
+								<c:forEach var="rc" items="${infoList}" varStatus="rcstat">
+								<c:if test="${rc.recipe_no ne tempname}">
+								<!-- 조건1 -->
 								<c:if test="${rc.recipe_base eq '10'}">
+								
+								<c:if test="${empty rc.member_id or loginMember.id eq rc.member_id}">
+								
+								
 									<div class="row">
 										<div class="col-sm-6">
 											<div class="signle_service_left">
@@ -198,26 +204,21 @@ img{
 										<div class="col-sm-5 col-sm-push-1">
 											<div class="single_service">
 												<br> <br>
-												<c:if test="${rc.member_id eq loginMember.id}">
-													<c:if test="${empty rc.fav_no}">
-														<button type="button" class="hatu" id="hatu">
-															<img src="assets/images/hatu.png" />
-														</button>
-													</c:if>
-													<c:if test="${not empty rc.fav_no}">
+												<c:choose>
+												<c:when test="${rc.member_id eq loginMember.id and not empty rc.fav_no}">
 														<button type="button" class="hatu" id="hattu">
 															<img src="assets/images/hattu.png" />
 														</button>
-													</c:if>
-												</c:if>
-												<c:if test="${loginMember.id ne rc.member_id}">
 													
+												</c:when>
+												<c:otherwise>
+																						
 														<button type="button" class="hatu" id="hatu">
 															<img src="assets/images/hatu.png" />
 														</button>
-													
-												</c:if>
-
+												
+												</c:otherwise>
+												</c:choose>
 
 												<input type = "hidden" value = '<c:out value="${rc.recipe_no}" />'></input>
 												
@@ -239,7 +240,60 @@ img{
 												<span>♡ 준비물 ♡</span><br> <span class="recipe_ing"><c:out
 														value="${rc.recipe_ing}" /></span><br> <br> <span>♥
 													제조방법 ♥</span><br>
-												<p class="recipe_how">
+												<p class="recipe_how" style="white-space: pre-line;">
+													<c:out value="${rc.recipe_how}" />
+												</p> 
+											</div>
+
+										</div>
+									</div>
+									</c:if> 
+									</c:if>
+									
+									<!-- 조건2 문제 발생 중-->
+									<c:if test="${rc.recipe_base eq '10'}">
+									<c:if test="${rc.member_id ne null and not empty rc.fav_no}">
+									<c:if test="${loginMember.id ne rc.member_id and not empty rc.fav_no}">
+									
+									
+									
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="signle_service_left">
+												<img src='<c:out value="${rc.recipe_img}" />'
+													alt="recipe_name" />
+											</div>
+										</div>
+										<div class="col-sm-5 col-sm-push-1">
+											<div class="single_service">
+												<br> <br>
+																			
+														<button type="button" class="hatu" id="hatu">
+															<img src="assets/images/hatu.png" />
+														</button>												
+												
+
+												<input type = "hidden" value = '<c:out value="${rc.recipe_no}" />'></input>
+												
+												<h3>
+													<span class="recipe_name"><c:out
+															value="${rc.recipe_name}" /></span>
+												</h3>
+												<h5>
+													base : <span class="recipe_base"><c:if
+															test="${rc.recipe_base eq '10'}">
+															<span>맥주</span>
+														</c:if> <c:if test="${rc.recipe_base eq '20'}">
+															<span>소주</span>
+														</c:if> <c:if test="${rc.recipe_base eq '30'}">
+															<span>혼합</span>
+														</c:if></span>
+												</h5>
+												<div class="separator2"></div>
+												<span>♡ 준비물 ♡</span><br> <span class="recipe_ing"><c:out
+														value="${rc.recipe_ing}" /></span><br> <br> <span>♥
+													제조방법 ♥</span><br>
+												<p class="recipe_how" style="white-space: pre-line;">
 													<c:out value="${rc.recipe_how}" />
 												</p> 
 											</div>
@@ -247,6 +301,11 @@ img{
 										</div>
 									</div>
 									</c:if>
+									</c:if>
+									</c:if> 
+									</c:if>
+									
+									<c:set var="tempname" value="${rc.recipe_no}"/> 
 								</c:forEach>
 			
 			<script>					
