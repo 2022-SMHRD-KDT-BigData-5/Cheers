@@ -175,7 +175,7 @@
                                  <td colspan="2" align="right"><b><c:out value="${p.member_id}" /></b><span> | <c:out value="${p.toast_date}" /></span></td>
                               </tr>
                               <tr>
-                                 <td style="height: 300px;" align="center"><img src='' alt="게시물이미지" /></td>
+                                 <td style="height: 300px;" align="center"><img src='<c:out value="${p.t_file_path}/${p.t_file_name}" />' alt="게시물이미지"></td>
                                  <td style="vertical-align: top; padding: 2%"><c:out value="${p.contents}" /></td>
                               </tr>
                            </table>

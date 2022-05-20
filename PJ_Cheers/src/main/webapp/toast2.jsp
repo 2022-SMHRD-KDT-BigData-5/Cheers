@@ -131,7 +131,7 @@
 							<form action="InsertPostCon" enctype="multipart/form-data" method="post">
 								<table width="100%" height="400px">
 									<tr style="height: 10px">
-										<td width="45%"><input type="file" id="image"
+										<td width="45%"><input type="file" name= "upload" id="image"
 											accept="image/*" onchange="setThumbnail(event);"></td>
 										<td rowspan="2" align="center"><textarea cols="50"
 												rows="10" maxlength="500" name="contents" placeholder="내용을 입력하세요."
@@ -154,7 +154,7 @@
 										<td colspan="2" align="right"><div class="insert_btn"
 												align=right>
 												<button type="button" style="border: none;">
-												<input type="submit" name= "upload" value="등록">
+												<input type="submit" value="등록">
 												</button>
 											</div></td>
 									</tr>
