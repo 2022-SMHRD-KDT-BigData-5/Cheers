@@ -26,17 +26,32 @@ public class PostZzanCon extends HttpServlet {
 		
 		System.out.println("[PostZzanCon]");
 		
+		HttpSession session =  request.getSession();
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		String member_id = loginMember.getId();
+		
 		String status = request.getParameter("status");
 	    String toast_no = request.getParameter("toast_no");
+	    
+	    System.out.println(member_id);
+		System.out.println(toast_no);
+		System.out.println(status);
 		
+		Toast toast = new Toast(member_id, toast_no);
 	    ToastDAO dao = new ToastDAO();
 		dao.updateZzan(toast_no, status);
 		
-		int zzan = dao.getZzan(toast_no);
+//		int zzan = dao.getZzan(toast_no);
 
-		PrintWriter out = response.getWriter();
-		out.print(zzan);
 		
+//		if(status.equals("0")) {
+//			dao.getZzan(toast);
+//		}else {			
+////			dao.getfavno(fav);			
+//			System.out.println("ajax콘 " +dao.getfavno(fav).getFav_no());
+//			dao.unFav(recipe_no, dao.getfavno(fav).getFav_no());
+//		}
+//		
 		
 //		BigDecimal toast_no = new BigDecimal(request.getParameter("toast_no"));	
 //		

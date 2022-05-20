@@ -20,9 +20,6 @@ public class Toast {
 	
 	private BigDecimal zzan_no;
 	
-
-	
-	
 	
 	public Toast(BigDecimal toast_no, String member_id) {
 		super();

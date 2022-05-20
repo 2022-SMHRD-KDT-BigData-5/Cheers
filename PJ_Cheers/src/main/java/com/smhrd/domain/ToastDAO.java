@@ -144,13 +144,13 @@ public class ToastDAO {
 		}
 		
 		//짠 생성
-		public int getZzan(String Toast_no) {
+		public int getZzan(Toast toast) {
 			
 			SqlSession sqlSession = sqlSessionFactory.openSession();
 			int zzan = -1;
 
 			try {
-				zzan = (int)sqlSession.selectOne("com.smhrd.domain.ToastDAO.getZzan", Toast_no);
+				zzan = (int)sqlSession.selectOne("com.smhrd.domain.ToastDAO.getZzan", toast);
 				if(zzan!=-1) {
 					sqlSession.commit();
 				}else {

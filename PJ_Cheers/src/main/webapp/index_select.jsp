@@ -12,6 +12,8 @@
 	List<Toast> postList = dao.selectPost();
 	pageContext.setAttribute("postList",postList);
 	
+	
+	
 %>
 
 <!DOCTYPE html>
@@ -53,8 +55,10 @@
 					</c:choose>
 				</td>
 
-				<!-- <td><button id='zzan'>게시글짠</button><span>${zzan}</span></td> -->
-			<
+				<!--
+				
+				<td><button id='zzan'>게시글짠</button><span>${zzan}</span></td>
+				
 				<td>
 					<form action="PostZzanCon">
 						<input type="hidden" name="member_id" value="${loginMember.id}"> 
@@ -70,6 +74,15 @@
 						<input type="submit" value="짠">
 					</form>
 				</td>
+				
+				 -->
+				 
+				 <td>
+				 	<c:forEach>
+				 	
+				 	</c:forEach>
+				 </td>
+				 
 				<form class="toast_com_insert" method="post" action="AddCommentCon" align="right">
 					<td>
 						<input type="text" name="tc_contents" placeholder="댓글을 작성해주세요." style="border: 5mm; width: 150px;">
