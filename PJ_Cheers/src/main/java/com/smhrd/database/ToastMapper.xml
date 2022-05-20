@@ -33,11 +33,9 @@
 	<insert id="addZzan" parameterType="com.smhrd.domain.Toast">
         insert into toast_zzan values (toast_zzan_zzan_no_seq.nextval ,#{toast_no}, #{member_id})
     </insert>
-	<!-- 
 	<select id="getZzan" resultType="String" parameterType="int">
         select zzan_no from toast_zzan where toast_no=#{toast_no}
     </select>
-	 -->
 	<update id="zzan" parameterType="String">
 		update toast_zzan set zzan_no=zzan_no+1 where toast_no=#{toast_no} 
 	</update>
@@ -45,12 +43,12 @@
 		update toast_zzan set zzan_no=zzan_no-1 where toast_no=#{toast_no} 
 	</update>
 	
+	<!--
 	<insert id="insertImg" parameterType="com.smhrd.domain.Toast">
 		insert into testupload
 		values (#{fileName}, #{FileRealName})
-			
-		
 	</insert>
 	
+	 -->
 	
 </mapper>

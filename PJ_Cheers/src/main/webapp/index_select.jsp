@@ -54,7 +54,7 @@
 				</td>
 
 				<!-- <td><button id='zzan'>게시글짠</button><span>${zzan}</span></td> -->
-
+			<
 				<td>
 					<form action="PostZzanCon">
 						<input type="hidden" name="member_id" value="${loginMember.id}"> 
@@ -62,6 +62,13 @@
 						<input type="submit" value="짠">
 					</form>
 					
+				</td>
+				<td>
+					<form action="ZzanCon">
+						<input type="hidden" name="member_id" value="${loginMember.id}"> 
+						<input type="hidden" name="toast_no" value="${p.toast_no}"> 
+						<input type="submit" value="짠">
+					</form>
 				</td>
 				<form class="toast_com_insert" method="post" action="AddCommentCon" align="right">
 					<td>
