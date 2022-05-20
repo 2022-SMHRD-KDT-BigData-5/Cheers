@@ -78,7 +78,7 @@
 				 -->
 				 
 				 <td>
-				 	<c:forEach>
+				 	
 				 	
 				 	</c:forEach>
 				 </td>
