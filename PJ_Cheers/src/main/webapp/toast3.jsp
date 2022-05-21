@@ -1,7 +1,20 @@
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.domain.ToastDAO"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8 "
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@page import="com.smhrd.domain.Member"%>
 <%@page import="com.smhrd.domain.Toast"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+//ToastDAO dao1 = new ToastDAO();
+//List<Toast> postList = dao1.selectPost();
+
+//pageContext.setAttribute("postList",postList);
+//String toast_no = request.getParameter("toast_no");
+//String contents = request.getParameter("contents");
+
+%>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -109,7 +122,8 @@
 		</div>
 	</header>
 	<!--End of header -->
-
+	
+							<c:set var="update" value="${list.update}" ></c:set>
 
 
 
@@ -128,18 +142,53 @@
 					<div>
 						<div class="main_service_area">
 							<div class="single_service_area"></div>
-							<form action="InsertPostCon">
+							
+							  <%
+							  String update = (String)pageContext.getAttribute("update");
+							  
+							  String t_file_path = request.getParameter("t_file_path_update");
+							  String t_file_name = request.getParameter("t_file_name_update");
+							  String toast_no_update = request.getParameter("toast_no_update");
+							  String contents = request.getParameter("contents_update");
+							  String img = t_file_path+"/"+t_file_name;
+							  
+							  System.out.println(t_file_path);
+							  System.out.println(t_file_name);
+							  System.out.println(t_file_path+"/"+t_file_name);
+							  System.out.println(toast_no_update);
+							  System.out.println(contents);
+							  System.out.println("toast3 프린트 끝");
+							  %>
+							  
+							<form action="UpdatePostCon"  enctype="multipart/form-data" method="post">
+							
+							<!-- 
+							<c:forEach var="u" items="${postlist}" > 
+							
+							
+							 <input type="hidden" id="toast_no1" value="${u.toast_no }"> 
+							 
+							 
+							 </c:forEach> 
+							  -->
+							  
+							  
 								<table width="100%" height="400px">
 									<tr style="height: 10px">
-										<td width="45%"><input type="file" id="image"
-											accept="image/*" onchange="setThumbnail(event);"></td>
+										<td width="45%">
+										
+											<img src="<%=img %>" alt="게시물이미지">
+											<input type="file" id="image" name= "upload_update" accept="image/*" onchange="setThumbnail(event);">
+											<input type="hidden" name="toast_no_update" value="<%=toast_no_update%>">
+										</td>
 										<td rowspan="2" align="center"><textarea cols="50"
-												rows="10" maxlength="500" placeholder="내용을 입력하세요."
-												style="border: none;"></textarea></td>
+												rows="10" maxlength="500" name="contents_update" placeholder="내용을 입력하세요."
+												style="border: none;"><%=contents %></textarea>
+												</td>
 									</tr>
 									<tr style="height: 200px">
 										<td align="center"><div id="image_container"></div>
-											<script> function setThumbnail(event) {
+												<script> function setThumbnail(event) {
                                                 var reader = new FileReader(); reader.onload = function (event) { var img = document.createElement("img"); img.setAttribute("src", event.target.result); document.querySelector("div#image_container").appendChild(img); }; reader.readAsDataURL(event.target.files[0]);
                                             } </script></td>
 									</tr>
@@ -152,11 +201,15 @@
 									<tr>
 										<td colspan="2" align="right"><div class="insert_btn"
 												align=right>
+												
 												<button type="button" style="border: none;">
-													<a href=완)toast1.html>게시물수정</a>
+													<input type="submit" value="게시물수정">
 												</button>
+												
 											</div></td>
+											
 									</tr>
+									
 								</table>
 							</form>
 						</div>

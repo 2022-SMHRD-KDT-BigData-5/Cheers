@@ -158,8 +158,59 @@
 						<div style="height: 30px;"></div>
 					</div>
 					<!-- End of head title -->
-
-
+               
+               <div class="insert_btn" align=right>
+                  <button type="button" style="border: none;">
+                     <a href=toast2.jsp>작성</a>
+                  </button>
+               </div>
+               <hr color='#c06c84'>
+               <div>
+                  <div class="main_service_area">
+                     <div class="single_service_area" align="center">
+                           <table width="100%">
+                             <tr>
+                                 <td align="right">
+								</td>
+							 </tr>
+							
+                              <tr>
+                                 <td align="left" width="45%">no.<c:out value="${p.toast_no}" /></td>
+                                 <td align="right"><button style="border:none; background-color: #fff;"><a href="toast3.jsp">수정</a></button><span> | </span><button style="border:none; background-color: #fff;"><a href="toast1.jsp">삭제</a></button></td>
+                              </tr>
+                              
+                              <tr>
+                                 <td colspan="2" align="right"><b><c:out value="${p.member_id}" /></b><span> | <c:out value="${p.toast_date}" /></span></td>
+                                 	<form action="toast3.jsp">
+										<input type="hidden" name="t_file_path_update" value='<c:out value="${p.t_file_path}" />'>  
+										<input type="hidden" name="t_file_name_update" value='<c:out value="${p.t_file_name}" />'>                                  		
+										<input type="hidden" name="toast_no_update" value="${p.toast_no}">
+										<input type="hidden" name="contents_update" value="${p.contents}">
+									    <input type="submit" value="수정">
+									</form>
+                              </tr>
+                              <tr>
+                                 <td style="height: 300px;" align="center"><img src='<c:out value="${p.t_file_path}/${p.t_file_name}" />' alt="게시물이미지"></td>
+                                 <td style="vertical-align: top; padding: 2%"><c:out value="${p.contents}" /></td>
+                              </tr>
+                           </table>
+                          
+                           
+                           <!-- 댓글 작성 및 조회 -->
+                           <p></p>
+                           <form class="toast_com_insert" method="post" action="AddCommentCon" align="right">
+                              <input type="text" name="tc_contents" placeholder="댓글을 작성해주세요." style="border: 5mm; width: 400px;">
+                              <input type="hidden" name="toast_no" value="${p.toast_no}">
+                              <input type="submit" value="등록" style="border: none;">
+                           
+                           </form>
+                           <details align="left">
+                           <!-- <input type="hidden" id="t_no" value="${p.toast_no}"> -->
+                           
+                           
+                             
+                             <summary id="context" style="color: brown; cursor: pointer;">♥ 댓글 ♥</summary>
+                           
 					<div class="insert_btn" align=right>
 						<button type="button" style="border: none;">
 							<a href=toast2.jsp>작성</a>
@@ -208,13 +259,12 @@
 
 									</form>
 									<details align="left">
-
+									
 										<!-- <input type="hidden" id="t_no" value="${p.toast_no}"> -->
 
 
 
-										<summary id="context" style="color: brown; cursor: pointer;">♥
-											댓글 ♥</summary>
+										<summary id="context" style="color: brown; cursor: pointer;">♥ 댓글 ♥</summary>
 										<%
                                 String toast_no="";
                               for(int i=0;i<postList.size();i++){
@@ -226,18 +276,34 @@
                                 
                                 
                              %>
-
+                              <c:forEach var="c" items="${commList}">
+                                <c:choose>
+                                    <c:when test="${p.toast_no eq c.toast_no}">
+                                    
+                                    <input type="hidden" id="t_no" value="${c.toast_no}">
+                                       <hr color='#c06c84'>
+                                       <table width="100%">
+                                          <tr>
+                                          
+                                             <td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
+                                             <td width="20%"><c:out value="${c.tc_date}" /><br><b><c:out value="${c.member_id}" /></b></td>
+                                             <td><span><c:out value="${c.tc_contents}" /></span></td>
+                                             <td width="7%" align="right" ><a href="#">수정</a></td>
+                                             <td width="7%" align="right" ><a href="DeleteCommentCon?tc_no=${c.tc_no} ">삭제</a></td>
+                                          </tr>
+                                       </table>
+                                    </c:when>
+                                 </c:choose>
+                                 
+                              </c:forEach>
 										<c:forEach var="c" items="${commList}">
 											<c:choose>
 												<c:when test="${p.toast_no eq c.toast_no}">
-
 													<input type="hidden" id="t_no" value="${c.toast_no}">
 													<hr color='#c06c84'>
 													<table width="100%">
 														<tr>
-
-															<td width="5%" align="center"><button
-																	style="border: none; background-color: white;">🥂</button></td>
+															<td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
 															<td width="20%"><c:out value="${c.tc_date}" /><br>
 															<b><c:out value="${c.member_id}" /></b></td>
 															<td><span><c:out value="${c.tc_contents}" /></span></td>
@@ -245,8 +311,7 @@
 																	<input type="hidden" name="tc_no" value="${c.tc_no}">
 																	<input type="hidden" name="tc_contents" value="${c.tc_contents}"> <input type="submit" value="댓글 수정"></form>
 															</td>
-															<td width="7%" align="right"><a
-																href="DeleteCommentCon?tc_no=${c.tc_no} ">삭제</a></td>
+															<td width="7%" align="right"><a href="DeleteCommentCon?tc_no=${c.tc_no} ">삭제</a></td>
 														</tr>
 													</table>
 												</c:when>
@@ -266,6 +331,7 @@
 				<!-- 게시물 끝 -->
 			</div>
 		</div>
+	
 	</section>
 
 
@@ -352,8 +418,10 @@
 	<!-- 클릭출력 테스트 -->
 	<script>
 	$(document).on("click", "#context", function(){ 
-        	console.log($(this).next().val());
-        		
+       	console.log($(this).next().val());
+    		
+    	
+    	
         	$.ajax({
         		data: {toast_no : $(this).next().val()},
         		url: "CountCommentCon",
@@ -368,8 +436,10 @@
     				alert("통신실패!")
     			} 
     		})     	
-        	
+    	
         });
+		
+		
         </script>
 
 	<!-- 동시출력 -->
