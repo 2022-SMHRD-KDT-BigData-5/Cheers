@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.domain.SotoDAO">
+	
+	<!-- 게시물 -->
+	<insert id="insertSoto" parameterType="com.smhrd.domain.soto">
+		insert into soto values (soto_no_seq.nextval ,#{member_id}, #{soto_contents}, sysdate)
+	</insert>
+	<select id="selectSoto" resultType="com.smhrd.domain.soto">
+		select *
+		from soto 
+		order by soto_no desc
+	</select>
+	<update id="updateSoto" parameterType="com.smhrd.domain.soto">
+		update soto set soto_contents = #{soto_contents}, soto_date = sysdate where soto_no = #{soto_no}
+	</update>
+	<delete id = "deleteSoto" parameterType="String">
+		delete from soto where soto_no = #{soto_no}
+	</delete>
+	
+	
+	<!-- 댓글 -->
+	<insert id="addSotoComment" parameterType="com.smhrd.domain.soto_com">
+        insert into soto_com values (sc_no_seq.nextval, #{soto_no}, #{member_id}, #{sc_contents}, 0, sysdate)
+    </insert>
+	<select id="selectSotoComment" parameterType="String" resultType="com.smhrd.domain.soto_com">
+		SELECT sc.sc_no, sc.soto_no, sc.member_id, sc.sc_contents, sc.sc_date
+		FROM soto s, soto_com sc
+		WHERE s.soto_no=sc.soto_no
+		AND s.soto_no=#{soto_no} 
+		ORDER BY sc.sc_no DESC
+	</select>
+	<delete id="deleteSotoComment" parameterType="String">
+		delete from soto_com where sc_no = #{sc_no}
+	</delete>
+	<update id="updateSotoComment" parameterType="com.smhrd.domain.soto_com">
+		update soto_com set sc_contents=#{sc_contents}, sc_date=sysdate where sc_no = #{sc_no}
+	</update>
+	
+</mapper>

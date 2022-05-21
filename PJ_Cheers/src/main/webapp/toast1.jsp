@@ -157,6 +157,7 @@
 						</h1>
 						<div style="height: 30px;"></div>
 					</div>
+					<!-- End of head title  -->
 					<!-- End of head title -->
                
                <div class="insert_btn" align=right>
@@ -211,6 +212,7 @@
                              
                              <summary id="context" style="color: brown; cursor: pointer;">♥ 댓글 ♥</summary>
                            
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-5/Cheers.git
 					<div class="insert_btn" align=right>
 						<button type="button" style="border: none;">
 							<a href=toast2.jsp>작성</a>
