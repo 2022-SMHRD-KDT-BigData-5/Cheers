@@ -6,54 +6,81 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.smhrd.domain.Member;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.smhrd.domain.ToastDAO;
+import com.smhrd.domain.Member;
 import com.smhrd.domain.Toast;
-import com.smhrd.domain.Toast_com;
 
 public class UpdatePostCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		
 		System.out.println("[UpdatePostCon]");
-		System.out.println(request.getParameter("toast_no"));
-		System.out.println(request.getParameter("contents"));
-//
-//		HttpSession session = request.getSession();
-//		Member loginMember = (Member) session.getAttribute("loginMember");
-//		String id = loginMember.getId();
-		
-	    BigDecimal toast_no = new BigDecimal(request.getParameter("toast_no"));
-	    
-		String contents = request.getParameter("contents");
-//		String tc_date = request.getParameter("tc_date");
-		
-		System.out.println(toast_no);
-		System.out.println(contents);
-		
-		Toast to_co = new Toast(toast_no, contents);
+
+		request.setCharacterEncoding("UTF-8");
+
+		MultipartRequest multi = null;
+		int maxSize = 1024 * 1024 * 10;
+		ServletContext scontext = getServletContext();
+		String path = "img";
+		String t_file_path = scontext.getRealPath(path);
+		System.out.println(t_file_path);
+		HttpSession session = request.getSession();
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		String member_id = loginMember.getId(); // 아이디!!!
+
+		try {
+			multi = new MultipartRequest(request, t_file_path, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("업뎃 번호:"+multi.getParameter("toast_no_update"));
+		System.out.println("업뎃 내용:"+multi.getParameter("contents_update"));
+		String t_file_name = multi.getOriginalFileName("upload_update");
+		String t_file_realname = multi.getFilesystemName("upload_update");
+		t_file_path="./img";
+		BigDecimal toast_no = new BigDecimal(multi.getParameter("toast_no_update"));
+		String contents = multi.getParameter("contents_update");
+		Toast toast = new Toast(toast_no, contents, t_file_path, t_file_name, t_file_realname);
+//		Timestamp toast_date = Timestamp.valueOf(request.getParameter("toast_date"));
+//		Toast t_vo = new Toast(toast_no, member_id, contents, toast_date);
+//		Toast upload = new Toast(t_file_path, t_file_name, t_file_server);
+//		System.out.println(t_file_path+ t_file_name+ t_file_server);
+		System.out.println(t_file_path);
+		System.out.println(t_file_name);
+		System.out.println(t_file_realname);
 
 		ToastDAO dao = new ToastDAO();
-		int cnt = dao.updatePost(to_co);
+		int cnt = dao.updatePost(toast);
 
 		if (cnt > 0) {
-			System.out.println("게시글 수정 성공");
-			// 수정된 값으로 loginMember 세션 값을 재설정
-//			session.setAttribute("loginMember", tc_co);
-			response.sendRedirect("index_select.jsp");
+			System.out.println("게시물 수정 성공-조회 페이지로");
+			response.sendRedirect("toast1.jsp");
+
 		} else {
-			System.out.println("게시글 수정 실패");
-			response.sendRedirect("updatePost.jsp");
+			System.out.println(contents);
+
+			System.out.println("게시물 수정 실패-수정 페이지로");
+			response.sendRedirect("toast3.jsp");
 		}
+		
+
+		
+		
+		
+		
+		
 
 	}
 
