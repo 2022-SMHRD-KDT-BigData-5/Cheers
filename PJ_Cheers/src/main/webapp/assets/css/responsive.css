@@ -51,8 +51,9 @@ Author URI: http://www.bootstrapthemes.co
     }
     .navbar-default .navbar-collapse, .navbar-default .navbar-form {
         border-color: #e7e7e7;
-        margin-top: 53px;
-        background: #ff0000;
+        /* 0521메뉴 버튼 클릭 후 간격*/
+        /* margin-top: 53px; */
+        background: #f5f5f5;
     }
     .menu-scroll .navbar-default .navbar-collapse, .navbar-default .navbar-form {
         margin-top: 12px;

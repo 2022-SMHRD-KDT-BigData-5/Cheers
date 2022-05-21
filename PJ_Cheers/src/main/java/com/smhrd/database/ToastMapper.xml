@@ -7,11 +7,22 @@
 	<insert id="insertPost" parameterType="com.smhrd.domain.Toast">
 		insert into toast values (toast_no_seq.nextval ,#{member_id}, #{contents}, sysdate ,#{t_file_path},#{t_file_name},#{t_file_realname})
 	</insert>
-	<select id="selectPost" resultType="com.smhrd.domain.Toast">
+
+<!-- 	<select id="selectPost" resultType="com.smhrd.domain.Toast">
+		select t.toast_no,
+		t.member_id, m.member_nick, t.toast_contents, t.toast_no,
+		t.t_file_path, t.t_file_name, t.t_file_realname
+		from toast t, member m
+		where t.member_id = m.member_id
+		order by t.toast_no desc
+	</select> -->
+	
+ 	<select id="selectPost" resultType="com.smhrd.domain.Toast">
 		select *
 		from toast 
 		order by toast_no desc
-	</select>
+	</select> 
+	
 	<delete id = "deletePost" parameterType="String">
 		delete from toast where toast_no = #{toast_no}
 	

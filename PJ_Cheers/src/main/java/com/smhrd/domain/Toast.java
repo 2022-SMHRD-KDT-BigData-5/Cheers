@@ -16,10 +16,9 @@ public class Toast {
 	private String t_file_path;
 	private String t_file_name;
 	private String t_file_realname;
+	
+	
 
-	
-	
-	
 	public Toast(BigDecimal toast_no, String contents, String t_file_name) {
 		super();
 		this.toast_no = toast_no;
@@ -81,6 +80,8 @@ public class Toast {
 		this.t_file_name = t_file_name;
 		this.t_file_realname = t_file_realname;
 	}
+
+	
 
 	public String getT_file_path() {
 		return t_file_path;

@@ -142,24 +142,41 @@
                     <div class="join">
                         <form action="JoinCon" method="post">
                             <table class="join_table" align="center">
-                                <tr style="height: 30px;">
+                                <tr>
                                     <td class="table_name"style="width: 80px;" align="center">email</td>
+                                    <td style="width: 10px;"></td>
                                     <td><input type="text" name="id" id="email" placeholder="email을 입력하세요" style="border:none;"></td>
+                                    <td></td>
                                 </tr>
-                                <tr style="height:20px;vertical-align: top;" >
-                                    <td class="table_name"></td>
-                                    <td><b ><span id="check" style="font-size: small;"></span></b></td>
+                                <tr>
+                                    <td><input type="button" value="중복체크" style="border: none;" ></td>
+                                    <td></td>
+                                    <td><span id="check"></span></td>
+                                    <td></td>
                                 </tr>
-                                <tr style="height: 30px;">
+                                <tr>
                                     <td class="table_name">pw</td>
+                                    <td></td>
                                     <td><input type="password" name="pw" placeholder="pw를 입력하세요" style="border:none;" ></td>
+                                    <td></td>
                                 </tr>
-                                <tr style="height: 60px;">
+                                <tr>
                                     <td class="table_name">닉네임</td>
+                                    <td></td>
                                     <td><input type="text" name="nick" placeholder="닉네임을 입력하세요" style="border:none;"></td>
+                                    <td></td>
                                 </tr>
-                                <tr style="height: 30px;">
-                                    <td class="table_name" colspan="2"><input type="submit" id="id_submit" value="회원가입" class="button fit" style="border:none;"></td>
+                                <tr>
+                                    <td class="table_name" colspan="3" rowspan="2"><input type="submit" id="id_submit" value="회원가입" class="button fit" style="border:none;"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </table>
                         </form>
