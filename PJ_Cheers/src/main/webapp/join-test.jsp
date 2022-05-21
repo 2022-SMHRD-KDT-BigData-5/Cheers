@@ -149,7 +149,7 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="table_name">중복체크</td>
+                                    <td><input type="button" value="중복체크" style="border: none;" ></td>
                                     <td></td>
                                     <td><span id="check"></span></td>
                                     <td></td>
