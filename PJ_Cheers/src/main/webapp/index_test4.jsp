@@ -115,13 +115,12 @@
 										</c:choose>
 									</ul>
 
-
-								</div>
+<br>
+								<!-- </div>
 
 								<div class="collapse navbar-collapse"
-									id="bs-example-navbar-collapse-1">
-									<ul class="nav navbar-nav navbar-right">
-
+									id="bs-example-navbar-collapse-1"> -->
+									<ul class="nav navbar-nav navbar-right">									
 										<li><a href="aboutus.html">about us</a></li>
 										<li><a href="recipe_home.jsp">마셔볼래</a></li>
 										<li><a href="toast1.jsp">같이마실래?</a></li>
