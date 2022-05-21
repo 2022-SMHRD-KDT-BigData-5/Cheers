@@ -171,7 +171,26 @@
 							<div class="single_service_area" align="center">
 								<c:forEach var="p" items="${postList}">
 									<table width="100%">
+										<!-- 추천 기능 -->
+		<div>
+			<div class="w3-border w3-center w3-padding">
+				<c:if test="${ p.member_id == null }">
+					추천 기능은 <button type="button" id="newLogin"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br />
+					<i class="fa fa-heart" style="font-size:16px;color:red"></i>
+					<span class="rec_count"></span>					
+				</c:if>
+				<c:if test="${ p.member_id != null }">
+					<button class="w3-button w3-black w3-round" id="rec_update">
+						<i class="fa fa-heart" style="font-size:16px;color:red"></i>
+						&nbsp;<span class="rec_count"></span>
+					</button> 
+				</c:if>
+			</div>
+		</div>
+										
+										
 										<tr>
+										
 											<td align="left" width="45%">no.<c:out
 													value="${p.toast_no}" /></td>
 											<td align="right"><button
@@ -372,6 +391,39 @@
         });
         </script>
 
+<script>
+$(function(){
+	// 추천버튼 클릭시(추천 추가 또는 추천 제거)
+	$("#rec_update").click(function(){
+		$.ajax({
+			url: "PostZzanCon",
+            type: "POST",
+            data: {
+                no: ${p.toast_no},
+                id: '${p.member_id}'
+            },
+            success: function () {
+		        recCount();
+            },
+		})
+	})
+	
+	// 게시글 추천수
+    function recCount() {
+		$.ajax({
+			url: "",
+            type: "POST",
+            data: {
+                no: ${p.toast_no}
+            },
+            success: function (count) {
+            	$(".rec_count").html(count);
+            },
+		})
+    };
+    recCount(); // 처음 시작했을 때 실행되도록 해당 함수 호출
+
+</script>
 	<!-- 동시출력 -->
 	<!--   <script type="text/javascript"> 
 
