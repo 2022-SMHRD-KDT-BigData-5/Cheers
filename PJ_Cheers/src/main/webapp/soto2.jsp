@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8 "
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@page import="com.smhrd.domain.Member"%>
-<%@page import="com.smhrd.domain.Toast"%>
+<%@page import="com.smhrd.domain.Soto"%>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -111,38 +111,27 @@
 	<!--End of header -->
 
 
-
-
-	<!-- Service Section -->
-	<section id="service" class="service sections margin-top-120">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="head_title text-center">
-						<h1>
-							<a href="toast1.jsp">같이마실래?</a>
-						</h1>
-						<div style="height: 30px;"></div>
-					</div>
-					<!-- End of head title -->
-					<div>
-						<div class="main_service_area">
-							<div class="single_service_area"></div>
-							<form action="InsertPostCon" enctype="multipart/form-data" method="post">
-								<table width="100%" height="400px">
+    <!-- Service Section -->
+    <section id="service" class="service sections margin-top-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="head_title text-center">
+                        <h1><a href="soto1.jsp">같이볼래?</a></h1>
+                        <div style="height: 30px;"></div>
+                    </div><!-- End of head title -->
+                    <div>
+                        <div class="main_service_area">
+                            <div class="single_service_area">
+                                <!-- 매칭 게시물 입력창 -->
+                                <form action="UpdateSotoCon" method="post" ">
+								<table width="100%" height="400px" class="update_table">
 									<tr style="height: 10px">
-										<td width="45%"><input type="file" name= "upload" id="image"
-											accept="image/*" onchange="setThumbnail(event);"></td>
-										<td rowspan="2" align="center"><textarea cols="50"
+										
+										<td align="center"><textarea cols="50"
 												rows="10" maxlength="500" name="contents" placeholder="내용을 입력하세요."
 												style="border: none;"></textarea>
 										</td>
-									</tr>
-									<tr style="height: 200px">
-										<td align="center"><div id="image_container"></div>
-											<script> function setThumbnail(event) {
-                                                var reader = new FileReader(); reader.onload = function (event) { var img = document.createElement("img"); img.setAttribute("src", event.target.result); document.querySelector("div#image_container").appendChild(img); }; reader.readAsDataURL(event.target.files[0]);
-                                            } </script></td>
 									</tr>
 									<tr>
 										<td colspan="2" align="right"><p class="textCount"
@@ -153,71 +142,64 @@
 									<tr>
 										<td colspan="2" align="right"><div class="insert_btn"
 												align=right>
-												<button type="button" style="border: none;">
-												<input type="submit" value="등록">
-												</button>
+												<input type="submit" value="등록" style="border: none; background-color:white;">
 											</div></td>
 									</tr>
 								</table>
 							</form>
-						</div>
-						<!-- End of single service area -->
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
-	</section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
 
 
-	<!-- footer Section -->
-	<footer id="footer" class="footer">
-		<div class="container">
-			<div class="main_footer">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="copyright_text text-center">
-							<p class=" wow fadeInRight" data-wow-duration="1s">
-								Made with <i class="fa fa-heart"></i> by <a target="_blank"
-									href="http://bootstrapthemes.co">Bootstrap Themes</a>2016. All
-								Rights Reserved
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End of container -->
-	</footer>
-	<!-- End of footer -->
+    <!-- footer Section -->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="main_footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="copyright_text text-center">
+                            <p class=" wow fadeInRight" data-wow-duration="1s">Made with <i class="fa fa-heart"></i> by
+                                <a target="_blank" href="http://bootstrapthemes.co">Bootstrap Themes</a>2016. All Rights
+                                Reserved
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End of container -->
+    </footer><!-- End of footer -->
 
 
 
-	<!-- START SCROLL TO TOP  -->
+    <!-- START SCROLL TO TOP  -->
 
-	<div class="scrollup">
-		<a href="#"><i class="fa fa-chevron-up"></i></a>
-	</div>
+    <div class="scrollup">
+        <a href="#"><i class="fa fa-chevron-up"></i></a>
+    </div>
 
 
-	<!-- jQuery -->
-	<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+    <!-- jQuery -->
+    <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
 
-	<!-- jQuery Bootstrap js  -->
-	<script src="assets/js/vendor/bootstrap.min.js"></script>
+    <!-- jQuery Bootstrap js  -->
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
 
-	<!-- jQuery easing js  -->
-	<script src="assets/js/jquery.easing.1.3.js"></script>
+    <!-- jQuery easing js  -->
+    <script src="assets/js/jquery.easing.1.3.js"></script>
 
-	<!-- jQuery masonry js  -->
-	<script src="assets/js/masonry/masonry.min.js"></script>
-	<script type="text/javascript">
+    <!-- jQuery masonry js  -->
+    <script src="assets/js/masonry/masonry.min.js"></script>
+    <script type="text/javascript">
         $('.mixcontent').masonry();
     </script>
 
-	<!-- jQuery Mixitup  -->
-	<script src="assets/js/jquery.mixitup.min.js"></script>
-	<script type="text/javascript">
+    <!-- jQuery Mixitup  -->
+    <script src="assets/js/jquery.mixitup.min.js"></script>
+    <script type="text/javascript">
 //            jQuery('#').mixItUp({
 //                selectors: {
 //                    target: '.tile',
@@ -235,11 +217,12 @@
 
 
 
-	<!-- jQuery plugins  -->
-	<script src="assets/js/plugins.js"></script>
+    <!-- jQuery plugins  -->
+    <script src="assets/js/plugins.js"></script>
 
-	<!-- jQuery Main js  -->
-	<script src="assets/js/main.js"></script>
+    <!-- jQuery Main js  -->
+    <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>

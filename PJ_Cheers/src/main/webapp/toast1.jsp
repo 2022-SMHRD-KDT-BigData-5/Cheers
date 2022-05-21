@@ -157,7 +157,7 @@
 						</h1>
 						<div style="height: 30px;"></div>
 					</div>
-					<!-- End of head title -->
+					<!-- End of head title  -->
 
 
 					<div class="insert_btn" align=right>
