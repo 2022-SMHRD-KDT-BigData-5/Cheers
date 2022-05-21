@@ -14,10 +14,15 @@
 	</select>
 	<delete id = "deletePost" parameterType="String">
 		delete from toast where toast_no = #{toast_no}
+	
+	<!-- 게시글 수정 -->	
 	</delete>
 	<update id="updatePost" parameterType="com.smhrd.domain.Toast">
-		update toast set toast_contents = #{contents}, toast_date = sysdate where toast_no = #{toast_no}
+		update toast 
+		set toast_contents = #{contents}, toast_date = sysdate , t_file_path = #{t_file_path}, t_file_name=#{t_file_name}, t_file_realname=#{t_file_realname} 
+		where toast_no = #{toast_no} 
 	</update>
+	
 	
 	<!-- 댓글 -->
 	<insert id="addComment" parameterType="com.smhrd.domain.Toast_com">

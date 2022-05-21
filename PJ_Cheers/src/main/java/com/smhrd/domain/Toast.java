@@ -20,6 +20,13 @@ public class Toast {
 	
 	
 	
+	public Toast(BigDecimal toast_no, String contents, String t_file_name) {
+		super();
+		this.toast_no = toast_no;
+		this.contents = contents;
+		this.t_file_name = t_file_name;
+	}
+
 	public Toast(BigDecimal toast_no, String member_id) {
 		super();
 		this.toast_no = toast_no;
@@ -41,6 +48,15 @@ public class Toast {
 	}
 	
 	
+
+	public Toast(BigDecimal toast_no, String contents, String t_file_path, String t_file_name, String t_file_realname) {
+		super();
+		this.toast_no = toast_no;
+		this.contents = contents;
+		this.t_file_path = t_file_path;
+		this.t_file_name = t_file_name;
+		this.t_file_realname = t_file_realname;
+	}
 
 	public Toast(String member_id, String contents, String t_file_path, String t_file_name, String t_file_realname) {
 		super();

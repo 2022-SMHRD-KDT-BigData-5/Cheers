@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8 "
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@page import="com.smhrd.domain.Member"%>
@@ -13,9 +14,16 @@
 <%
 	String toast_no = request.getParameter("toast_no");
 	String contents = request.getParameter("contents");
+	String t_file_path = request.getParameter("t_file_path");
+	String t_file_name = request.getParameter("t_file_name");
+	String t_file_realname=request.getParameter("t_file_realname");
 	System.out.println(toast_no);
 	System.out.println(contents);
+	System.out.println(t_file_path);
+	System.out.println(t_file_name);
+	System.out.println(t_file_realname);
 	%>
+	
 	<form action="UpdatePostCon" method="post">
 		<table class="update_table" align="center">
 		<tr>

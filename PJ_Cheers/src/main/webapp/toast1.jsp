@@ -170,12 +170,25 @@
                      <div class="single_service_area" align="center">
                         <c:forEach var="p" items="${postList}">
                            <table width="100%">
+                             <tr>
+                                 <td align="right">
+								</td>
+							 </tr>
+							
                               <tr>
                                  <td align="left" width="45%">no.<c:out value="${p.toast_no}" /></td>
                                  <td align="right"><button style="border:none; background-color: #fff;"><a href="toast3.jsp">수정</a></button><span> | </span><button style="border:none; background-color: #fff;"><a href="toast1.jsp">삭제</a></button></td>
                               </tr>
+                              
                               <tr>
                                  <td colspan="2" align="right"><b><c:out value="${p.member_id}" /></b><span> | <c:out value="${p.toast_date}" /></span></td>
+                                 	<form action="toast3.jsp">
+										<input type="hidden" name="t_file_path_update" value='<c:out value="${p.t_file_path}" />'>  
+										<input type="hidden" name="t_file_name_update" value='<c:out value="${p.t_file_name}" />'>                                  		
+										<input type="hidden" name="toast_no_update" value="${p.toast_no}">
+										<input type="hidden" name="contents_update" value="${p.contents}">
+									    <input type="submit" value="수정">
+									</form>
                               </tr>
                               <tr>
                                  <td style="height: 300px;" align="center"><img src='<c:out value="${p.t_file_path}/${p.t_file_name}" />' alt="게시물이미지"></td>
@@ -198,8 +211,9 @@
                            
                              
                              <summary id="context" style="color: brown; cursor: pointer;">♥ 댓글 ♥</summary>
+                           
                                 <%
-                                String toast_no="";
+                                String toast_no;
                               for(int i=0;i<postList.size();i++){
                                  toast_no = postList.get(i).getToast_no().toString();
             
@@ -209,7 +223,9 @@
                                 
                                 
                              %>
-                       
+                             
+                       		
+                             
                               <c:forEach var="c" items="${commList}">
                                 <c:choose>
                                     <c:when test="${p.toast_no eq c.toast_no}">
@@ -228,6 +244,7 @@
                                        </table>
                                     </c:when>
                                  </c:choose>
+                                 
                               </c:forEach>
                               <%
                               }
@@ -329,8 +346,10 @@
 <!-- 클릭출력 테스트 -->
 	<script>
 	$(document).on("click", "#context", function(){ 
-        	console.log($(this).next().val());
-        		
+       	console.log($(this).next().val());
+    		
+    	
+    	
         	$.ajax({
         		data: {toast_no : $(this).next().val()},
         		url: "CountCommentCon",
@@ -345,8 +364,10 @@
     				alert("통신실패!")
     			} 
     		})     	
-        	
+    	
         });
+		
+		
         </script>
 
 	<!-- 동시출력 -->   
