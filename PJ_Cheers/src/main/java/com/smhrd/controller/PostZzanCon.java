@@ -41,6 +41,18 @@ public class PostZzanCon extends HttpServlet {
 	    ToastDAO dao = new ToastDAO();
 		dao.updateZzan(toast_no, status);
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 //		int zzan = dao.getZzan(toast_no);
 
 		
