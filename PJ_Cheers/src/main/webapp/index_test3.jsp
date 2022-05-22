@@ -66,7 +66,8 @@
 										data-target="#bs-example-navbar-collapse-member"
 										aria-expanded="false">♥</button>
 									<!--동적일반메뉴 -->
-									<button type="button" class="navbar-toggle collapsed"
+									<button type="button" class="navbar-toggle collapsed" 
+										id = "menu_test" 
 										data-toggle="collapse"
 										data-target="#bs-example-navbar-collapse-1"
 										aria-expanded="false">
@@ -266,6 +267,18 @@
 	</script>
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
+	
+	<script>
+	$(document).ready(function() {
+		
+		$("#menu_test").click(function() {
+				
+				$("#bs-example-navbar-collapse-1").toggleClass('hidden');
+				$("#bs-example-navbar-collapse-member").toggleClass('hidden');
+				)};
+	});
+	</script>
+	
 
 </body>
 </html>
