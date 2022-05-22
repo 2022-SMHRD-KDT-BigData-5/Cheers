@@ -118,6 +118,42 @@
   	<description></description>
   	<servlet-class>com.smhrd.controller.UpdatePostCon</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddSotoCommentCon</servlet-name>
+  	<display-name>AddSotoCommentCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.AddSotoCommentCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddSotoCon</servlet-name>
+  	<display-name>AddSotoCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.AddSotoCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DeleteSotoCommentCon</servlet-name>
+  	<display-name>DeleteSotoCommentCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.DeleteSotoCommentCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DeleteSotoCon</servlet-name>
+  	<display-name>DeleteSotoCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.DeleteSotoCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UpdateSotoCommentCon</servlet-name>
+  	<display-name>UpdateSotoCommentCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.UpdateSotoCommentCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UpdateSotoCon</servlet-name>
+  	<display-name>UpdateSotoCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.UpdateSotoCon</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>JoinCon</servlet-name>
   	<url-pattern>/JoinCon</url-pattern>
@@ -193,5 +229,29 @@
   <servlet-mapping>
   	<servlet-name>UpdatePostCon</servlet-name>
   	<url-pattern>/UpdatePostCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddSotoCommentCon</servlet-name>
+  	<url-pattern>/AddSotoCommentCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddSotoCon</servlet-name>
+  	<url-pattern>/AddSotoCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteSotoCommentCon</servlet-name>
+  	<url-pattern>/DeleteSotoCommentCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteSotoCon</servlet-name>
+  	<url-pattern>/DeleteSotoCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateSotoCommentCon</servlet-name>
+  	<url-pattern>/UpdateSotoCommentCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateSotoCon</servlet-name>
+  	<url-pattern>/UpdateSotoCon</url-pattern>
   </servlet-mapping>
 </web-app>
