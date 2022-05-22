@@ -185,7 +185,7 @@
                                     </button>
                                     <span> | </span>
                                  <button style="border: none; background-color: #fff;">
-                                       <a href="toast1.jsp">삭제</a>
+                                       <a href="DeleteCon?toast_no=${p.toast_no}">삭제</a>
                                     </button></td>
                               </tr>
                               <tr>
@@ -230,26 +230,7 @@
                                 
                                 
                              %>
-                              <c:forEach var="c" items="${commList}">
-                                <c:choose>
-                                    <c:when test="${p.toast_no eq c.toast_no}">
-                                    
-                                    <input type="hidden" id="t_no" value="${c.toast_no}">
-                                       <hr color='#c06c84'>
-                                       <table width="100%">
-                                          <tr>
-                                          
-                                             <td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
-                                             <td width="20%"><c:out value="${c.tc_date}" /><br><b><c:out value="${c.member_id}" /></b></td>
-                                             <td><span><c:out value="${c.tc_contents}" /></span></td>
-                                             <td width="7%" align="right" ><a href="#">수정</a></td>
-                                             <td width="7%" align="right" ><a href="DeleteCommentCon?tc_no=${c.tc_no} ">삭제</a></td>
-                                          </tr>
-                                       </table>
-                                    </c:when>
-                                 </c:choose>
-                                 
-                              </c:forEach>
+                             
                               <c:forEach var="c" items="${commList}">
                                  <c:choose>
                                     <c:when test="${p.toast_no eq c.toast_no}">

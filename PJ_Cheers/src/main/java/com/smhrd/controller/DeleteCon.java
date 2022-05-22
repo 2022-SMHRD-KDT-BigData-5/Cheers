@@ -13,7 +13,8 @@ public class DeleteCon extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		System.out.println("[DeleteCon]");
 		request.setCharacterEncoding("UTF-8");
 
 		String toast_no = request.getParameter("toast_no");
@@ -26,7 +27,7 @@ public class DeleteCon extends HttpServlet {
 		} else {
 			System.out.println("게시물 삭제 실패");
 		}
-		response.sendRedirect("index_select.jsp");
+		response.sendRedirect("toast1.jsp");
 
 	}
 
