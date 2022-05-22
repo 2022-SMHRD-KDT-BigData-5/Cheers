@@ -120,6 +120,7 @@
 										<li><a href="toast1.jsp">같이마실래?</a></li>
 										<li><a href="soto1.jsp">같이볼래?</a></li>
 										<li><a href="contact.html">contact</a></li>
+								
 									</ul>
 								</div>
 							</div>
