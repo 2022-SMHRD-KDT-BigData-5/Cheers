@@ -17,7 +17,7 @@ public class SotoDAO {
 	public int insertSoto(Soto soto) {
 
 		int cnt = 0;
-		int cnt2 = 0;
+		
 
 		try {
 			cnt = sqlSession.insert("com.smhrd.domain.SotoDAO.insertSoto", soto);

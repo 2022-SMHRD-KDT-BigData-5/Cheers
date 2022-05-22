@@ -22,8 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	<mapper resource = "com/smhrd/database/UploadMapper.xml"/> 	
     	<mapper resource = "com/smhrd/database/RecipeMapper.xml" />
     	<mapper resource = "com/smhrd/database/FavoritesMapper.xml" />
-
-
+		<mapper resource = "com/smhrd/database/SotoMapper.xml" />
+		
     </mappers>
  
 </configuration>

@@ -76,8 +76,7 @@
 											class="icon-bar"></span> <span class="icon-bar"></span> <span
 											class="icon-bar"></span>
 									</button>
-									<a class="navbar-brand" href="index_test.jsp"> <img
-										src="assets/images/logo.png" />
+									<a class="navbar-brand" href="index_test.jsp"> <img src="assets/images/logo.png" />
 									</a>
 								</div>
 
@@ -124,12 +123,12 @@
                         <div class="main_service_area">
                             <div class="single_service_area">
                                 <!-- 매칭 게시물 입력창 -->
-                                <form action="UpdateSotoCon" method="post" ">
-								<table width="100%" height="400px" class="update_table">
+                                <form action="AddSotoCon" method="post" ">
+								<table width="100%" height="400px" class="insert_table">
 									<tr style="height: 10px">
 										
 										<td align="center"><textarea cols="50"
-												rows="10" maxlength="500" name="contents" placeholder="내용을 입력하세요."
+												rows="10" maxlength="500" name="sc_contents" placeholder="내용을 입력하세요."
 												style="border: none;"></textarea>
 										</td>
 									</tr>
