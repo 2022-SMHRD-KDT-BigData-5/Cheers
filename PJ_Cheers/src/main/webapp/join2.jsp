@@ -111,11 +111,11 @@
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
 
-										<li><a href="aboutus.html">about us</a></li>
+										<li><a href="aboutus.jsp">슬기로운혼술생활</a></li>
 										<li><a href="recipe_home.jsp">마셔볼래</a></li>
 										<li><a href="toast1.jsp">같이마실래?</a></li>
 										<li><a href="soto1.jsp">같이볼래?</a></li>
-										<li><a href="contact.html">contact</a></li>
+										<li><a href="contact.jsp">contact</a></li>
 									</ul>
 								</div>
 							</div>
@@ -135,7 +135,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="head_title text-center">
-                        <h1>join</h1>
+                        <h1>JOIN</h1>
                     </div><!-- End of head title -->
                     <div class="join_note"></div>
                     <!-- join -->
@@ -143,7 +143,7 @@
                         <form action="JoinCon" method="post">
                             <table class="join_table" align="center">
                                 <tr style="height: 30px;">
-                                    <td class="table_name"style="width: 80px;" align="center">email</td>
+                                    <td class="table_name"style="width: 80px;" >email</td>
                                     <td><input type="text" name="id" id="email" placeholder="email을 입력하세요" style="border:none;"></td>
                                 </tr>
                                 <tr style="height:20px;vertical-align: top;" >
