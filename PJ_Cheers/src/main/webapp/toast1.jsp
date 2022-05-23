@@ -163,21 +163,22 @@
                      <a href=toast2.jsp style="color:white;">작성</a>
                   </button>
                </div>
-               <hr color='#c06c84'>
                <div>
                   <div class="main_service_area">
                      <div class="single_service_area" align="center">
                         <c:forEach var="p" items="${postList}">
-                           <table width="100%" >
-                              <tr>
+                        <hr style="border:0px; border-top:2px dashed ">
+                           <table width="100%">
+                           <tr>
                                  <td align="left" width="45%">no.<c:out value="${p.toast_no}" /></td>
-                                 <td align="right"><button style="border: none; background-color: #fff;">
+                                 <td align="right">
+                                 <button style="border: none; background-color: #fff;">
                                        	<form action="toast3.jsp">
 											<input type="hidden" name="t_file_path_update" value='<c:out value="${p.t_file_path}" />'>  
 											<input type="hidden" name="t_file_name_update" value='<c:out value="${p.t_file_name}" />'>                                  		
 											<input type="hidden" name="toast_no_update" value="${p.toast_no}">
 											<input type="hidden" name="contents_update" value="${p.contents}">
-									   		<input type="submit" value="수정">
+									   		<input type="submit" value="수정" style="border:none; background:white; color:black;">
 										</form>
                                        <!-- <a href="toast3.jsp">수정</a> -->
                                     </button>
@@ -196,7 +197,7 @@
                                  <td style="vertical-align: top; padding: 2%"><c:out value="${p.contents}" /></td>
                               </tr>
                               <tr>
-                              <td></td>
+                              <td colspan="2" align="center"> (랜선짠 공간) </td>
                               </tr>
                            </table>
 
@@ -234,14 +235,12 @@
                                     <c:when test="${p.toast_no eq c.toast_no}">
                                        <input type="hidden" id="t_no" value="${c.toast_no}">
                                        <hr color='#c06c84'>
-                                       <table width="100%" border="1px soild">
+                                       <table width="100%">
                                           <tr>
                                              <td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
                                              <td width="20%"><c:out value="${c.tc_date}" /><br>
                                              <b><c:out value="${c.member_id}" /></b></td>
                                              <td><span><c:out value="${c.tc_contents}" /></span></td>
-                                             <td width="7%" align="right">
-                                             </td>
                                              <td width="7%" align="right">
                                              
                                              <!-- 댓글 수정 현재 페이지에서 구현 -->
@@ -254,7 +253,7 @@
                                                <form method="post" >
                                                	<input type="hidden" name="tc_no" value="${c.tc_no}">
                                                	<input type="hidden" name="tc_contents" value="${c.tc_contents}">
-                                               	<button id="update_comment" style="border: none; background-color: white;" >수정</button>
+                                               	<button id="update_comment" style="border: none; background-color: white;">수정</button>
                                                	
                                                </form>
                                                
@@ -278,7 +277,6 @@
                               %>
                            </details>
                            <p></p>
-                           <hr color='#c06c84'>
                         </c:forEach>
                      </div>
                   </div>

@@ -165,21 +165,19 @@ button {
 						<h1>
 							<a href="soto1.jsp">같이볼래?</a>
 						</h1>
-						<div style="height: 30px;"></div>
 					</div>
 					<!-- End of head title -->
 					<div class="Category_area">
 						<div class="single_service_area">
 							<div class="base_btn">
 								<!-- 상단 카테고리 -->
-								<div class="base_controls">
-									<button type="button" class="base_soju">
-										<a href="https://www.teleparty.com">넷플릭스</a>
-									</button>
-									<button type="button" class="base_macju">
-										<a href="#">왓챠</a>
-									</button>
+								<div class="base_controls" align="center">
+									<a href="https://www.teleparty.com"><img src="assets/images/넷플릭스.jpg" alt="넷플릭스" style="width: 10%; border-radius: 40px;"></a>
+									<a href="recipe_macju.html"><img src="assets/images/왓챠.jpg" alt="왓챠" style="width: 10%; border-radius: 40px;"></a>
+									<div style="height: 60px;">
+								</div>
 									<div align=right>
+									<div style="height: 30px;"></div>
 										<button type="button" class="insert_btn" >
 											<a href=soto2.jsp style="color:white;">작성</a>
 										</button>
@@ -189,18 +187,14 @@ button {
 						</div>
 					</div>
 					<div>
-						<hr color='#c06c84'>
 						<div class="main_service_area">
 							<div class="single_service_area" align="center">
 								<c:forEach var="s" items="${SotoList}">
-
+								<hr style="border:0px; border-top:2px dashed ">
 									<table width="100%">
 										<tr>
-
-											<td align="left" width="45%">no.<c:out
-													value="${s.soto_no}" /></td>
-											<td align="right"><button
-													style="border: none; background-color: #fff;">
+											<td align="left" width="45%">no.<c:out value="${s.soto_no}"/></td>
+											<td align="right"><button style="border: none; background-color: #fff;">
 													<a href="UpdateSotoCon?soto_no=${s.soto_no} ">수정</a>
 												</button> <span> | </span>
 												<button style="border: none; background-color: #fff;">
@@ -221,10 +215,9 @@ button {
 									<p></p>
 									<form class="soto_com_insert" method="post"
 										action="AddSotoCommentCon" align="right">
-										<input type="text" name="sc_contents"
-											placeholder="댓글을 작성해주세요." style="border: 5mm; width: 400px;">
+										<input type="text" name="sc_contents" placeholder="댓글을 작성해주세요." style="border: 5mm; width: 400px;">
 										<input type="hidden" name="soto_no" value="${s.soto_no}">
-										<input type="submit" value="등록" style="border: none;">
+										<input type="submit" value="등록" style="border:none;">
 									</form>
 									<details align="left">
 										<summary style="color: brown; cursor: pointer;">♥ 댓글
@@ -244,8 +237,7 @@ button {
 													<hr color='#c06c84'>
 													<table width="100%">
 														<tr>
-															<td width="5%" align="center"><button
-																	style="border: none; background-color: white;">🥂</button></td>
+															<td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
 															<td width="20%"><c:out value="${d.sc_date}" /><br>
 																<b><c:out value="${d.member_id}" /></b></td>
 															<td><span><c:out value="${d.sc_contents}" /></span></td>
@@ -261,7 +253,6 @@ button {
                               %>
 									</details>
 									<p></p>
-									<hr color='#c06c84'>
 								</c:forEach>
 							</div>
 						</div>
