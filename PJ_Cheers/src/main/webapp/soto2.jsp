@@ -125,7 +125,7 @@
                                 <form action="AddSotoCon" method="post">
 								<table width="100%" height="400px" class="insert_table">
 									<tr style="height: 10px">
-										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"></textarea></div>
+										<td align="center"><div class="toast_box"><textarea id="wr" name="sc_contents" cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"></textarea></div>
 										</td>
 									</tr>
 									<tr>
@@ -137,7 +137,7 @@
 												<input type="submit" value="등록" style="color:white;" class="insert_btn"></td>
 									</tr>
 								</table>
-							</form>
+								</form>
                             </div>
                         </div>
                     </div>
