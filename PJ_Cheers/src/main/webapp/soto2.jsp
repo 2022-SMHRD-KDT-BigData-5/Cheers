@@ -123,7 +123,7 @@
                         <div class="main_service_area">
                             <div class="single_service_area">
                                 <!-- 매칭 게시물 입력창 -->
-                                <form action="AddSotoCon" method="post" ">
+                                <form action="AddSotoCon" method="post">
 								<table width="100%" height="400px" class="insert_table">
 									<tr style="height: 10px">
 										

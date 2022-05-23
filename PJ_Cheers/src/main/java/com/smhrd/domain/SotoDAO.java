@@ -37,7 +37,8 @@ public class SotoDAO {
 
 	// 전체 게시물 조회
 	public List<Soto> selectSoto() {
-
+		
+		System.out.println("[selectSoto]");
 		List<Soto> SotoList = null;
 
 		try {

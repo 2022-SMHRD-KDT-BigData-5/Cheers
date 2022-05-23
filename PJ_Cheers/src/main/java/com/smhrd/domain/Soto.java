@@ -13,6 +13,8 @@ public class Soto {
 		private Timestamp soto_date;	//작성일자
 		private ArrayList<Soto_com> sc;
 		
+		public Soto() {}
+		
 		public Soto(BigDecimal soto_no, String member_id) {
 			super();
 			this.soto_no = soto_no;

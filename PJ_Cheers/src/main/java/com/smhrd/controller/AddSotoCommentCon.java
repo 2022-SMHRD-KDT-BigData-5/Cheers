@@ -29,7 +29,10 @@ public class AddSotoCommentCon extends HttpServlet {
 		System.out.println(member_id);
 		
 		String soto_no = request.getParameter("soto_no");	
-		String sc_contents = request.getParameter("sc_contents");	
+		String sc_contents = request.getParameter("sc_contents");
+		
+		System.out.println(soto_no);
+		System.out.println(sc_contents);
 		
 		Soto_com sc = new Soto_com(member_id, soto_no, sc_contents);
 		

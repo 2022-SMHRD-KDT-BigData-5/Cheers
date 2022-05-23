@@ -27,7 +27,7 @@ public class DeleteSotoCon extends HttpServlet {
 		} else {
 			System.out.println("ott 게시물 삭제 실패");
 		}
-		response.sendRedirect("Soto.jsp");
+		response.sendRedirect("soto1.jsp");
 
 	}
 

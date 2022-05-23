@@ -44,7 +44,7 @@ public class AddSotoCon extends HttpServlet {
 		} else {
 			System.out.println("ott 게시물 작성 실패");
 		}
-		response.sendRedirect("soto.jsp");
+		response.sendRedirect("soto1.jsp");
 		
 		
 	}

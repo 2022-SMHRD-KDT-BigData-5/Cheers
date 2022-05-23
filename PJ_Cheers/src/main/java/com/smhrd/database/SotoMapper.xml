@@ -22,7 +22,7 @@
 	
 	<!-- 댓글 -->
 	<insert id="addSotoComment" parameterType="com.smhrd.domain.Soto_com">
-        insert into soto_com values (sc_no_seq.nextval, #{soto_no}, #{member_id}, #{sc_contents}, 0, sysdate)
+        insert into soto_com values (sc_no_seq.nextval, #{soto_no}, #{member_id}, #{sc_contents}, sysdate)
     </insert>
 	<select id="selectSotoComment" parameterType="String" resultType="com.smhrd.domain.Soto_com">
 		SELECT sc.sc_no, sc.soto_no, sc.member_id, sc.sc_contents, sc.sc_date
