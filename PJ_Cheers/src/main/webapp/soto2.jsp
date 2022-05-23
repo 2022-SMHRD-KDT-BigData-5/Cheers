@@ -94,7 +94,7 @@
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="aboutus.html">about us</a></li>
-										<li><a href="recipe.html">마셔볼래</a></li>
+										<li><a href="recipe_home.jsp">마셔볼래</a></li>
 										<li><a href="toast1.jsp">같이마실래?</a></li>
 										<li><a href="soto1.jsp">같이볼래?</a></li>
 										<li><a href="contact.html">contact</a></li>
@@ -126,23 +126,16 @@
                                 <form action="AddSotoCon" method="post">
 								<table width="100%" height="400px" class="insert_table">
 									<tr style="height: 10px">
-										
-										<td align="center"><textarea cols="50"
-												rows="10" maxlength="500" name="sc_contents" placeholder="내용을 입력하세요."
-												style="border: none;"></textarea>
+										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"></textarea></div>
 										</td>
 									</tr>
 									<tr>
-										<td colspan="2" align="right"><p class="textCount"
-												style="display: inline;">0자</p>
-											<p class="textTotal"
-												style="display: inline; text-align: right;">/ 500자</p></td>
+										<td colspan="2" align="right">
+											<p style="color:#000;" id="counter">0자 / 500자</p></td>
 									</tr>
 									<tr>
-										<td colspan="2" align="right"><div class="insert_btn"
-												align=right>
-												<input type="submit" value="등록" style="border: none; background-color:white;">
-											</div></td>
+										<td colspan="2" align="right"><div align=right>
+												<input type="submit" value="등록" style="color:white;" class="insert_btn"></td>
 									</tr>
 								</table>
 							</form>
@@ -221,7 +214,19 @@
 
     <!-- jQuery Main js  -->
     <script src="assets/js/main.js"></script>
-
+	
+	<!-- 댓글 카운팅 -->
+	<script>
+        $('#wr').keyup(function (e){
+        var content = $(this).val();
+        $('#counter').html(+content.length+"자 / 500자");    //글자수 실시간 카운팅
+    
+        if (content.length > 500){
+            $(this).val(content.substring(0, 500));
+            $('#counter').html("( 500 / 500 )");
+        }
+    });
+    </script>
 </body>
 
 </html>

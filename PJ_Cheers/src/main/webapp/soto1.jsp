@@ -184,9 +184,9 @@ button {
 									<button type="button" class="base_macju">
 										<a href="#">왓챠</a>
 									</button>
-									<div class="insert_btn" align=right>
-										<button type="button" style="border: none;">
-											<a href=soto2.jsp>작성</a>
+									<div align=right>
+										<button type="button" class="insert_btn" >
+											<a href=soto2.jsp style="color:white;">작성</a>
 										</button>
 									</div>
 								</div>

@@ -53,6 +53,14 @@
     <link rel="stylesheet" href="assets/css/responsive.css" />
 
     <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<style>
+    textarea {
+        width: 95%;
+        height: 90%;
+        border: none;
+        resize: none;
+    }
+    </style>
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
     <!--[if lt IE 8]>
@@ -122,18 +130,26 @@
                     </div><!-- End of head title -->
                     <div>
                         <div class="main_service_area">
-                            <div class="single_service_area">
-                                <!-- 레시피 스따뚜 -->
-                                <div class="row">
-                                        <div id="soto_insert" align="center">
-                                            <p><textarea cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요."
-                                                    style="border: none;"></textarea></p>
-                                            <p class="textCount" style="display:inline;">0자</p>
-                                            <p class="textTotal" style="display:inline; text-align: right;">/ 500자 <span><button type="button" style="border: none;"><a href=soto1.html>수정완료</a></button></span></p>
-                                            <br>
-                                        </div>
-                                    </div>
-                                </div><!-- End of single service area -->
+                             <div class="single_service_area">
+                                <!-- 매칭 게시물 입력창 -->
+                                <form action="AddSotoCon" method="post">
+								<table width="100%" height="400px" class="insert_table">
+									<tr style="height: 10px">
+										
+										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"></textarea></div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="right">
+											<p style="color:#000;" id="counter">0자 / 500자</p></td></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="right"><div align=right>
+											<input type="submit" value="게시물수정" style="color:white;" class="insert_btn"></td>
+									</tr>
+								</table>
+							</form>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -209,6 +225,17 @@
 
     <!-- jQuery Main js  -->
     <script src="assets/js/main.js"></script>
-
+	<!-- 댓글 카운팅 -->
+	<script>
+        $('#wr').keyup(function (e){
+        var content = $(this).val();
+        $('#counter').html(+content.length+"자 / 500자");    //글자수 실시간 카운팅
+    
+        if (content.length > 500){
+            $(this).val(content.substring(0, 500));
+            $('#counter').html("( 500 / 500 )");
+        }
+    });
+    </script>
 </body>
 </html>

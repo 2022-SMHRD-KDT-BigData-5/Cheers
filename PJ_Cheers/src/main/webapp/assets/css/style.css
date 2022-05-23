@@ -1141,3 +1141,14 @@ tr{
 .toast_label{
     margin: .4rem 0;
 }
+.toast_box{
+    border: 5px solid #dddddd;
+    padding: 30px;
+    width: 100%;
+    border-radius: 15px;
+}
+.insert_btn{
+    background-color: #5D5D5D;
+    border: none;
+    border-radius: 5px;
+}

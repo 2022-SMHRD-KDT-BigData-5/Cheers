@@ -173,7 +173,7 @@
 							  -->
 							  
 							  
-								<table width="100%" height="400px">
+								<table width="100%" height="400px" border="1px soild">
 									<tr style="height: 10px">
 										<td width="45%">
 										
@@ -181,9 +181,9 @@
 											<input type="file" id="image" name= "upload_update" accept="image/*" onchange="setThumbnail(event);">
 											<input type="hidden" name="toast_no_update" value="<%=toast_no_update%>">
 										</td>
-										<td rowspan="2" align="center"><textarea cols="50"
-												rows="10" maxlength="500" name="contents_update" placeholder="내용을 입력하세요."
-												style="border: none;"><%=contents %></textarea>
+										<td rowspan="2" align="center"><div class="toast_box"><textarea cols="50"
+												rows="10" maxlength="500" id="wr" name="contents_update" placeholder="내용을 입력하세요."
+												style="border: none;"><%=contents %></textarea></div>
 												</td>
 									</tr>
 									<tr style="height: 200px">
@@ -193,21 +193,13 @@
                                             } </script></td>
 									</tr>
 									<tr>
-										<td colspan="2" align="right"><p class="textCount"
-												style="display: inline;">0자</p>
-											<p class="textTotal"
-												style="display: inline; text-align: right;">/ 500자</p></td>
+										<td colspan="2" align="right">
+											<p style="color:#000;" id="counter">0자 / 500자</p></td>
 									</tr>
 									<tr>
-										<td colspan="2" align="right"><div class="insert_btn"
-												align=right>
-												
-												<button type="button" style="border: none;">
-													<input type="submit" value="게시물수정">
-												</button>
-												
+										<td colspan="2" align="right"><div align=right>
+												<input type="submit" value="게시물수정" style="color:white;" class="insert_btn">
 											</div></td>
-											
 									</tr>
 									
 								</table>
