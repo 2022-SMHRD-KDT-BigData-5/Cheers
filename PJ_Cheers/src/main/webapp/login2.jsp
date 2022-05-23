@@ -93,36 +93,26 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="head_title text-center">
-                        <h1>login</h1>
+                        <h1>LOGIN</h1>
                     </div><!-- End of head title -->
                     <div class="login_note"></div>
                     <!-- login -->
                     <div class="login">
                     <form action="LoginCon" method="post" >
                         <table class="login_table" align="center">
-                            <tr>
-                                <td>email</td>
-                                <td style="width: 10px;"></td>
-                                <td><input type="text" name="id" placeholder="email을 입력하세요" style="border:none;"></td>
+                            <tr style="height: 40px;">
+                                <td width="30%" align="center">email</td>
+                                <td style="width: 80px;"><input type="text" name="id" placeholder="email을 입력하세요" style="border:none;"></td>
                             </tr>
-                            <tr>
-                                <td>pw</td>
-                                <td></td>
+                            <tr style="height: 60px;">
+                                <td align="center">pw</td>
                                 <td><input type="password" name="pw" placeholder="pw를 입력하세요" style="border:none;"></td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td align ="right" colspan="3"><input type="submit" value="로그인" style="border:none;"> </td>
-                                <td></td>
-                                <td></td>
+                            <tr style="height: 70px;">
+                                <td  align="center" colspan="2" height="50px" style="color:white;"><input type="submit" value="로그인" style="border:none;" class="insert_btn"> </td>
                             </tr>
                         </table>
                     </form>
-                    </div>
                 </div>
             </div>
         </div>

@@ -25,7 +25,6 @@ Author URI: http://bootstrapthemes.co
 .home_name{
     font-family: 'IM_Hyemin-Bold';
 }
-
 html,
 body {
     background-color: #fff;
@@ -171,12 +170,12 @@ h5 {
 }
 h1 {
     font-size: 3.75rem;
-    font-family: 'montserrathairline';
+    font-family: 'IM_Hyemin-Bold';
 }
 h2 {
     font-size:3rem;
     line-height: 3rem;
-    font-family: 'montserratbold';
+    font-family: 'IM_Hyemin-Bold';
 }
 h3 {
     font-size:1.875rem;
