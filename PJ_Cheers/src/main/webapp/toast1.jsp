@@ -54,6 +54,7 @@
 <link rel="stylesheet" href="assets/css/responsive.css" />
 
 <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
@@ -237,17 +238,40 @@
                                     <c:when test="${p.toast_no eq c.toast_no}">
                                        <input type="hidden" id="t_no" value="${c.toast_no}">
                                        <hr color='#c06c84'>
-                                       <table width="100%">
+                                       <table width="100%" border="1px soild">
                                           <tr>
                                              <td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
                                              <td width="20%"><c:out value="${c.tc_date}" /><br>
                                              <b><c:out value="${c.member_id}" /></b></td>
                                              <td><span><c:out value="${c.tc_contents}" /></span></td>
-                                             <td width="7%" align="right"><form action="updateComment.jsp">
-                                                   <input type="hidden" name="tc_no" value="${c.tc_no}">
-                                                   <input type="hidden" name="tc_contents" value="${c.tc_contents}"> <input type="submit" value="댓글 수정"></form>
+                                             <td width="7%" align="right">
                                              </td>
-                                             <td width="7%" align="right"><a href="DeleteCommentCon?tc_no=${c.tc_no} ">삭제</a></td>
+                                             <td width="7%" align="right">
+                                             
+                                             <!-- 댓글 수정 현재 페이지에서 구현 -->
+                                           <!-- <form action="updateComment.jsp">
+                                                   <input type="hidden" name="tc_no" value="${c.tc_no}">
+                                                   <input type="hidden" name="tc_contents" value="${c.tc_contents}"> 
+                                                   <input type="submit" value="댓글 수정">
+                                                </form> -->
+                                                
+                                               <form method="post" >
+                                               	<input type="hidden" name="tc_no" value="${c.tc_no}">
+                                               	<input type="hidden" name="tc_contents" value="${c.tc_contents}">
+                                               	<button id="update_comment" style="border: none; background-color: white;" >수정</button>
+                                               	
+                                               </form>
+                                               
+                                               
+                                             </td>
+                                             <td width="7%" align="right">
+                                               <form method="post" action="DeleteCommentCon">
+                                               	<input type="hidden" name="tc_no" value="${c.tc_no}">
+                                               	<!-- <input type="submit" value="삭제"  style="border: none; background-color: white;"> -->
+                                             	<button id="delete_comment" style="border: none; background-color: white;" onclick="submit">삭제</button>
+                                               </form>
+                                             <!-- <a href="DeleteCommentCon?tc_no=${c.tc_no} ">삭제</a></td> -->
+                                             </td>
                                           </tr>
                                        </table>
                                     </c:when>
@@ -353,6 +377,36 @@
 
    <!-- 클릭출력 테스트 -->
    <script>
+   $("#update_comment").on("click", "button[name='add']", function() {
+   	event.preventDefault(); // 고유 이벤트 중지
+   	
+   	// 클릭한 대상의 번호를 모달창에 저장.
+   	var rno = $(this).attr("href");
+   	$("#modalRno").val(rno);
+   	
+   	// replyModify 라면 수정창, replyDelete 라면 삭제창의 형태로 사용
+   	if( $(this).hasClass("replyModify") ){ // 수정창
+   		
+   		$(".modal-title").html("댓글수정");
+   		$("#modalModBtn").css("display", "inline"); // 수정버튼은 보여지도록 처리
+   		$("#modalDelBtn").css("display", "none"); // 삭제버튼은 숨겨지도록 처리
+   		$("#modalReply").css("display", "inline"); // 수정창 보여지도록
+   		
+   	} else if ( $(this).hasClass("replyDelete") ) { // 삭제창
+   		
+   		$(".modal-title").html("댓글삭제");
+   		$("#modalModBtn").css("display", "none"); // 수정버튼은 숨겨지도록 처리
+   		$("#modalDelBtn").css("display", "inline"); // 삭제버튼은 보여지도록 처리
+   		$("#modalReply").css("display", "none"); // 수정창 숨겨지도록
+   		
+   	}
+   	
+   	$("#replyModal").modal("show"); // 부트스트랩 모달 함수
+   	
+   }); // end on
+   
+   
+   <%-- 짠 연습 --%>
    $(document).on("click", "#context", function(){ 
           console.log($(this).next().val());
           
@@ -376,6 +430,28 @@
         });
       
       
+   <%-- 댓글 수정 --%>
+   $(document).on("click", "#context", function(){ 
+       console.log($(this).next().val());
+       
+    
+    
+        $.ajax({
+           data: {toast_no : $(this).next().val()},
+           url: "CountCommentCon",
+           method: "get",
+           method : "GET",
+          dataType : "text",
+          context : this,  
+          success: function(data){
+              $(this).text("♥ 댓글 ♥ " +data);
+          },
+          error: function(){
+             alert("통신실패!")
+          } 
+       })        
+    
+     });
         </script>
 
    <!-- 동시출력 -->

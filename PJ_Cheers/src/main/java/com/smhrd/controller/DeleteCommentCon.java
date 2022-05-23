@@ -13,9 +13,11 @@ public class DeleteCommentCon extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("[DeleteCommentCon]");
 		request.setCharacterEncoding("UTF-8");
 
 		String tc_no = request.getParameter("tc_no");
+		System.out.println(tc_no);
 		
 		ToastDAO dao = new ToastDAO();
 		int cnt = dao.deleteComment(tc_no);
@@ -25,7 +27,7 @@ public class DeleteCommentCon extends HttpServlet {
 		} else {
 			System.out.println("댓글 삭제 실패");
 		}
-		response.sendRedirect("index_select.jsp");
+		response.sendRedirect("toast1.jsp");
 	}
 
 }

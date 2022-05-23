@@ -255,7 +255,7 @@ button {
 																<b><c:out value="${d.member_id}" /></b></td>
 															<td><span><c:out value="${d.sc_contents}" /></span></td>
 															<td width="7%" align="right"><a href="UpdateSotoCommentCon?tc_no=${d.sc_no }">수정</a></td>
-															<td width="7%" align="right"><a href="DeleteCommentCon?tc_no=${d.sc_no} ">삭제</a></td>
+															<td width="7%" align="right"><a href="DeleteSotoCommentCon?tc_no=${d.sc_no} ">삭제</a></td>
 														</tr>
 													</table>
 												</c:when>

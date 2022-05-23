@@ -13,11 +13,12 @@ public class DeleteSotoCommentCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		System.out.println("[DeleteSotoCommentCon]");
+		
 		request.setCharacterEncoding("UTF-8");
 
-		String sc_no = request.getParameter("sc_no");
-		
+		String sc_no = request.getParameter("d.sc_no");
+		System.out.println("댓글번호"+sc_no);
 		SotoDAO dao = new SotoDAO();
 		int cnt = dao.deleteSotoComment(sc_no);
 
@@ -26,7 +27,7 @@ public class DeleteSotoCommentCon extends HttpServlet {
 		} else {
 			System.out.println("ott 댓글 삭제 실패");
 		}
-		response.sendRedirect("Soto.jsp");
+		response.sendRedirect("soto1.jsp");
 	}
 
 }

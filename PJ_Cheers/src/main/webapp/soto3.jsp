@@ -129,7 +129,7 @@
                                             <p><textarea cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요."
                                                     style="border: none;"></textarea></p>
                                             <p class="textCount" style="display:inline;">0자</p>
-                                            <p class="textTotal" style="display:inline; text-align: right;">/ 500자 <span><button type="button" style="border: none;"><a href=soto1.html>수정완료</a></button></span></p>
+                                            <p class="textTotal" style="display:inline; text-align: right;">/ 500자 <span><button type="button" style="border: none;"><a href='soto1.jsp'>수정완료</a></button></span></p>
                                             <br>
                                         </div>
                                     </div>
