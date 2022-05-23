@@ -384,14 +384,14 @@
    	if( $(this).hasClass("replyModify") ){ // 수정창
    		
    		$(".modal-title").html("댓글수정");
-   		$("#modalModBtn").css("display", "inline"); // 수정버튼은 보여지도록 처리
+   		$("#update_comment").css("display", "inline"); // 수정버튼은 보여지도록 처리
    		$("#modalDelBtn").css("display", "none"); // 삭제버튼은 숨겨지도록 처리
    		$("#modalReply").css("display", "inline"); // 수정창 보여지도록
    		
    	} else if ( $(this).hasClass("replyDelete") ) { // 삭제창
    		
    		$(".modal-title").html("댓글삭제");
-   		$("#modalModBtn").css("display", "none"); // 수정버튼은 숨겨지도록 처리
+   		$("#update_comment").css("display", "none"); // 수정버튼은 숨겨지도록 처리
    		$("#modalDelBtn").css("display", "inline"); // 삭제버튼은 보여지도록 처리
    		$("#modalReply").css("display", "none"); // 수정창 숨겨지도록
    		
