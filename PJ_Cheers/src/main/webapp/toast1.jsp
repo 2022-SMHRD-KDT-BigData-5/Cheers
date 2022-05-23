@@ -239,8 +239,10 @@
                                              <td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
                                              <td width="20%"><c:out value="${c.tc_date}" /><br>
                                              <b><c:out value="${c.member_id}" /></b></td>
-                                             <td><span><c:out value="${c.tc_contents}" /></span></td>
-                                             <td width="7%" align="right">
+                                             <td>
+                                             	<span id="tc_contents_span"><c:out value="${c.tc_contents}" /></span>
+                                               	<!-- <input type="hidden" name="tc_no" value="${c.tc_no}">
+                                               	<input type="hidden" id="tc_contents" name="tc_contents" value="${c.tc_contents}"> -->
                                              </td>
                                              <td width="7%" align="right">
                                              
@@ -251,15 +253,12 @@
                                                    <input type="submit" value="댓글 수정">
                                                 </form> -->
                                                 
-                                               <form method="post" >
-                                               	<input type="hidden" name="tc_no" value="${c.tc_no}">
-                                               	<input type="hidden" name="tc_contents" value="${c.tc_contents}">
-                                               	<button id="update_comment" style="border: none; background-color: white;" >수정</button>
-                                               	
-                                               </form>
-                                               
-                                               
+                                                <input type="hidden" id="tc_no_update" value="${c.tc_no}">
+                                                <input type="hidden" id="tc_contents_update" value="${c.tc_contents}">
+                                               	<button id="update_comment" type="button" onclick="clickUp()" style="border: none; background-color: white;" >수정</button>
                                              </td>
+                                               	
+                                               	
                                              <td width="7%" align="right">
                                                <form method="post" action="DeleteCommentCon">
                                                	<input type="hidden" name="tc_no" value="${c.tc_no}">
@@ -373,6 +372,7 @@
 
    <!-- 클릭출력 테스트 -->
    <script>
+   <%--
    $("#update_comment").on("click", "button[name='add']", function() {
    	event.preventDefault(); // 고유 이벤트 중지
    	
@@ -399,8 +399,66 @@
    	
    	$("#replyModal").modal("show"); // 부트스트랩 모달 함수
    	
-   }); // end on
+   }); // end on --%>
    
+   <%-- 댓글 수정 --%>
+   
+ 	function clickUp(){
+ 		var com = $('input[type=text]').val()
+ 		
+ 		var val1 = "";
+ 		var val2 = "";
+ 		val1 = $("#tc_no_update").val();
+ 		val2 = $("#tc_contents_update").val();
+ 		console.log(val1)
+ 		console.log(val2)
+ 		
+ 		$.ajax({
+ 			data : {tc_no : val1, tc_contents : val2},
+            url: "UpdateCommentCon",
+            type : "GET",
+            data : "text",
+           success: function(){
+               console.log("통신!!");
+               $("#tc_contents_span").html("<input type='text' value='"+val2+"'/>");
+
+               <%--$('#tc_contents').prop("type", "text");
+                   $('#tc_contents').prop("type", "text");--%>
+               
+           },
+           error: function(){
+              alert("통신실패!")
+           } 
+          
+        })        
+ 		
+ 		
+ 	}
+ 	
+ 	
+   /* $(document).on("click", "#", function(){ 
+       console.log($(this).next().val());
+       
+    
+    
+        $.ajax({
+           data: {toast_no : $(this).next().val()},
+           url: "CountCommentCon",
+           method: "get",
+           method : "GET",
+          dataType : "text",
+          context : this,  
+          success: function(data){
+              $(this).text("♥ 댓글 ♥ " +data);
+              $('.license_input').attr("type", "text");
+              console.log("통신!!");
+          },
+          error: function(){
+             alert("통신실패!")
+          } 
+       })        
+    
+     }); */
    
    <%-- 짠 연습 --%>
    $(document).on("click", "#context", function(){ 
@@ -426,28 +484,6 @@
         });
       
       
-   <%-- 댓글 수정 --%>
-   $(document).on("click", "#context", function(){ 
-       console.log($(this).next().val());
-       
-    
-    
-        $.ajax({
-           data: {toast_no : $(this).next().val()},
-           url: "CountCommentCon",
-           method: "get",
-           method : "GET",
-          dataType : "text",
-          context : this,  
-          success: function(data){
-              $(this).text("♥ 댓글 ♥ " +data);
-          },
-          error: function(){
-             alert("통신실패!")
-          } 
-       })        
-    
-     });
         </script>
 
    <!-- 동시출력 -->
