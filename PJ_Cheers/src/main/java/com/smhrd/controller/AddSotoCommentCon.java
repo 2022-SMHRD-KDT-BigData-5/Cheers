@@ -44,7 +44,7 @@ public class AddSotoCommentCon extends HttpServlet {
 		} else {
 			System.out.println("Ott 댓글 작성 실패");
 		}
-		response.sendRedirect("soto.jsp");
+		response.sendRedirect("soto1.jsp");
 		
 		
 	}

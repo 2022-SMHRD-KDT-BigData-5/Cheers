@@ -24,10 +24,11 @@ public class Soto_com {
 		this.sc_date = sc_date;
 	}
 	
-	public Soto_com(String soto_no, String member_id, String sc_contents) {
+	public Soto_com(String member_id, String soto_no, String sc_contents) {
 		super();
-		this.soto_no = soto_no;
+		
 		this.member_id = member_id;
+		this.soto_no = soto_no;
 		this.sc_contents = sc_contents;
 	}
 

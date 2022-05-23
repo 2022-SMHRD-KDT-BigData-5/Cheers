@@ -206,7 +206,7 @@ button {
 													value="${s.soto_no}" /></td>
 											<td align="right"><button
 													style="border: none; background-color: #fff;">
-													<a href="soto3.jsp">수정</a>
+													<a href="UpdateSotoCon?soto_no=${s.soto_no} ">수정</a>
 												</button> <span> | </span>
 												<button style="border: none; background-color: #fff;">
 													<a href="DeleteSotoCon?soto_no=${s.soto_no}">삭제</a>
@@ -254,7 +254,7 @@ button {
 															<td width="20%"><c:out value="${d.sc_date}" /><br>
 																<b><c:out value="${d.member_id}" /></b></td>
 															<td><span><c:out value="${d.sc_contents}" /></span></td>
-															<td width="7%" align="right"><a href="soto2.jsp">수정</a></td>
+															<td width="7%" align="right"><a href="UpdateSotoCommentCon?tc_no=${d.sc_no }">수정</a></td>
 															<td width="7%" align="right"><a href="DeleteCommentCon?tc_no=${d.sc_no} ">삭제</a></td>
 														</tr>
 													</table>

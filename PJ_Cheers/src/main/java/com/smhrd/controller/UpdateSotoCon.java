@@ -23,7 +23,7 @@ public class UpdateSotoCon extends HttpServlet {
 		System.out.println(request.getParameter("soto_contents"));
 	    BigDecimal soto_no = new BigDecimal(request.getParameter("soto_no"));
 	    
-		String soto_contents = request.getParameter("soto_contents");
+		String soto_contents = request.getParameter("sc_contents");
 		
 		System.out.println(soto_no);
 		System.out.println(soto_contents);
