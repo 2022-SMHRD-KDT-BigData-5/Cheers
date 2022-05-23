@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8 "
-	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8 " pageEncoding="UTF-8" isELIgnored="false"%>
 <%@page import="com.smhrd.domain.Member"%>
 <%@page import="com.smhrd.domain.Toast"%>
 <!doctype html>
@@ -129,13 +128,11 @@
 						<div class="main_service_area">
 							<div class="single_service_area"></div>
 							<form action="InsertPostCon" enctype="multipart/form-data" method="post">
-								<table width="100%" height="400px">
+								<table width="100%" height="400px" border="1px soild">
 									<tr style="height: 10px">
 										<td width="45%"><input type="file" name= "upload" id="image"
 											accept="image/*" onchange="setThumbnail(event);"></td>
-										<td rowspan="2" align="center"><textarea cols="50"
-												rows="10" maxlength="500" name="contents" placeholder="내용을 입력하세요."
-												style="border: none;"></textarea>
+										<td rowspan="2" align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"></textarea></div>
 										</td>
 									</tr>
 									<tr style="height: 200px">
@@ -145,17 +142,12 @@
                                             } </script></td>
 									</tr>
 									<tr>
-										<td colspan="2" align="right"><p class="textCount"
-												style="display: inline;">0자</p>
-											<p class="textTotal"
-												style="display: inline; text-align: right;">/ 500자</p></td>
+										<td colspan="2" align="right">
+											<p style="color:#000;" id="counter">0자 / 500자</p></td>
 									</tr>
 									<tr>
-										<td colspan="2" align="right"><div class="insert_btn"
-												align=right>
-												<button type="button" style="border: none;">
-												<input type="submit" value="등록">
-												</button>
+										<td colspan="2" align="right"><div  align=right>
+												<input type="submit" value="등록" style="color:white;" class="insert_btn">
 											</div></td>
 									</tr>
 								</table>
@@ -240,6 +232,18 @@
 
 	<!-- jQuery Main js  -->
 	<script src="assets/js/main.js"></script>
-
+	
+	<!-- 댓글 카운팅 -->
+    <script>
+        $('#wr').keyup(function (e){
+        var content = $(this).val();
+        $('#counter').html(+content.length+"자 / 500자");    //글자수 실시간 카운팅
+    
+        if (content.length > 500){
+            $(this).val(content.substring(0, 500));
+            $('#counter').html("( 500 / 500 )");
+        }
+    });
+    </script>
 </body>
 </html>

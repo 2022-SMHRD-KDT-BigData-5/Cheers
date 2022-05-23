@@ -1,8 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.domain.SotoDAO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8 "
-	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8 " pageEncoding="UTF-8" isELIgnored="false"%>
 <%@page import="com.smhrd.domain.Member"%>
 <%@page import="com.smhrd.domain.Soto"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -53,6 +52,14 @@
     <link rel="stylesheet" href="assets/css/responsive.css" />
 
     <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<style>
+    textarea {
+        width: 95%;
+        height: 90%;
+        border: none;
+        resize: none;
+    }
+    </style>
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
     <!--[if lt IE 8]>
@@ -94,7 +101,7 @@
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
-										<li><a href="aboutus.html">about us</a></li>
+										<li><a href="aboutus.">about us</a></li>
 										<li><a href="recipe_home.jsp">마셔볼래</a></li>
 										<li><a href="toast1.jsp">같이마실래?</a></li>
 										<li><a href="soto1.jsp">같이볼래?</a></li>
@@ -110,7 +117,7 @@
 	</header>
     <!--End of header -->
 
-
+<c:set var="update" value="${list.update}" ></c:set>
     <!-- Service Section -->
     <section id="service" class="service sections margin-top-120">
         <div class="container">
@@ -134,6 +141,32 @@
                                         </div>
                                     </div>
                                 </div><!-- End of single service area -->
+                             <div class="single_service_area">
+                             <%
+								String soto_no = request.getParameter("soto_no");
+								String soto_contents = request.getParameter("soto_contents");
+								System.out.println(soto_no);
+								System.out.println(soto_contents);
+							%>
+                                <!-- 매칭 게시물 입력창 -->
+                                <form action="UpdateSotoCon" method="post">
+								<table width="100%" height="400px" class="update_table" align="center">
+									<tr style="height: 10px">
+										<input type="hidden" name="soto_no" value="<%=soto_no %>">
+										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" name="contents" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"><%=soto_contents %></textarea></div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="right">
+											<p style="color:#000;" id="counter">0자 / 500자</p></td></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="right"><div align=right>
+											<input type="submit" value="게시물수정" style="color:white;" class="insert_btn"></td>
+									</tr>
+								</table>
+							</form>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -209,6 +242,17 @@
 
     <!-- jQuery Main js  -->
     <script src="assets/js/main.js"></script>
-
+	<!-- 댓글 카운팅 -->
+	<script>
+        $('#wr').keyup(function (e){
+        var content = $(this).val();
+        $('#counter').html(+content.length+"자 / 500자");    //글자수 실시간 카운팅
+    
+        if (content.length > 500){
+            $(this).val(content.substring(0, 500));
+            $('#counter').html("( 500 / 500 )");
+        }
+    });
+    </script>
 </body>
 </html>

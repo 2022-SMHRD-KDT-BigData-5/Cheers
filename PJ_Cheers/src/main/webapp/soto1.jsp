@@ -1,13 +1,8 @@
-<%@page import="com.smhrd.domain.Toast_com"%>
-<%@page import="com.smhrd.domain.Toast"%>
-<%@page import="java.util.List"%>
-<%@page import="com.smhrd.domain.ToastDAO"%>
-<%@page import="com.smhrd.domain.Soto_com"%>
-<%@page import="com.smhrd.domain.Soto"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.domain.SotoDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="False"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="False"%>
+<%@page import="com.smhrd.domain.Soto"%>
+<%@page import="com.smhrd.domain.Soto_com"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
    SotoDAO dao = new SotoDAO();
@@ -184,9 +179,9 @@ button {
 									<button type="button" class="base_macju">
 										<a href="#">왓챠</a>
 									</button>
-									<div class="insert_btn" align=right>
-										<button type="button" style="border: none;">
-											<a href=soto2.jsp>작성</a>
+									<div align=right>
+										<button type="button" class="insert_btn" >
+											<a href=soto2.jsp style="color:white;">작성</a>
 										</button>
 									</div>
 								</div>

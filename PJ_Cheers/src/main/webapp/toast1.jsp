@@ -1,10 +1,9 @@
-<%@page import="java.math.BigDecimal"%>
-<%@page import="com.smhrd.domain.Toast_com"%>
-<%@page import="com.smhrd.domain.Toast"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.domain.ToastDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8" isELIgnored="False"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="False"%>
+<%@page import="java.math.BigDecimal"%>
+<%@page import="com.smhrd.domain.Toast"%>
+<%@page import="com.smhrd.domain.Toast_com"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
    ToastDAO dao = new ToastDAO();
@@ -159,9 +158,9 @@
                   <div style="height: 30px;"></div>
                </div>
                <!-- End of head title  -->
-               <div class="insert_btn" align=right>
-                  <button type="button" style="border: none;">
-                     <a href=toast2.jsp>작성</a>
+               <div align=right>
+                  <button type="button" class="insert_btn" >
+                     <a href=toast2.jsp style="color:white;">작성</a>
                   </button>
                </div>
                <hr color='#c06c84'>
@@ -169,12 +168,10 @@
                   <div class="main_service_area">
                      <div class="single_service_area" align="center">
                         <c:forEach var="p" items="${postList}">
-                           <table width="100%" border="1px soild">
+                           <table width="100%" >
                               <tr>
-                                 <td align="left" width="45%">no.<c:out
-                                       value="${p.toast_no}" /></td>
-                                 <td align="right"><button
-                                       style="border: none; background-color: #fff;">
+                                 <td align="left" width="45%">no.<c:out value="${p.toast_no}" /></td>
+                                 <td align="right"><button style="border: none; background-color: #fff;">
                                        	<form action="toast3.jsp">
 											<input type="hidden" name="t_file_path_update" value='<c:out value="${p.t_file_path}" />'>  
 											<input type="hidden" name="t_file_name_update" value='<c:out value="${p.t_file_name}" />'>                                  		
@@ -196,8 +193,7 @@
                                  <td style="height: 300px;" align="center"><img
                                     src='<c:out value="${p.t_file_path}/${p.t_file_name}" />'
                                     alt="게시물이미지"></td>
-                                 <td style="vertical-align: top; padding: 2%"><c:out
-                                       value="${p.contents}" /></td>
+                                 <td style="vertical-align: top; padding: 2%"><c:out value="${p.contents}" /></td>
                               </tr>
                               <tr>
                               <td></td>
