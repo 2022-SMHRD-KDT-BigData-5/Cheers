@@ -1,10 +1,9 @@
-<%@page import="java.math.BigDecimal"%>
-<%@page import="com.smhrd.domain.Toast_com"%>
-<%@page import="com.smhrd.domain.Toast"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.domain.ToastDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8" isELIgnored="False"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="False"%>
+<%@page import="java.math.BigDecimal"%>
+<%@page import="com.smhrd.domain.Toast"%>
+<%@page import="com.smhrd.domain.Toast_com"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
    ToastDAO dao = new ToastDAO();

@@ -1,8 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.domain.SotoDAO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8 "
-	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8 " pageEncoding="UTF-8" isELIgnored="false"%>
 <%@page import="com.smhrd.domain.Member"%>
 <%@page import="com.smhrd.domain.Soto"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -102,7 +101,7 @@
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
-										<li><a href="aboutus.html">about us</a></li>
+										<li><a href="aboutus.">about us</a></li>
 										<li><a href="recipe_home.jsp">마셔볼래</a></li>
 										<li><a href="toast1.jsp">같이마실래?</a></li>
 										<li><a href="soto1.jsp">같이볼래?</a></li>
@@ -118,7 +117,7 @@
 	</header>
     <!--End of header -->
 
-
+<c:set var="update" value="${list.update}" ></c:set>
     <!-- Service Section -->
     <section id="service" class="service sections margin-top-120">
         <div class="container">
@@ -131,12 +130,18 @@
                     <div>
                         <div class="main_service_area">
                              <div class="single_service_area">
+                             <%
+								String soto_no = request.getParameter("soto_no");
+								String soto_contents = request.getParameter("soto_contents");
+								System.out.println(soto_no);
+								System.out.println(soto_contents);
+							%>
                                 <!-- 매칭 게시물 입력창 -->
-                                <form action="AddSotoCon" method="post">
-								<table width="100%" height="400px" class="insert_table">
+                                <form action="UpdateSotoCon" method="post">
+								<table width="100%" height="400px" class="update_table" align="center">
 									<tr style="height: 10px">
-										
-										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"></textarea></div>
+										<input type="hidden" name="soto_no" value="<%=soto_no %>">
+										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" name="contents" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"><%=soto_contents %></textarea></div>
 										</td>
 									</tr>
 									<tr>
