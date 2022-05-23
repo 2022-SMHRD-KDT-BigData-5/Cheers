@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ChosunGu'; /* 현재 전체 적용 폰트 */
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 /*
@@ -7,6 +19,13 @@ Author URI: http://bootstrapthemes.co
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+*{
+    font-family: 'ChosunGu';
+}
+.home_name{
+    font-family: 'IM_Hyemin-Bold';
+}
+
 html,
 body {
     background-color: #fff;
@@ -1093,7 +1112,6 @@ a{
 .join,
 .login,
 .update{
-    font-family: 'Noto Sans KR', sans-serif;
     color:#000;
 
 }
@@ -1111,9 +1129,6 @@ tr{
 }
 .update_nick{
     width: 300px;
-}
-.add_com{
-    font-family: 'Noto Sans KR', sans-serif;
 }
 .toast_com_select{
     text-align: left;

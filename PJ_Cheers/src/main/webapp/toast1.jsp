@@ -168,7 +168,7 @@
                   <div class="main_service_area">
                      <div class="single_service_area" align="center">
                         <c:forEach var="p" items="${postList}">
-                           <table width="100%">
+                           <table width="100%" border="1px soild">
                               <tr>
                                  <td align="left" width="45%">no.<c:out
                                        value="${p.toast_no}" /></td>
@@ -189,9 +189,7 @@
                                     </button></td>
                               </tr>
                               <tr>
-                                 <td colspan="2" align="right"><b><c:out
-                                          value="${p.member_id}" /></b><span> | <c:out
-                                          value="${p.toast_date}" /></span></td>
+                                 <td colspan="2" align="right"><b><c:out value="${p.member_id}" /></b><span> | <c:out value="${p.toast_date}" /></span></td>
                               </tr>
                               <tr>
                                  <td style="height: 300px;" align="center"><img
@@ -199,6 +197,9 @@
                                     alt="게시물이미지"></td>
                                  <td style="vertical-align: top; padding: 2%"><c:out
                                        value="${p.contents}" /></td>
+                              </tr>
+                              <tr>
+                              <td></td>
                               </tr>
                            </table>
 
