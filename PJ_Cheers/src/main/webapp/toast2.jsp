@@ -132,7 +132,7 @@
 									<tr style="height: 10px">
 										<td width="45%"><input type="file" name= "upload" id="image"
 											accept="image/*" onchange="setThumbnail(event);"></td>
-										<td rowspan="2" align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"></textarea></div>
+										<td rowspan="2" align="center"><div class="toast_box"><textarea id="wr" name="contents" cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"></textarea></div>
 										</td>
 									</tr>
 									<tr style="height: 200px">
