@@ -434,8 +434,8 @@ pageContext.setAttribute("zzanList",zzanList);
       function list
    </script>
 
-	<!-- 짠 -->
-	<script>
+	<!-- 짠테스트 -->
+   <script>
    
 	$(document).on("click", "#post_zzan_un", function(){ 
 	
@@ -448,7 +448,7 @@ pageContext.setAttribute("zzanList",zzanList);
 			dataType : "text",
 			context : this,  
 			success: function(data){
-				$('#post_zzan_un+span').text(data)
+				$(this).next().next().text(data)
 				$(this).html("<img src = 'assets/images/zzan.png' width = 4% />")
 	            $(this).attr('id','post_zzan')	
 			},
@@ -470,7 +470,7 @@ pageContext.setAttribute("zzanList",zzanList);
 				dataType : "text",
 				context : this,  
 				success: function(data){
-					$('#post_zzan+span').text(data)
+					$(this).next().next().text(data)
 					$(this).html("<img src = 'assets/images/zzan_un.png' width = 4% />")
 		            $(this).attr('id','post_zzan_un')	
 				},
