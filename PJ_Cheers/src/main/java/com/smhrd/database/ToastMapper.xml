@@ -5,7 +5,7 @@
 	
 	<!-- 게시물 -->
 	<insert id="insertPost" parameterType="com.smhrd.domain.Toast">
-		insert into toast values (toast_no_seq.nextval ,#{member_id}, #{contents}, sysdate ,#{t_file_path},#{t_file_name},#{t_file_realname})
+		insert into toast values (toast_no_seq.nextval ,#{member_id}, #{contents}, sysdate ,#{t_file_path},#{t_file_name},#{t_file_realname},0)
 	</insert>
 
 <!-- 	<select id="selectPost" resultType="com.smhrd.domain.Toast">
@@ -53,21 +53,55 @@
 		update toast_com set tc_contents=#{tc_contents}, tc_date=sysdate where tc_no = #{tc_no}
 	</update>
 	
-	<!-- 짠 -->
-	<insert id="addZzan" parameterType="com.smhrd.domain.Toast">
-        insert into toast_zzan values (toast_zzan_zzan_no_seq.nextval ,#{toast_no}, #{member_id})
-    </insert>
-	<!-- 
-	<select id="getZzan" resultType="String" parameterType="int">
-        select zzan_no from toast_zzan where toast_no=#{toast_no}
-    </select>
-	 -->
-	<update id="zzan" parameterType="String">
-		update toast_zzan set zzan_no=zzan_no+1 where toast_no=#{toast_no} 
+<!-- 짠0523 -->
+	<insert id="insertZn"
+		parameterType="com.smhrd.domain.Toast">	
+	insert into toast_zzan values (pozz_no_seq.nextval, #{toast_no}, #{member_id}, 1)
+	</insert>
+	
+	<!-- <insert id="insertZn"
+		parameterType="com.smhrd.domain.Toast">
+		insert into toast_zzan values (+0, #{toast_no}, #{member_id}, 1)		
+	</insert> -->
+	 <update id="statZn"
+	parameterType= "bigdecimal">
+	update toast set zzan_count = zzan_count+1 where toast_no=#{toast_no}
 	</update>
-	<update id="diszzan" parameterType="String">
-		update toast_zzan set zzan_no=zzan_no-1 where toast_no=#{toast_no} 
+<!--     <update id="statZn"
+	parameterType= "bigdecimal">
+	update toast_zzan set zzan_no = zzan_no+1, zzan_stat = 1 where toast_no=#{toast_no}
+	</update> -->
+	
+	<!-- <update id="statUnZn"
+	parameterType= "bigdecimal">
+	update toast_zzan set zzan_no = zzan_no-1 where toast_no=#{toast_no}
+	</update> -->
+	<update id="statUnZn"
+	parameterType= "bigdecimal">
+	update toast set zzan_count = zzan_count-1 where toast_no=#{toast_no}
 	</update>
+	
+	<delete id="deleteZn"
+		parameterType="com.smhrd.domain.Toast">
+		delete from toast_zzan where toast_no = #{toast_no} and member_id=#{member_id}
+	</delete>
+
+	<select id="getZn" resultType="int" parameterType="bigdecimal">
+		select
+		zzan_count
+		from toast
+		where toast_no =#{toast_no}
+	</select>
+
+	<select id="allZn" resultType="com.smhrd.domain.PostZzanVO">
+		select
+		toast_zzan.zzan_no, toast_zzan.toast_no, toast_zzan.member_id, toast_zzan.zzan_stat,
+		toast.zzan_count
+		from toast_zzan
+		left outer join toast
+		on toast_zzan.toast_no = toast.toast_no
+		order by toast_no asc
+	</select>
 	
 		<!--댓글개수 -->
 	<select id="countComment" parameterType="string" resultType="int">

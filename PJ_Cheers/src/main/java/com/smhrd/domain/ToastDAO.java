@@ -143,66 +143,110 @@ public class ToastDAO {
 			}
 			return cnt;
 		}
+	
 		
-		//짠 생성
-		public int getZzan(Toast toast) {
-			
-			SqlSession sqlSession = sqlSessionFactory.openSession();
-			int zzan = -1;
-
-			try {
-				zzan = (int)sqlSession.selectOne("com.smhrd.domain.ToastDAO.getZzan", toast);
-				if(zzan!=-1) {
-					sqlSession.commit();
-				}else {
-					sqlSession.rollback();
+		//짠0524
+		// 짠넣기 0523
+				public int insertZn(Toast toast) {
+					SqlSession sqlSession = sqlSessionFactory.openSession();
+					int cnt = 0;
+					int cnt2 = 0;
+					Toast toast2 = new Toast(toast.getToast_no(), toast.getMember_id());
+					try {
+						System.out.println("짠-dao");
+						System.out.println(toast.getToast_no());
+						cnt = sqlSession.insert("com.smhrd.domain.ToastDAO.insertZn", toast2);
+						cnt2 = sqlSession.update("com.smhrd.domain.ToastDAO.statZn", toast.getToast_no());
+						System.out.println("짠 상태: " + cnt+" 게시물번호:"+ toast.getToast_no());
+						if(cnt>0 && cnt2>0) {
+							sqlSession.commit();
+						}else {
+							sqlSession.rollback();
+						}
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						sqlSession.close();
+					}			
+					return cnt;
 				}
-			}finally {
-				sqlSession.close();
-			}
-			return zzan;
-		}
-		
-//		public int addZzan(Toast toast) {
-//			
-//			int zzan = 0;
-//			try {
-//				zzan = sqlSession.insert("com.smhrd.domain.ToastDAO.addZzan", toast);
-//				
-//				if(zzan!=0) {
-//					sqlSession.commit();
-//					
-//				}else {
-//					sqlSession.rollback();
-//				}
-//			}finally {
-//				sqlSession.close();
-//			}
-//			return zzan;
-//		}
-		
-		//짠 수정
-		public int updateZzan(String Toast_no, String status) {
-//			SqlSession sqlSession = sqlSessionFactory.openSession();
-			int cnt = 0;
-
-			try {
-				if(status.equals("zzan")) {
-					System.out.println(Toast_no);
-					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.plusZzan", Toast_no);
-				}else {
-					cnt = (int)sqlSession.update("com.smhrd.domain.ToastDAO.minusZzan", Toast_no);
+				
+				// 짠 삭제0523
+				public void deleteZn(Toast toast) {
+					SqlSession sqlSession = sqlSessionFactory.openSession();
+					int cnt = 0;
+					int cnt2 = 0;
+					Toast toast2 = new Toast(toast.getToast_no(), toast.getMember_id());
+					try {
+						System.out.println("언짠-dao");
+						System.out.println("언짠 게시물 번호" + toast.getToast_no());
+						System.out.println("언짠 아이디" + toast.getMember_id());
+						cnt2 = sqlSession.update("com.smhrd.domain.ToastDAO.statUnZn", toast.getToast_no());
+						cnt = sqlSession.delete("com.smhrd.domain.ToastDAO.deleteZn", toast2);
+						System.out.println("언짠 상태: " + cnt+" 게시물번호:"+ toast.getToast_no());
+						if(cnt>0 && cnt2>0) {
+							sqlSession.commit();
+						}else {
+							sqlSession.rollback();
+						}
+					
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						sqlSession.close();
+					}
+					
+					//return cnt;
 				}
-				if(cnt!=0) {
-					sqlSession.commit();
-				}else {
-					sqlSession.rollback();
+				
+				// 짠상태0523
+//				짠수 카운트	
+				public int getZn(Toast toast) {
+					int cnt=0;
+					
+					try {
+						System.out.println("getzn으로 가져와졌는지"+toast.getToast_no());
+						cnt=sqlSession.selectOne("com.smhrd.domain.ToastDAO.getZn",toast.getToast_no());
+					if(cnt>0) {
+							System.out.println("짠개수" + cnt);
+							sqlSession.commit();
+						}else {
+							System.out.println("짠 출력 실패");
+							sqlSession.rollback();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}finally {
+						sqlSession.close();
+					}return cnt;		
 				}
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-			return cnt;
-		}
+				
+				// 모든짠정보
+				public List<PostZzanVO> allZn() {
+					SqlSession sqlSession = sqlSessionFactory.openSession();
+					List<PostZzanVO> zzanList = null;
+					try {
+						System.out.println("allzn테스트");
+						zzanList=sqlSession.selectList("com.smhrd.domain.ToastDAO.allZn");
+						System.out.println(zzanList.get(0).getToast_no());
+						System.out.println(zzanList.get(0).getZzan_no());
+//						if(favList != null) {
+//							System.out.println("마이레시피조회 성공");
+//							sqlSession.commit();
+//						} else {
+//							System.out.println("마이레시피조회 실패");
+//							sqlSession.rollback();
+//						}
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						sqlSession.close();
+					}
+					return zzanList;
+				}
+	
 //	댓글수 카운트	
 	public int countComment(String toast_no) {
 		int cnt=0;
