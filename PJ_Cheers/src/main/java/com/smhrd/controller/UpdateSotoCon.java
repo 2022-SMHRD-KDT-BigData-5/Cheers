@@ -35,7 +35,7 @@ public class UpdateSotoCon extends HttpServlet {
 			response.sendRedirect("soto1.jsp");
 		} else {
 			System.out.println("ott 게시글 수정 실패");
-			response.sendRedirect("soto2.jsp");
+			response.sendRedirect("soto3.jsp");
 		}
 
 	}

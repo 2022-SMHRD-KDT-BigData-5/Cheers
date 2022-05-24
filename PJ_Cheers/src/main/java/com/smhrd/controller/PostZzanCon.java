@@ -30,61 +30,34 @@ public class PostZzanCon extends HttpServlet {
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		String member_id = loginMember.getId();
 		
-		String status = request.getParameter("status");
-	    String toast_no = request.getParameter("toast_no");
+		int zzan_count = Integer.parseInt(request.getParameter("zzan_count"));
+	    BigDecimal toast_no = new BigDecimal(request.getParameter("toast_no"));
 	    
 	    System.out.println(member_id);
 		System.out.println(toast_no);
-		System.out.println(status);
+		System.out.println(zzan_count);
 		
-		Toast toast = new Toast(member_id, toast_no);
+		BigDecimal zzan_count2 = new BigDecimal(zzan_count);
+		
+		Toast toast = new Toast(member_id, toast_no, zzan_count2);
 	    ToastDAO dao = new ToastDAO();
-		dao.updateZzan(toast_no, status);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-//		int zzan = dao.getZzan(toast_no);
 
+	    
+		if(zzan_count == 1) {
+			System.out.println("게시물짠-ajaxcon");
+			dao.insertZn(toast);
+		}else {
+			System.out.println("게시물짠취소-ajaxcon");
+			dao.deleteZn(toast);
+		}
 		
-//		if(status.equals("0")) {
-//			dao.getZzan(toast);
-//		}else {			
-////			dao.getfavno(fav);			
-//			System.out.println("ajax콘 " +dao.getfavno(fav).getFav_no());
-//			dao.unFav(recipe_no, dao.getfavno(fav).getFav_no());
-//		}
-//		
+		 int zzan = dao.getZn(toast); 
+		 System.out.println(zzan);
+		 PrintWriter out = response.getWriter();
+		 out.print(zzan);
+		 
 		
-//		BigDecimal toast_no = new BigDecimal(request.getParameter("toast_no"));	
-//		
-//		HttpSession session =  request.getSession();
-//		Member loginMember = (Member)session.getAttribute("loginMember");
-//		String member_id = loginMember.getId();
-//			
-//		Toast toast = new Toast(toast_no, member_id);
-//		
-//		ToastDAO dao = new ToastDAO();
-//		int cnt = dao.addZzan(toast);
-//		
-//		if (cnt > 0) {
-//			System.out.println("짠 추가 성공");
-//		} else {
-//			System.out.println("짠 추가 실패");
-//		}
-//		response.sendRedirect("index_select.jsp");
-		
-		
-		
+
 		
 	}
 

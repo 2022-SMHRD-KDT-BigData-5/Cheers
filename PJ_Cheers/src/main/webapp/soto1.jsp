@@ -93,7 +93,7 @@ button {
 											class="icon-bar"></span>
 									</button>
 									<a class="navbar-brand" href="index_test.jsp"> <img
-										src="assets/images/logo.png" />
+										src="assets/images/logo.png" style="max-height:100px;"/>
 									</a>
 								</div>
 
@@ -193,23 +193,30 @@ button {
 							 	  <c:forEach var="s" items="${SotoList}">
 							  <hr style="border:0px; border-top:2px dashed ">
 							 	   <li class="soto_post">
-									<table width="100%">
+									<table width="100%" border="1px solid">
 										<tr>
 											<td align="left" width="45%">no.<c:out value="${s.soto_no}"/></td>
-											<td align="right"><button style="border: none; background-color: #fff;">
+											<td align="right" width="7%">
 													<a href="soto3.jsp?soto_no=${s.soto_no}&soto_contents=${s.soto_contents}">수정</a>
-												</button> <span> | </span>
-												<button style="border: none; background-color: #fff;">
+											</td>
+											<td align="right" width="7%">
+												
+													<!-- <form action="soto3.jsp">
+														<input type="hidden" name="soto_no" value="${s.soto_no}">
+														<input type="hidden" name="soto_contents" value="${s.soto_contents}">
+														<input type="submit" value="수정" style="border: none; background: white; color: black;">
+													</form>
+													<!--  <a href="UpdateSotoCon?soto_no=${s.soto_no} ">수정</a>  <span> | </span> -->
 													<a href="DeleteSotoCon?soto_no=${s.soto_no}">삭제</a>
-												</button></td>
+											</td>
 										</tr>
 										<tr>
-											<td colspan="2" align="right"><b><c:out
+											<td colspan="3" align="right"><b><c:out
 														value="${s.member_id}" /></b><span> | <c:out
 														value="${s.soto_date}" /></span></td>
 										</tr>
 										<tr>
-											<td colspan="2"><c:out value="${s.soto_contents}" /></td>
+											<td colspan="3"><c:out value="${s.soto_contents}" /></td>
 										</tr>
 									</table>
 

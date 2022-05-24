@@ -84,7 +84,7 @@
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
                                     </button>
-                                    <a class="navbar-brand" href="index_test.jsp"> <img src="assets/images/logo.png" />
+                                    <a class="navbar-brand" href="index_test.jsp"> <img src="assets/images/logo.png" style="max-height:100px;"/>
 									</a>
 								</div>
 
@@ -142,6 +142,7 @@
                                     </div>
                                 </div><!-- End of single service area -->
                              <div class="single_service_area">
+                        <div class="main_service_area">
                              <%
 								String soto_no = request.getParameter("soto_no");
 								String soto_contents = request.getParameter("soto_contents");
@@ -155,6 +156,8 @@
 										<td align="center"><div class="toast_box">
 											<input type="hidden" name="soto_no" value="<%=soto_no %>">
 											<textarea id="wr" cols="50" rows="10" name="soto_contents" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"><%=soto_contents %></textarea></div>
+										<input type="hidden" name="soto_no" value="<%=soto_no %>">
+										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" name="contents" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"><%=soto_contents%></textarea></div>
 										</td>
 									</tr>
 									<tr>
@@ -176,6 +179,7 @@
                     </div>
                 </div>
             </div>
+          </div>
     </section>
 
 
