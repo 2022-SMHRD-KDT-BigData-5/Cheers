@@ -87,7 +87,7 @@ pageContext.setAttribute("zzanList",zzanList);
 											class="icon-bar"></span>
 									</button>
 									<a class="navbar-brand" href="index_test.jsp"> <img
-										src="assets/images/logo.png" />
+										src="assets/images/logo.png" style="max-height:100px;"/>
 									</a>
 								</div>
 
