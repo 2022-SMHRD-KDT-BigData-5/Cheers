@@ -448,7 +448,9 @@ pageContext.setAttribute("zzanList",zzanList);
 			dataType : "text",
 			context : this,  
 			success: function(data){
-				$(this).next().next().text(data)
+				$(this).parent().next().text(data)
+				
+				/* $(this).next().next().text(data) */
 				$(this).html("<img src = 'assets/images/zzan.png' width = 4% />")
 	            $(this).attr('id','post_zzan')	
 			},
@@ -470,7 +472,8 @@ pageContext.setAttribute("zzanList",zzanList);
 				dataType : "text",
 				context : this,  
 				success: function(data){
-					$(this).next().next().text(data)
+					$(this).parent().next().text(data)
+					/* $(this).next().next().text(data) */
 					$(this).html("<img src = 'assets/images/zzan_un.png' width = 4% />")
 		            $(this).attr('id','post_zzan_un')	
 				},
