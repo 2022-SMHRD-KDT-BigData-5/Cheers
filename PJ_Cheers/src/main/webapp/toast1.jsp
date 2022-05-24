@@ -132,11 +132,11 @@ pageContext.setAttribute("zzanList",zzanList);
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
 
-										<li><a href="aboutus.html">about us</a></li>
+										<li><a href="aboutus.jsp">슬기로운 혼술생활은?</a></li>
 										<li><a href="recipe_home.jsp">마셔볼래</a></li>
 										<li><a href="toast1.jsp">같이마실래?</a></li>
 										<li><a href="soto1.jsp">같이볼래?</a></li>
-										<li><a href="contact.html">contact</a></li>
+										<li><a href="contact.jsp">문의</a></li>
 									</ul>
 								</div>
 							</div>
@@ -223,11 +223,12 @@ pageContext.setAttribute("zzanList",zzanList);
 														<c:choose>
 															<c:when
 																test="${loginMember.id eq pz.member_id and pz.toast_no eq p.toast_no}">
-																<td colspan="2" align="center">
-																	<button id="post_zzan">
-																		<img src="assets/images/zzan.png" width=4% />
+																<td align="right" >
+																	<button id="post_zzan" style="border:none; background-color:white;text-align:right;">
+																		<img src="assets/images/zzan.png" width=4%  />
 																	</button> <input type="hidden"
-																	value='<c:out value="${p.toast_no}" />'> <span
+																	value='<c:out value="${p.toast_no}" />'> </td>
+																	<td><span
 																	id="post_zzan_no"><c:out value="${p.zzan_count}" /></span>
 																</td>
 															</c:when>
@@ -235,11 +236,12 @@ pageContext.setAttribute("zzanList",zzanList);
 															<c:otherwise>
 																<c:if
 																	test="${p.toast_no != tempname and loginMember.id ne pz.member_id}">
-																	<td colspan="2" align="center">
-																		<button id="post_zzan_un">
+																	<td align="right">
+																		<button id="post_zzan_un" style="border:none; background-color:white;text-align:right;">
 																			<img src="assets/images/zzan_un.png" width=4% />
 																		</button> <input type="hidden"
-																		value='<c:out value="${p.toast_no}" />'> <span
+																		value='<c:out value="${p.toast_no}" />'> </td>
+																	<td><span
 																		id="post_zzan_no"><c:out
 																				value="${p.zzan_count}" /></span>
 																	</td>
@@ -255,11 +257,12 @@ pageContext.setAttribute("zzanList",zzanList);
 												</c:when>
 
 												<c:otherwise>
-													<td colspan="2" align="center">
-														<button id="post_zzan_un">
+													<td align="right" >
+														<button id="post_zzan_un" style="border:none; background-color:white;text-align:right;">
 															<img src="assets/images/zzan_un.png" width=4% />
 														</button> <input type="hidden"
-														value='<c:out value="${p.toast_no}" />'> <span
+														value='<c:out value="${p.toast_no}" />'></td>
+																	<td> <span
 														id="post_zzan_no"><c:out value="${p.zzan_count}" /></span>
 													</td>
 												</c:otherwise>
@@ -308,8 +311,8 @@ pageContext.setAttribute("zzanList",zzanList);
 																	style="border: none; background-color: white;">🥂</button></td>
 															<td width="20%"><c:out value="${c.tc_date}" /><br>
 																<b><c:out value="${c.member_id}" /></b></td>
-															<td><span id="tc_contents_span"><c:out
-																		value="${c.tc_contents}" /></span> <!-- <input type="hidden" name="tc_no" value="${c.tc_no}">
+															<td><span id="tc_contents_span"><c:out value="${c.tc_contents}" /></span>
+																		<!-- <input type="hidden" name="tc_no" value="${c.tc_no}">
                                                	<input type="hidden" id="tc_contents" name="tc_contents" value="${c.tc_contents}"> -->
 															</td>
 															<td><span><c:out value="${c.tc_contents}" /></span></td>
@@ -371,11 +374,7 @@ pageContext.setAttribute("zzanList",zzanList);
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="copyright_text text-center">
-							<p class=" wow fadeInRight" data-wow-duration="1s">
-								Made with <i class="fa fa-heart"></i> by <a target="_blank"
-									href="http://bootstrapthemes.co">Bootstrap Themes</a>2016. All
-								Rights Reserved
-							</p>
+							<p class=" wow fadeInRight" data-wow-duration="1s">Made with 같이마시조 <i class="fa fa-heart"></i> by <a target="_blank" href="https://shrcampus.com/">스마트인재캠퍼스</a>2022. All Rights Reserved</p>
 						</div>
 					</div>
 				</div>
