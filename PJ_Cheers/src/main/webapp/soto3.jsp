@@ -133,8 +133,8 @@
                                 <!-- 레시피 스따뚜 -->
                                 <div class="row">
                                         <div id="soto_insert" align="center">
-                                            <p><textarea cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요."
-                                                    style="border: none;"></textarea></p>
+                                            <!-- <p><textarea cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요."
+                                                    style="border: none;"></textarea></p> -->
                                             <p class="textCount" style="display:inline;">0자</p>
                                             <p class="textTotal" style="display:inline; text-align: right;">/ 500자 <span><button type="button" style="border: none;"><a href='soto1.jsp'>수정완료</a></button></span></p>
                                             <br>
@@ -152,17 +152,21 @@
                                 <form action="UpdateSotoCon" method="post">
 								<table width="100%" height="400px" class="update_table" align="center">
 									<tr style="height: 10px">
-										<input type="hidden" name="soto_no" value="<%=soto_no %>">
-										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" name="contents" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"><%=soto_contents %></textarea></div>
+										<td align="center"><div class="toast_box">
+											<input type="hidden" name="soto_no" value="<%=soto_no %>">
+											<textarea id="wr" cols="50" rows="10" name="soto_contents" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"><%=soto_contents %></textarea></div>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2" align="right">
-											<p style="color:#000;" id="counter">0자 / 500자</p></td></td>
+											<p style="color:#000;" id="counter">0자 / 500자</p>
+										</td>
 									</tr>
 									<tr>
-										<td colspan="2" align="right"><div align=right>
-											<input type="submit" value="게시물수정" style="color:white;" class="insert_btn"></td>
+										<td colspan="2" align="right">
+											<input type="submit" value="게시물수정" style="color:white;" class="insert_btn">
+										</td>
+											
 									</tr>
 								</table>
 							</form>

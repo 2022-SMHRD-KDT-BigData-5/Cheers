@@ -12,6 +12,7 @@ public class Soto {
 		private String soto_contents;	//내용
 		private Timestamp soto_date;	//작성일자
 		private ArrayList<Soto_com> sc;
+		private int soto_no2;
 		
 		public Soto() {}
 		
@@ -21,6 +22,13 @@ public class Soto {
 			this.member_id = member_id;
 		}
 		
+		
+		public Soto(int soto_no2, String soto_contents) {
+			super();
+			this.soto_no2 = soto_no2;
+			this.soto_contents = soto_contents;
+		}
+
 		public Soto(BigDecimal soto_no, String member_id, String soto_contents) {
 			super();
 			this.soto_no = soto_no;

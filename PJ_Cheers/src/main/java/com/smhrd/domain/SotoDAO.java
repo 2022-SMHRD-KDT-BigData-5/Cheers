@@ -60,10 +60,10 @@ public class SotoDAO {
 	}
 	
 	// 게시글 수정
-		public int updateSoto(Soto sc_contents) {
+		public int updateSoto(Soto soto) {
 			int cnt = 0;
 			try {
-				cnt = sqlSession.update("com.smhrd.domain.SotoDAO.updateSoto", sc_contents);
+				cnt = sqlSession.update("com.smhrd.domain.SotoDAO.updateSoto", soto);
 				if (cnt > 0) {
 					sqlSession.commit();
 				} else {

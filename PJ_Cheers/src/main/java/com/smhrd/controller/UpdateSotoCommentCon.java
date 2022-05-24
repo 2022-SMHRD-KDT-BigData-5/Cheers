@@ -20,12 +20,13 @@ public class UpdateSotoCommentCon extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		System.out.println("[UpdateSotoCommentCon]");
-		System.out.println(request.getParameter("sc_no"));
-		System.out.println(request.getParameter("sc_contents"));
+		System.out.println(request.getParameter("sc_no_update"));
+		System.out.println(request.getParameter("sc_contents_update"));
+		
 
-		BigDecimal sc_no = new BigDecimal(request.getParameter("sc_no"));
+		BigDecimal sc_no = new BigDecimal(request.getParameter("sc_no_update"));
 	    
-		String sc_contents = request.getParameter("sc_contents");
+		String sc_contents = request.getParameter("sc_contents_update");
 		
 		System.out.println(sc_no);
 		System.out.println(sc_contents);

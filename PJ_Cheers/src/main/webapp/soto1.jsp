@@ -189,15 +189,15 @@ button {
 					<div>
 						<div class="main_service_area">
 							<div class="single_service_area" align="center">
-							  <hr style="border:0px; border-top:2px dashed ">
 								<ul id="soto_posts">
 							 	  <c:forEach var="s" items="${SotoList}">
+							  <hr style="border:0px; border-top:2px dashed ">
 							 	   <li class="soto_post">
 									<table width="100%">
 										<tr>
 											<td align="left" width="45%">no.<c:out value="${s.soto_no}"/></td>
 											<td align="right"><button style="border: none; background-color: #fff;">
-													<a href="UpdateSotoCon?soto_no=${s.soto_no} ">수정</a>
+													<a href="soto3.jsp?soto_no=${s.soto_no}&soto_contents=${s.soto_contents}">수정</a>
 												</button> <span> | </span>
 												<button style="border: none; background-color: #fff;">
 													<a href="DeleteSotoCon?soto_no=${s.soto_no}">삭제</a>
@@ -237,21 +237,28 @@ button {
 											<c:choose>
 												<c:when test="${s.soto_no eq d.soto_no}">
 													<hr color='#c06c84'>
-													<table width="100%">
+													<table width="100%" border="1px solid">
 														<tr>
 															<td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
 															<td width="20%"><c:out value="${d.sc_date}" /><br>
 																<b><c:out value="${d.member_id}" /></b></td>
-															<td><span><c:out value="${d.sc_contents}" /></span></td>
-															<td width="7%" align="right">
+															 <td><span id="sc_contents_span"><c:out value="${d.sc_contents}" /></span></td>
+															<!-- <td width="7%" align="right">
 																<span><c:out value="${d.sc_contents}" /></span>
-															</td>
-															<!-- <a href="UpdateSotoCommentCon?tc_no=${d.sc_no}">수정</a> -->
-															 <td width="7%" align="right">
-                                               					 <input type="hidden" id="sc_no_update" value="${d.sc_no}">
-                                               					 <input type="hidden" id="sc_contents_update" value="${d.sc_contents}">
-                                               					 <button id="update_comment" type="button" onclick="clickUp()" style="border: none; background-color: white;" >수정</button>
-                                               
+															</td>-->
+															<!-- <td width="7%"  align="right">
+															<a href="UpdateSotoCommentCon?sc_no=${d.sc_no}&sc_contents=${d.sc_contents}">수정</a>
+															</td> -->
+															 <!-- <td width="7%" align="right">
+															 	<form action="UpdateSotoCommentCon" method="post">
+                                               					 <input type="hidden" name="sc_no_update" value="${d.sc_no}">
+                                               					 <input type="hidden" name="sc_contents_update" value="${d.sc_contents}">
+                                               					 <button id="update_sc" type="submit" style="border: none; background-color: white;">수정</button> 
+                                               					</form>  -->
+                                               				<td width="7%" align="right">
+                                               					 <input type="hidden" class="sc_no_update" value="${d.sc_no}">
+                                               					 <input type="hidden" class="sc_contents_update" value="${d.sc_contents}">
+                                               					 <button id="update_sc" type="button" onclick="clickUp()" style="border: none; background-color: white;">수정</button>
                                              				</td>
 															
 															
@@ -369,40 +376,62 @@ button {
 	<%-- 댓글 수정 --%>
 	   
  	function clickUp(){
- 		var com = $('input[type=text]').val()
  		
  		var val1 = "";
  		var val2 = "";
- 		val1 = $("#sc_no_update").val();
- 		val2 = $("#sc_contents_update").val();
+ 		val1 = $(".sc_no_update").val();
+ 		val2 = $(".sc_contents_update").val();
  		console.log(val1)
  		console.log(val2)
  		
  		$.ajax({
- 			data : {tc_no : val1, tc_contents : val2},
-            url: "UpdateCommentCon",
+            url: "soto1",
             type : "GET",
             data : "text",
            success: function(){
                console.log("통신!!");
-               $("#tc_contents_span").html("<input type='text' value='"+val2+"'/>");
 
                <%--$('#tc_contents').prop("type", "text");
                    $('#tc_contents').prop("type", "text");--%>
                
            },
-           error: function(){
-              alert("통신실패!")
-           } 
+           error:function(request, status, error){
+       		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
           
-        })        
+        }        
  		
  		
+ 	})
+ 	}
+ 	<%--  --%>
+ 	$(".comment_edit").click(function() {
+
+ 		$.ajax({
+ 			data : {sc_no : val1, sc_contents : val2},
+            url: "UpdateSotoCommentCon",
+            type : "GET",
+            data : "text",
+           success: function(){
+               console.log("통신!!");
+               $("#sc_contents_span").html("#sc_contents_span");
+
+               <%--$('#tc_contents').prop("type", "text");
+                   $('#tc_contents').prop("type", "text");--%>
+               
+           },
+           error:function(request, status, error){
+       		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+          
+        }        
+ 		
+ 		
+ 	  })
  	}
 	</script>
+	
 	<%--
 	<script>
-	<%-- 무한스크롤
+	<%--무한스크롤
 		(() => {
 		  const $ul = document.querySelector('#soto_posts');
 		  let $li;
