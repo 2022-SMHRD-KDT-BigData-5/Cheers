@@ -194,8 +194,14 @@ button {
 									<table width="100%">
 										<tr>
 											<td align="left" width="45%">no.<c:out value="${s.soto_no}"/></td>
-											<td align="right"><button style="border: none; background-color: #fff;">
-													<a href="UpdateSotoCon?soto_no=${s.soto_no} ">수정</a>
+											<td align="right">
+											<button style="border: none; background-color: #fff;">
+													<form action="soto3.jsp">
+														<input type="hidden" name="soto_no" value="${s.soto_no}">
+														<input type="hidden" name="soto_contents" value="${s.soto_contents}">
+														<input type="submit" value="수정" style="border: none; background: white; color: black;">
+													</form>
+													<!--  <a href="UpdateSotoCon?soto_no=${s.soto_no} ">수정</a> -->
 												</button> <span> | </span>
 												<button style="border: none; background-color: #fff;">
 													<a href="DeleteSotoCon?soto_no=${s.soto_no}">삭제</a>

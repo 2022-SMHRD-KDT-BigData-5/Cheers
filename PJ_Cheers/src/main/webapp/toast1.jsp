@@ -182,15 +182,11 @@ pageContext.setAttribute("zzanList",zzanList);
 											<td align="right">
 												<button style="border: none; background-color: #fff;">
 													<form action="toast3.jsp">
-														<input type="hidden" name="t_file_path_update"
-															value='<c:out value="${p.t_file_path}" />'> <input
-															type="hidden" name="t_file_name_update"
-															value='<c:out value="${p.t_file_name}" />'> <input
-															type="hidden" name="toast_no_update"
-															value="${p.toast_no}"> <input type="hidden"
-															name="contents_update" value="${p.contents}"> <input
-															type="submit" value="수정"
-															style="border: none; background: white; color: black;">
+														<input type="hidden" name="t_file_path_update" value='<c:out value="${p.t_file_path}" />'>
+														<input type="hidden" name="t_file_name_update" alue='<c:out value="${p.t_file_name}" />'>
+														<input type="hidden" name="toast_no_update" value="${p.toast_no}">
+														<input type="hidden" name="contents_update" value="${p.contents}">
+														<input type="submit" value="수정" style="border: none; background: white; color: black;">
 													</form>
 													<!-- <a href="toast3.jsp">수정</a> -->
 												</button> <span> | </span>

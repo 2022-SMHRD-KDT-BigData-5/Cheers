@@ -129,19 +129,6 @@
                     </div><!-- End of head title -->
                     <div>
                         <div class="main_service_area">
-                            <div class="single_service_area">
-                                <!-- 레시피 스따뚜 -->
-                                <div class="row">
-                                        <div id="soto_insert" align="center">
-                                            <p><textarea cols="50" rows="10" maxlength="500" placeholder="내용을 입력하세요."
-                                                    style="border: none;"></textarea></p>
-                                            <p class="textCount" style="display:inline;">0자</p>
-                                            <p class="textTotal" style="display:inline; text-align: right;">/ 500자 <span><button type="button" style="border: none;"><a href='soto1.jsp'>수정완료</a></button></span></p>
-                                            <br>
-                                        </div>
-                                    </div>
-                                </div><!-- End of single service area -->
-                             <div class="single_service_area">
                              <%
 								String soto_no = request.getParameter("soto_no");
 								String soto_contents = request.getParameter("soto_contents");
@@ -153,7 +140,7 @@
 								<table width="100%" height="400px" class="update_table" align="center">
 									<tr style="height: 10px">
 										<input type="hidden" name="soto_no" value="<%=soto_no %>">
-										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" name="contents" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"><%=soto_contents %></textarea></div>
+										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" name="contents" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"><%=soto_contents%></textarea></div>
 										</td>
 									</tr>
 									<tr>
