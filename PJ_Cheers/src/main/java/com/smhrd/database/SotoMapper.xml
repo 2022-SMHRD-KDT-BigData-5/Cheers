@@ -5,7 +5,7 @@
 	
 	<!-- 게시물 -->
 	<insert id="insertSoto" parameterType="com.smhrd.domain.Soto">
-		insert into soto values (soto_no_seq.nextval ,#{member_id}, #{soto_contents}, sysdate)
+		insert into soto values (soto_no_seq.nextval ,#{member_id}, #{soto_contents}, current_timestamp)
 	</insert>
 	<select id="selectSoto" resultType="com.smhrd.domain.Soto">
 		select *
@@ -13,7 +13,7 @@
 		order by soto_no desc
 	</select>
 	<update id="updateSoto" parameterType="com.smhrd.domain.Soto">
-		update soto set soto_contents = #{soto_contents}, soto_date = sysdate where soto_no = #{soto_no2}
+		update soto set soto_contents = #{soto_contents}, soto_date = current_timestamp where soto_no = #{soto_no2}
 	</update>
 	<delete id = "deleteSoto" parameterType="String">
 		delete from soto where soto_no = #{soto_no}
@@ -22,7 +22,7 @@
 	
 	<!-- 댓글 -->
 	<insert id="addSotoComment" parameterType="com.smhrd.domain.Soto_com">
-        insert into soto_com values (sc_no_seq.nextval, #{soto_no}, #{member_id}, #{sc_contents}, sysdate)
+        insert into soto_com values (sc_no_seq.nextval, #{soto_no}, #{member_id}, #{sc_contents}, current_timestamp)
     </insert>
 	<select id="selectSotoComment" parameterType="String" resultType="com.smhrd.domain.Soto_com">
 		SELECT sc.sc_no, sc.soto_no, sc.member_id, sc.sc_contents, sc.sc_date
@@ -35,7 +35,7 @@
 		delete from soto_com where sc_no = #{sc_no}
 	</delete>
 	<update id="updateSotoComment" parameterType="com.smhrd.domain.Soto_com">++
-		update soto_com set sc_contents=#{sc_contents}, sc_date=sysdate where sc_no = #{sc_no}
+		update soto_com set sc_contents=#{sc_contents}, sc_date=current_timestamp where sc_no = #{sc_no}
 	</update>
 	
 </mapper>

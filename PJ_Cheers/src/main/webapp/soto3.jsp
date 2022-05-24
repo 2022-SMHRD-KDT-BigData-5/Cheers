@@ -153,11 +153,10 @@
                                 <form action="UpdateSotoCon" method="post">
 								<table width="100%" height="400px" class="update_table" align="center">
 									<tr style="height: 10px">
-										<td align="center"><div class="toast_box">
+										<td align="center">
 											<input type="hidden" name="soto_no" value="<%=soto_no %>">
-											<textarea id="wr" cols="50" rows="10" name="soto_contents" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"><%=soto_contents %></textarea></div>
-										<input type="hidden" name="soto_no" value="<%=soto_no %>">
-										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" name="contents" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"><%=soto_contents%></textarea></div>
+										</td>
+										<td align="center"><div class="toast_box"><textarea id="wr" cols="50" rows="10" name="soto_contents" maxlength="500" placeholder="내용을 입력하세요." style="border: none;"><%=soto_contents%></textarea></div>
 										</td>
 									</tr>
 									<tr>
