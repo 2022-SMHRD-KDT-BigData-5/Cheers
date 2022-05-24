@@ -17,8 +17,8 @@ public class DeleteSotoCommentCon extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 
-		String sc_no = request.getParameter("d.sc_no");
-		System.out.println("댓글번호"+sc_no);
+		String sc_no = request.getParameter("sc_no");
+		System.out.println("댓글번호: "+sc_no);
 		SotoDAO dao = new SotoDAO();
 		int cnt = dao.deleteSotoComment(sc_no);
 

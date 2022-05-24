@@ -189,8 +189,10 @@ button {
 					<div>
 						<div class="main_service_area">
 							<div class="single_service_area" align="center">
-								<c:forEach var="s" items="${SotoList}">
-								<hr style="border:0px; border-top:2px dashed ">
+							  <hr style="border:0px; border-top:2px dashed ">
+								<ul id="soto_posts">
+							 	  <c:forEach var="s" items="${SotoList}">
+							 	   <li class="soto_post">
 									<table width="100%">
 										<tr>
 											<td align="left" width="45%">no.<c:out value="${s.soto_no}"/></td>
@@ -241,8 +243,28 @@ button {
 															<td width="20%"><c:out value="${d.sc_date}" /><br>
 																<b><c:out value="${d.member_id}" /></b></td>
 															<td><span><c:out value="${d.sc_contents}" /></span></td>
-															<td width="7%" align="right"><a href="UpdateSotoCommentCon?tc_no=${d.sc_no }">수정</a></td>
-															<td width="7%" align="right"><a href="DeleteSotoCommentCon?tc_no=${d.sc_no} ">삭제</a></td>
+															<td width="7%" align="right">
+																<span><c:out value="${d.sc_contents}" /></span>
+															</td>
+															<!-- <a href="UpdateSotoCommentCon?tc_no=${d.sc_no}">수정</a> -->
+															 <td width="7%" align="right">
+                                               					 <input type="hidden" id="sc_no_update" value="${d.sc_no}">
+                                               					 <input type="hidden" id="sc_contents_update" value="${d.sc_contents}">
+                                               					 <button id="update_comment" type="button" onclick="clickUp()" style="border: none; background-color: white;" >수정</button>
+                                               
+                                             				</td>
+															
+															
+															
+															<td width="7%" align="right">
+															
+															<!-- <a href="DeleteSotoCommentCon?tc_no=${d.sc_no}">삭제</a> -->
+															<form class="soto_com_insert" method="post" action="DeleteSotoCommentCon" align="right">
+																<!-- <input type="hidden" name="sc_contents" placeholder="댓글을 작성해주세요." style="border: 5mm; width: 400px;"> -->
+																<input type="hidden" name="sc_no" value="${d.sc_no}">
+																<button type="submit" style="border:none;">삭제</button>
+															</form>
+															</td>
 														</tr>
 													</table>
 												</c:when>
@@ -253,7 +275,9 @@ button {
                               %>
 									</details>
 									<p></p>
+									</li>
 								</c:forEach>
+							   </ul>
 							</div>
 						</div>
 					</div>
@@ -339,6 +363,60 @@ button {
 
 	<!-- jQuery Main js  -->
 	<script src="assets/js/main.js"></script>
+	
+	<script>
+	
+	<%-- 댓글 수정 --%>
+	   
+ 	function clickUp(){
+ 		var com = $('input[type=text]').val()
+ 		
+ 		var val1 = "";
+ 		var val2 = "";
+ 		val1 = $("#sc_no_update").val();
+ 		val2 = $("#sc_contents_update").val();
+ 		console.log(val1)
+ 		console.log(val2)
+ 		
+ 		$.ajax({
+ 			data : {tc_no : val1, tc_contents : val2},
+            url: "UpdateCommentCon",
+            type : "GET",
+            data : "text",
+           success: function(){
+               console.log("통신!!");
+               $("#tc_contents_span").html("<input type='text' value='"+val2+"'/>");
+
+               <%--$('#tc_contents').prop("type", "text");
+                   $('#tc_contents').prop("type", "text");--%>
+               
+           },
+           error: function(){
+              alert("통신실패!")
+           } 
+          
+        })        
+ 		
+ 		
+ 	}
+	</script>
+	<%--
+	<script>
+	<%-- 무한스크롤
+		(() => {
+		  const $ul = document.querySelector('#soto_posts');
+		  let $li;
+		  let count = $ul.children.length;
+
+		  document.addEventListener('scroll', () => {
+		    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+		      $li = $ul.appendChild(document.createElement('li'));
+		      $li.textContent = ++count;
+		    }
+		  })
+		})();
+	</script>
+	 --%>
 
 </body>
 </html>
