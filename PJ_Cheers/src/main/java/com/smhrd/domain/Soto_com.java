@@ -32,7 +32,7 @@ public class Soto_com {
 		this.sc_contents = sc_contents;
 	}
 
-	public Soto_com(BigDecimal sc_no, String sc_contents) {
+	public Soto_com( String sc_contents, BigDecimal sc_no) {
 		super();
 		this.sc_no = sc_no;
 		this.sc_contents = sc_contents;

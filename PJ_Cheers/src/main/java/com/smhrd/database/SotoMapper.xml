@@ -34,7 +34,7 @@
 	<delete id="deleteSotoComment" parameterType="String">
 		delete from soto_com where sc_no = #{sc_no}
 	</delete>
-	<update id="updateSotoComment" parameterType="com.smhrd.domain.Soto_com">++
+	<update id="updateSotoComment" parameterType="com.smhrd.domain.Soto_com">
 		update soto_com set sc_contents=#{sc_contents}, sc_date=current_timestamp where sc_no = #{sc_no}
 	</update>
 	

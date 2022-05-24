@@ -229,8 +229,7 @@ button {
 										<input type="submit" value="등록" style="border:none;">
 									</form>
 									<details align="left">
-										<summary style="color: brown; cursor: pointer;">♥ 댓글
-											♥</summary>
+										<summary style="color: brown; cursor: pointer;">♥ 댓글 ♥</summary>
 										<%
                               String soto_no = "";
                               for(int i=0;i<SotoList.size();i++){
@@ -249,7 +248,14 @@ button {
 															<td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
 															<td width="20%"><c:out value="${d.sc_date}" /><br>
 																<b><c:out value="${d.member_id}" /></b></td>
-															 <td><span id="sc_contents_span"><c:out value="${d.sc_contents}" /></span></td>
+															 <td class="td_contents">
+															 <input type="hidden" class="sc_no_update" value="${d.sc_no}">
+															 <input type="hidden" class="sc_contents_list" value="${d.sc_contents}">
+															 <span class="sc_contents_span"><c:out value="${d.sc_contents}" /></span>
+															 <script>
+															 	var jspVar = ${d.sc_contents};
+															 </script>
+															 </td>
 															<!-- <td width="7%" align="right">
 																<span><c:out value="${d.sc_contents}" /></span>
 															</td>-->
@@ -262,7 +268,7 @@ button {
                                                					 <input type="hidden" name="sc_contents_update" value="${d.sc_contents}">
                                                					 <button id="update_sc" type="submit" style="border: none; background-color: white;">수정</button> 
                                                					</form>  -->
-                                               				<td width="7%" align="right">
+                                               				<td width="7%" align="right" class="td_input">
                                                					 <input type="hidden" class="sc_no_update" value="${d.sc_no}">
                                                					 <input type="hidden" class="sc_contents_update" value="${d.sc_contents}">
                                                					 <button id="update_sc" type="button" onclick="clickUp()" style="border: none; background-color: white;">수정</button>
@@ -384,23 +390,24 @@ button {
 	   
  	function clickUp(){
  		
- 		var val1 = "";
- 		var val2 = "";
- 		val1 = $(".sc_no_update").val();
- 		val2 = $(".sc_contents_update").val();
- 		console.log(val1)
- 		console.log(val2)
  		
  		$.ajax({
-            url: "soto1",
-            type : "GET",
-            data : "text",
+            url: "soto1.jsp",
+            method : "POST",
+            dataType : "text",
            success: function(){
                console.log("통신!!");
 
                <%--$('#tc_contents').prop("type", "text");
                    $('#tc_contents').prop("type", "text");--%>
-               
+                let inputName = "<input type='text' class='sc_contents_update' name='update_contents' value='"+$('.sc_contents_list').val()+"'>";
+                let buttons = "<button class='sc_edit' type='button' onclick='clickUp2()' style='border: none;'>수정확인</button>";
+                $('.sc_contents_span').html(inputName);
+                
+                $('.td_input').html(buttons);
+                $('.td_input').html(buttons);
+                console.log($('.td_input').html());
+                
            },
            error:function(request, status, error){
        		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -410,26 +417,43 @@ button {
  		
  	})
  	}
- 	<%--  --%>
- 	$(".comment_edit").click(function() {
-
+ 	<%-- 
+ 	$(".sc_edit").click(function() { --%>
+	function clickUp2(){
+		
+	
+ 		var val1 = "";
+ 		var val2 = "";
+ 		val1 = $(".sc_no_update").val();
+ 		val2 = $(".sc_contents_update").val();
+ 		//$("input[name=update_contents]").val(); --->controller getparameter();
+ 		console.log(val1)
+ 		console.log(val2)
+ 		
+ 		
  		$.ajax({
  			data : {sc_no : val1, sc_contents : val2},
             url: "UpdateSotoCommentCon",
-            type : "GET",
-            data : "text",
+            method : "POST",
+            dataType : "text",
            success: function(){
                console.log("통신!!");
-               $("#sc_contents_span").html("#sc_contents_span");
+               //$(".sc_contents_span").html(".sc_contents_span");
 
-               <%--$('#tc_contents').prop("type", "text");
-                   $('#tc_contents').prop("type", "text");--%>
+               //$("input").remove(".td_input")
+               let inputName2 = "<span class='sc_contents_span'>"+jspVar+"</span>"
+               console.log(inputName2);
+               let buttons2 = "<button id='update_sc' type='button' onclick='clickUp()' style='border: none; background-color: white;'>수정</button>"
+               $('.td_contents').html(inputName2);
+               $('.td_input').html(buttons2);
+               console.log($('.td_input').html());
                
-           },
-           error:function(request, status, error){
-       		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+           }
+ 	//		,
+    //       error:function(request, status, error){
+    //   		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
           
-        }        
+    //   }        
  		
  		
  	  })

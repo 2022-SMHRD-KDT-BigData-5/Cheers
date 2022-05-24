@@ -20,18 +20,15 @@ public class UpdateSotoCommentCon extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		System.out.println("[UpdateSotoCommentCon]");
-		System.out.println(request.getParameter("sc_no_update"));
-		System.out.println(request.getParameter("sc_contents_update"));
-		
 
-		BigDecimal sc_no = new BigDecimal(request.getParameter("sc_no_update"));
+		BigDecimal sc_no = new BigDecimal(request.getParameter("sc_no"));
 	    
-		String sc_contents = request.getParameter("sc_contents_update");
+		String sc_contents = request.getParameter("sc_contents");
 		
 		System.out.println(sc_no);
 		System.out.println(sc_contents);
 		
-		Soto_com tc_co = new Soto_com(sc_no, sc_contents);
+		Soto_com tc_co = new Soto_com(sc_contents, sc_no);
 
 		SotoDAO dao = new SotoDAO();
 		int cnt = dao.updateSotoComment(tc_co);
@@ -40,10 +37,10 @@ public class UpdateSotoCommentCon extends HttpServlet {
 			System.out.println("ott 댓글 수정 성공");
 			// 수정된 값으로 loginMember 세션 값을 재설정
 //			session.setAttribute("loginMember", tc_co);
-			response.sendRedirect("Soto.jsp");
+			response.sendRedirect("soto1.jsp");
 		} else {
 			System.out.println("ott 댓글 수정 실패");
-			response.sendRedirect("Soto.jsp");
+			response.sendRedirect("soto1.jsp");
 		}
 
 	}
