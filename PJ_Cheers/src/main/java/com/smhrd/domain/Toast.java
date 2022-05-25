@@ -18,7 +18,29 @@ public class Toast {
 	private String t_file_realname;
 		
 	private BigDecimal zzan_count;
+	private String member_nick;
 	
+
+	
+	
+	
+	
+	public Toast(BigDecimal toast_no, String member_id, String contents, Timestamp toast_date, String t_file_path,
+			String t_file_name, String t_file_realname, BigDecimal zzan_count, String member_nick) {
+		super();
+		this.toast_no = toast_no;
+		this.member_id = member_id;
+		this.contents = contents;
+		this.toast_date = toast_date;
+		this.t_file_path = t_file_path;
+		this.t_file_name = t_file_name;
+		this.t_file_realname = t_file_realname;
+		this.zzan_count = zzan_count;
+		this.member_nick = member_nick;
+	}
+
+
+
 
 	public Toast(BigDecimal toast_no, String member_id, String contents, Timestamp toast_date, String t_file_path,
 			String t_file_name, String t_file_realname, BigDecimal zzan_count) {
@@ -172,6 +194,11 @@ public class Toast {
 
 	public BigDecimal getZzan_count() {
 		return zzan_count;
+	}
+
+
+	public String getMember_nick() {
+		return member_nick;
 	}
 	
 	

@@ -175,11 +175,12 @@ pageContext.setAttribute("zzanList", zzanList);
 								<c:forEach var="p" items="${postList}">
 									<hr style="border: 0px; border-top: 2px dashed">
 									<table width="100%">
+								
 										<tr>
 											<td align="left" width="45%">no.<c:out
 													value="${p.toast_no}" /></td>
 											<td align="right">
-												<button style="border: none; background-color: #fff;">
+												<c:if test="${loginMember.id eq p.member_id }">
 													<form action="toast3.jsp">
 														<input type="hidden" name="t_file_path_update"
 															value='<c:out value="${p.t_file_path}" />'> <input
@@ -191,16 +192,19 @@ pageContext.setAttribute("zzanList", zzanList);
 															type="submit" value="수정"
 															style="border: none; background: white; color: black;">
 													</form>
+													
 													<!-- <a href="toast3.jsp">수정</a> -->
-												</button> <span> | </span>
+												 <span> | </span>
 												<button style="border: none; background-color: #fff;">
 													<a href="DeleteCon?toast_no=${p.toast_no}">삭제</a>
 												</button>
+											</c:if>
 											</td>
 										</tr>
+										
 										<tr>
 											<td colspan="2" align="right"><b><c:out
-														value="${p.member_id}" /></b><span> | <c:out
+														value="${p.member_nick}" /></b><span> | <c:out
 														value="${p.toast_date}" /></span></td>
 										</tr>
 										<tr>
@@ -334,11 +338,8 @@ pageContext.setAttribute("zzanList", zzanList);
 															<td width="5%" align="center"><button
 																	style="border: none; background-color: white;">🥂</button></td>
 															<td width="20%"><c:out value="${c.tc_date}" /><br>
-																<b><c:out value="${c.member_id}" /></b></td>
-															<td><span id="tc_contents_span"><c:out
-																		value="${c.tc_contents}" /></span> <!-- <input type="hidden" name="tc_no" value="${c.tc_no}">
-                                               	<input type="hidden" id="tc_contents" name="tc_contents" value="${c.tc_contents}"> -->
-															</td>
+																<b><c:out value="${c.member_nick}" /></b></td>
+														
 															<td><span><c:out value="${c.tc_contents}" /></span></td>
 															<td width="7%" align="right">
 																<!-- 댓글 수정 현재 페이지에서 구현 --> <!-- <form action="updateComment.jsp">
@@ -347,15 +348,15 @@ pageContext.setAttribute("zzanList", zzanList);
                                                    <input type="submit" value="댓글 수정">
                                                 </form> --> <input
 																type="hidden" id="tc_no_update" value="${c.tc_no}">
+																<c:if test="${loginMember.id eq c.member_id }">
 																<input type="hidden" id="tc_contents_update"
 																value="${c.tc_contents}">
 																<button id="update_comment" type="button"
 																	onclick="clickUp()"
 																	style="border: none; background-color: white;">수정</button>
-
+															</c:if>
 															</td>
-
-
+															<c:if test="${loginMember.id eq c.member_id }">
 															<td width="7%" align="right">
 																<form method="post" action="DeleteCommentCon">
 																	<input type="hidden" name="tc_no" value="${c.tc_no}">
@@ -364,7 +365,9 @@ pageContext.setAttribute("zzanList", zzanList);
 																		style="border: none; background-color: white;"
 																		onclick="submit">삭제</button>
 																</form> <!-- <a href="DeleteCommentCon?tc_no=${c.tc_no} ">삭제</a></td> -->
+															
 															</td>
+															</c:if>
 														</tr>
 													</table>
 												</c:when>

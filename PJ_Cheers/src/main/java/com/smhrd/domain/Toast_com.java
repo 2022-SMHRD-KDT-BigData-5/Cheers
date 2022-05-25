@@ -13,8 +13,25 @@ public class Toast_com {
 	private int tc_zzan;
 	private Timestamp tc_date;	//작성일자
 	
+	private String member_nick;
 	private Toast_com() {}
 	
+	
+	
+	public Toast_com(BigDecimal tc_no, String toast_no, String member_id, String tc_contents, int tc_zzan,
+			Timestamp tc_date, String member_nick) {
+		super();
+		this.tc_no = tc_no;
+		this.toast_no = toast_no;
+		this.member_id = member_id;
+		this.tc_contents = tc_contents;
+		this.tc_zzan = tc_zzan;
+		this.tc_date = tc_date;
+		this.member_nick = member_nick;
+	}
+
+
+
 	public Toast_com(String toast_no, String member_id, String tc_contents) {
 		super();
 		this.toast_no = toast_no;
@@ -83,6 +100,10 @@ public class Toast_com {
 	}
 	public void setTc_date(Timestamp tc_date) {
 		this.tc_date = tc_date;
+	}
+
+	public String getMember_nick() {
+		return member_nick;
 	}
 	
 	

@@ -194,8 +194,10 @@ button {
 							  <hr style="border:0px; border-top:2px dashed ">
 							 	   <li class="soto_post">
 									<table width="100%" border="1px solid">
+										
 										<tr>
 											<td align="left" width="45%">no.<c:out value="${s.soto_no}"/></td>
+											<c:if test="${loginMember.id eq s.member_id }">
 											<td align="right" width="7%">
 													<a href="soto3.jsp?soto_no=${s.soto_no}&soto_contents=${s.soto_contents}">수정</a>
 											</td>
@@ -208,11 +210,14 @@ button {
 													</form>
 													<!--  <a href="UpdateSotoCon?soto_no=${s.soto_no} ">수정</a>  <span> | </span> -->
 													<a href="DeleteSotoCon?soto_no=${s.soto_no}">삭제</a>
+											
 											</td>
+											</c:if>
 										</tr>
+									
 										<tr>
 											<td colspan="3" align="right"><b><c:out
-														value="${s.member_id}" /></b><span> | <c:out
+														value="${s.member_nick}" /></b><span> | <c:out
 														value="${s.soto_date}" /></span></td>
 										</tr>
 										<tr>
@@ -247,7 +252,7 @@ button {
 														<tr>
 															<td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
 															<td width="20%"><c:out value="${d.sc_date}" /><br>
-																<b><c:out value="${d.member_id}" /></b></td>
+																<b><c:out value="${d.member_nick}" /></b></td>
 															 <td class="td_contents">
 															 <input type="hidden" class="sc_no_update" value="${d.sc_no}">
 															 <input type="hidden" class="sc_contents_list" value="${d.sc_contents}">
@@ -268,23 +273,29 @@ button {
                                                					 <input type="hidden" name="sc_contents_update" value="${d.sc_contents}">
                                                					 <button id="update_sc" type="submit" style="border: none; background-color: white;">수정</button> 
                                                					</form>  -->
+                                               			<c:if test="${loginMember.id eq d.member_id }">
                                                				<td width="7%" align="right" class="td_input">
                                                					 <input type="hidden" class="sc_no_update" value="${d.sc_no}">
                                                					 <input type="hidden" class="sc_contents_update" value="${d.sc_contents}">
+                                               					
                                                					 <button id="update_sc" type="button" onclick="clickUp()" style="border: none; background-color: white;">수정</button>
+                                               					 </c:if>
                                              				</td>
 															
 															
-															
+															<c:if test="${loginMember.id eq d.member_id }">
 															<td width="7%" align="right">
 															
 															<!-- <a href="DeleteSotoCommentCon?tc_no=${d.sc_no}">삭제</a> -->
 															<form class="soto_com_insert" method="post" action="DeleteSotoCommentCon" align="right">
 																<!-- <input type="hidden" name="sc_contents" placeholder="댓글을 작성해주세요." style="border: 5mm; width: 400px;"> -->
 																<input type="hidden" name="sc_no" value="${d.sc_no}">
+																
 																<button type="submit" style="border:none;">삭제</button>
+																
 															</form>
 															</td>
+															</c:if>
 														</tr>
 													</table>
 												</c:when>

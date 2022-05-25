@@ -12,9 +12,24 @@ public class Soto_com {
 	private String member_id;
 	private String sc_contents;
 	private Timestamp sc_date;
-	
+	private String member_nick;
 	private Soto_com() {}
 	
+	
+	
+	public Soto_com(BigDecimal sc_no, String soto_no, String member_id, String sc_contents, Timestamp sc_date,
+			String member_nick) {
+		super();
+		this.sc_no = sc_no;
+		this.soto_no = soto_no;
+		this.member_id = member_id;
+		this.sc_contents = sc_contents;
+		this.sc_date = sc_date;
+		this.member_nick = member_nick;
+	}
+
+
+
 	public Soto_com(BigDecimal sc_no, String soto_no, String member_id, String sc_contents, Timestamp sc_date) {
 		super();
 		this.sc_no = sc_no;
@@ -81,6 +96,10 @@ public class Soto_com {
 
 	public void setSc_date(Timestamp sc_date) {
 		this.sc_date = sc_date;
+	}
+
+	public String getMember_nick() {
+		return member_nick;
 	}
 	
 }

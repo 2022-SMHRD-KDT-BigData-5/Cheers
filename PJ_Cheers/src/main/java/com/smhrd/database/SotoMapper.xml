@@ -8,8 +8,9 @@
 		insert into soto values (soto_no_seq.nextval ,#{member_id}, #{soto_contents}, current_timestamp)
 	</insert>
 	<select id="selectSoto" resultType="com.smhrd.domain.Soto">
-		select *
-		from soto 
+		select s.soto_no, s.member_id, s.soto_contents, s.soto_date, m.member_nick
+		from soto s, member m
+		where s.member_id = m.member_id
 		order by soto_no desc
 	</select>
 	<update id="updateSoto" parameterType="com.smhrd.domain.Soto">
@@ -25,9 +26,10 @@
         insert into soto_com values (sc_no_seq.nextval, #{soto_no}, #{member_id}, #{sc_contents}, current_timestamp)
     </insert>
 	<select id="selectSotoComment" parameterType="String" resultType="com.smhrd.domain.Soto_com">
-		SELECT sc.sc_no, sc.soto_no, sc.member_id, sc.sc_contents, sc.sc_date
-		FROM soto s, soto_com sc
+		SELECT sc.sc_no, sc.soto_no, sc.member_id, sc.sc_contents, sc.sc_date, m.member_nick
+		FROM soto s, soto_com sc, member m
 		WHERE s.soto_no=sc.soto_no
+		AND sc.member_id = m.member_id
 		AND s.soto_no=#{soto_no} 
 		ORDER BY sc.sc_no DESC
 	</select>

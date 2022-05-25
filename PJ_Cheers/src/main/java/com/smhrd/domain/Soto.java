@@ -13,7 +13,23 @@ public class Soto {
 		private Timestamp soto_date;	//작성일자
 		private ArrayList<Soto_com> sc;
 		private int soto_no2;
+		private String member_nick;
 		
+		
+		
+		
+		public Soto(BigDecimal soto_no, String member_id, String soto_contents, Timestamp soto_date,
+				ArrayList<Soto_com> sc, int soto_no2, String member_nick) {
+			super();
+			this.soto_no = soto_no;
+			this.member_id = member_id;
+			this.soto_contents = soto_contents;
+			this.soto_date = soto_date;
+			this.sc = sc;
+			this.soto_no2 = soto_no2;
+			this.member_nick = member_nick;
+		}
+
 		public Soto() {}
 		
 		public Soto(BigDecimal soto_no, String member_id) {
@@ -89,6 +105,14 @@ public class Soto {
 
 		public void setSc(ArrayList<Soto_com> sc) {
 			this.sc = sc;
+		}
+
+		public String getMember_nick() {
+			return member_nick;
+		}
+
+		public void setMember_nick(String member_nick) {
+			this.member_nick = member_nick;
 		}
 		
 		

@@ -18,8 +18,9 @@
 	</select> -->
 	
  	<select id="selectPost" resultType="com.smhrd.domain.Toast">
-		select *
-		from toast 
+		select t.toast_no,m.member_nick,t.toast_contents, t.toast_date,t.t_file_path,t.t_file_name,t.t_file_realname,t.zzan_count
+		from toast t , member m
+		where t.member_id = m.member_id
 		order by toast_no desc
 	</select> 
 	
@@ -40,9 +41,10 @@
         insert into toast_com values (tc_no_seq.nextval, #{toast_no}, #{member_id}, #{tc_contents}, 0, sysdate)
     </insert>
 	<select id="selectComment" parameterType="String" resultType="com.smhrd.domain.Toast_com">
-		SELECT tc.tc_no, tc.toast_no, tc.member_id, tc.tc_contents, tc.tc_zzan, tc.tc_date
-		FROM toast t, toast_com tc
+		SELECT tc.tc_no, tc.toast_no, m.member_nick, tc.tc_contents, tc.tc_zzan, tc.tc_date
+		FROM toast t, toast_com tc, member m
 		WHERE t.toast_no=tc.toast_no
+		AND tc.member_id=m.member_id
 		AND t.toast_no=#{toast_no} 
 		ORDER BY tc.tc_no DESC
 	</select>
