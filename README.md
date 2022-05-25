@@ -1,4 +1,4 @@
-# 꽃 보러 갈래?(팀명: MATCH&FIX)
+# 슬기로운 혼술생활(팀명: 같이마시조)
 ![image](https://user-images.githubusercontent.com/99248886/166611412-9fc116d1-6efe-40ea-acc6-2ddd7b4f26e7.png)
 
 ## 1. 프로젝트명
