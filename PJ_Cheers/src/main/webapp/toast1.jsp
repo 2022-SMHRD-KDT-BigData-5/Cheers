@@ -180,19 +180,23 @@ pageContext.setAttribute("zzanList", zzanList);
 											<td align="left" width="45%">no.<c:out
 													value="${p.toast_no}" /></td>
 											<td align="right">
-												<c:if test="${loginMember.id eq p.member_id }">
+												
 													<form action="toast3.jsp">
 														<input type="hidden" name="t_file_path_update"
 															value='<c:out value="${p.t_file_path}" />'> <input
 															type="hidden" name="t_file_name_update"
 															alue='<c:out value="${p.t_file_name}" />'> <input
 															type="hidden" name="toast_no_update"
-															value="${p.toast_no}"> <input type="hidden"
+															value="${p.toast_no}">
+															<c:if test="${loginMember.id eq p.member_id }">
+															 <input type="hidden"
 															name="contents_update" value="${p.contents}"> <input
 															type="submit" value="수정"
 															style="border: none; background: white; color: black;">
+															</c:if>
 													</form>
 													
+													<c:if test="${loginMember.id eq p.member_id }">
 													<!-- <a href="toast3.jsp">수정</a> -->
 												 <span> | </span>
 												<button style="border: none; background-color: #fff;">
@@ -341,22 +345,25 @@ pageContext.setAttribute("zzanList", zzanList);
 																<b><c:out value="${c.member_nick}" /></b></td>
 														
 															<td><span><c:out value="${c.tc_contents}" /></span></td>
+														
+														 <c:if test="${loginMember.id eq c.member_id }">
 															<td width="7%" align="right">
 																<!-- 댓글 수정 현재 페이지에서 구현 --> <!-- <form action="updateComment.jsp">
                                                    <input type="hidden" name="tc_no" value="${c.tc_no}">
                                                    <input type="hidden" name="tc_contents" value="${c.tc_contents}"> 
                                                    <input type="submit" value="댓글 수정">
-                                                </form> --> <input
-																type="hidden" id="tc_no_update" value="${c.tc_no}">
-																<c:if test="${loginMember.id eq c.member_id }">
+                                                </form> -->
+                                             
+                                                		 <input	type="hidden" id="tc_no_update" value="${c.tc_no}">
+													  
 																<input type="hidden" id="tc_contents_update"
 																value="${c.tc_contents}">
 																<button id="update_comment" type="button"
 																	onclick="clickUp()"
 																	style="border: none; background-color: white;">수정</button>
-															</c:if>
-															</td>
-															<c:if test="${loginMember.id eq c.member_id }">
+																</td>
+														</c:if>
+														 <c:if test="${loginMember.id eq c.member_id }">
 															<td width="7%" align="right">
 																<form method="post" action="DeleteCommentCon">
 																	<input type="hidden" name="tc_no" value="${c.tc_no}">
@@ -544,7 +551,6 @@ function play() {
            $.ajax({
               data: {toast_no : $(this).next().val()},
               url: "CountCommentCon",
-              method: "get",
               method : "GET",
              dataType : "text",
              context : this,  

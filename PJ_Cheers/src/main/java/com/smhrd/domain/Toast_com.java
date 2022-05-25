@@ -30,6 +30,8 @@ public class Toast_com {
 		this.member_nick = member_nick;
 	}
 
+	
+
 
 
 	public Toast_com(String toast_no, String member_id, String tc_contents) {
