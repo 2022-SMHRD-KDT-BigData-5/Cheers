@@ -54,6 +54,8 @@
 		<div class="main_menu_bg">
 			<div class="container">
 				<div class="row">
+									<a class="navbar-brand" href="index_test.jsp"> <img src="assets/images/logo.png"/>
+									</a>
 					<div class="nave_menu">
 						<nav class="navbar navbar-default" id="navmenu">
 							<div class="container-fluid">
@@ -67,8 +69,6 @@
 											class="icon-bar"></span> <span class="icon-bar"></span> <span
 											class="icon-bar"></span>
 									</button>
-									<a class="navbar-brand" href="index_test.jsp"> <img src="assets/images/logo.png"/>
-									</a>
 								</div>
 
 								<!-- Collect the nav links, forms, and other content for toggling -->

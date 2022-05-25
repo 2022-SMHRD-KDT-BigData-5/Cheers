@@ -177,7 +177,7 @@ button {
 								<!-- 상단 카테고리 -->
 								<div class="base_controls" align="center">
 									<a href="https://www.teleparty.com"><img src="assets/images/넷플릭스.jpg" alt="넷플릭스" style="width: 10%; border-radius: 40px;"></a>
-									<a href="recipe_macju.html"><img src="assets/images/왓챠.jpg" alt="왓챠" style="width: 10%; border-radius: 40px;"></a>
+									<a href="https://watcha.com/parties"><img src="assets/images/왓챠.jpg" alt="왓챠" style="width: 10%; border-radius: 40px;"></a>
 									<div style="height: 60px;">
 								</div>
 									<div align=right>
@@ -205,7 +205,7 @@ button {
 											<td align="right">
 													<a href="soto3.jsp?soto_no=${s.soto_no}&soto_contents=${s.soto_contents}">수정</a>
 											</td>
-											<td  width="5%">
+											<td  width="5%" align="right">
 												
 													<!-- <form action="soto3.jsp">
 														<input type="hidden" name="soto_no" value="${s.soto_no}">

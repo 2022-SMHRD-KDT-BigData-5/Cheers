@@ -175,7 +175,7 @@ pageContext.setAttribute("zzanList", zzanList);
 								<c:set var="tempname" value="" />
 								<c:forEach var="p" items="${postList}">
 									<hr style="border: 0px; border-top: 2px dashed">
-									<table width="100%" border="1px soild">
+									<table width="100%">
 								
 										<tr>
 											<td align="left" width="45%">no.<c:out
@@ -192,7 +192,7 @@ pageContext.setAttribute("zzanList", zzanList);
 													
 													<c:if test="${loginMember.id eq p.member_id }">
 													<!-- <a href="toast3.jsp">수정</a> -->
-													</td><td width="7%">
+													</td><td width="5%" align="right">
 												<button style="border: none; background-color: #fff;">
 													<a href="DeleteCon?toast_no=${p.toast_no}">삭제</a>
 												</button>
