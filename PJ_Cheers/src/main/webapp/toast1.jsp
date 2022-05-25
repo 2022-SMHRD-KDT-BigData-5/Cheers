@@ -8,15 +8,14 @@
 <%@page import="com.smhrd.domain.Toast_com"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-   ToastDAO dao = new ToastDAO();
+ToastDAO dao = new ToastDAO();
 
-   List<Toast> postList = dao.selectPost();
-   pageContext.setAttribute("postList",postList);
-   
+List<Toast> postList = dao.selectPost();
+pageContext.setAttribute("postList", postList);
 %>
 <%
 List<PostZzanVO> zzanList = dao.allZn();
-pageContext.setAttribute("zzanList",zzanList);
+pageContext.setAttribute("zzanList", zzanList);
 %>
 
 <!doctype html>
@@ -87,7 +86,7 @@ pageContext.setAttribute("zzanList",zzanList);
 											class="icon-bar"></span>
 									</button>
 									<a class="navbar-brand" href="index_test.jsp"> <img
-										src="assets/images/logo.png" style="max-height:100px;"/>
+										src="assets/images/logo.png" style="max-height: 100px;" />
 									</a>
 								</div>
 
@@ -182,11 +181,15 @@ pageContext.setAttribute("zzanList",zzanList);
 											<td align="right">
 												<button style="border: none; background-color: #fff;">
 													<form action="toast3.jsp">
-														<input type="hidden" name="t_file_path_update" value='<c:out value="${p.t_file_path}" />'>
-														<input type="hidden" name="t_file_name_update" alue='<c:out value="${p.t_file_name}" />'>
-														<input type="hidden" name="toast_no_update" value="${p.toast_no}">
-														<input type="hidden" name="contents_update" value="${p.contents}">
-														<input type="submit" value="수정" style="border: none; background: white; color: black;">
+														<input type="hidden" name="t_file_path_update"
+															value='<c:out value="${p.t_file_path}" />'> <input
+															type="hidden" name="t_file_name_update"
+															alue='<c:out value="${p.t_file_name}" />'> <input
+															type="hidden" name="toast_no_update"
+															value="${p.toast_no}"> <input type="hidden"
+															name="contents_update" value="${p.contents}"> <input
+															type="submit" value="수정"
+															style="border: none; background: white; color: black;">
 													</form>
 													<!-- <a href="toast3.jsp">수정</a> -->
 												</button> <span> | </span>
@@ -210,39 +213,70 @@ pageContext.setAttribute("zzanList",zzanList);
 										<tr>
 											<!-- 짠위치 -->
 											<c:choose>
-												<c:when test="${p.zzan_count ne 0}">
+												<c:when test="${p.zzan_count eq 0}">
+
+													<td align="right">
+														<button id="post_zzan_un"
+															style="border: none; background-color: white; text-align: right;">
+															<img src="assets/images/zzan_un.png" width=5% />
+														</button> <input type="hidden"
+														value='<c:out value="${p.toast_no}" />'>
+													</td>
+													<td><span id="post_zzan_no"><c:out
+																value="${p.zzan_count}" /></span></td>
+
+												</c:when>
+
+												<c:otherwise>
 
 													<c:forEach var="pz" items="${zzanList}">
 
-
-														
 														<c:choose>
 															<c:when
 																test="${loginMember.id eq pz.member_id and pz.toast_no eq p.toast_no}">
-																<td align="right" >
-																	<button id="post_zzan" style="border:none; background-color:white;text-align:right;">
-																		<img src="assets/images/zzan.png" width=4%  />
-																	</button> <input type="hidden"
-																	value='<c:out value="${p.toast_no}" />'> </td>
-																	<td><span
-																	id="post_zzan_no"><c:out value="${p.zzan_count}" /></span>
-																</td>
+																<c:if test="${pz.toast_no eq p.toast_no}">
+																	<td align="right">
+																		<button id="post_zzan"
+																			style="border: none; background-color: white; text-align: right;">
+																			<img src="assets/images/zzan.png" width=5% />
+																		</button> <input type="hidden"
+																		value='<c:out value="${p.toast_no}" />'>
+																	</td>
+																	<td><span id="post_zzan_no"><c:out
+																				value="${p.zzan_count}" /></span></td>
+																</c:if>
 															</c:when>
 
 															<c:otherwise>
-																<c:if
-																	test="${p.toast_no != tempname and loginMember.id ne pz.member_id}">
-																	<td align="right">
-																		<button id="post_zzan_un" style="border:none; background-color:white;text-align:right;">
-																			<img src="assets/images/zzan_un.png" width=4% />
-																		</button> <input type="hidden"
-																		value='<c:out value="${p.toast_no}" />'> </td>
-																	<td><span
-																		id="post_zzan_no"><c:out
-																				value="${p.zzan_count}" /></span>
-																	</td>
+																<c:if test="${p.toast_no ne tempname}">
+																	<c:if
+																		test="${pz.toast_no eq p.toast_no and loginMember.id ne pz.member_id}">
+																		<td align="right">
+																			<button id="post_zzan_un"
+																				style="border: none; background-color: white; text-align: right;">
+																				<img src="assets/images/zzan_un.png" width=5% />
+																			</button> <input type="hidden"
+																			value='<c:out value="${p.toast_no}" />'>
+																		</td>
+																		<td><span id="post_zzan_no"><c:out
+																					value="${p.zzan_count}" /></span></td>
+																	</c:if>
+																	<c:if
+																		test="${pz.toast_no ne p.toast_no and loginMember.id eq pz.member_id}">
+																		<td align="right">
+																			<button id="post_zzan_un"
+																				style="border: none; background-color: white; text-align: right;">
+																				<img src="assets/images/zzan_un.png" width=5% />
+																			</button> <input type="hidden"
+																			value='<c:out value="${p.toast_no}" />'>
+																		</td>
+																		<td><span id="post_zzan_no"><c:out
+																					value="${p.zzan_count}" /></span></td>
+																	</c:if>
+
 																</c:if>
 																<c:set var="tempname" value="${p.toast_no}" />
+
 															</c:otherwise>
 														</c:choose>
 
@@ -250,17 +284,14 @@ pageContext.setAttribute("zzanList",zzanList);
 
 
 													</c:forEach>
-												</c:when>
-
-												<c:otherwise>
-													<td align="right" >
+													<%-- <td align="right" >
 														<button id="post_zzan_un" style="border:none; background-color:white;text-align:right;">
-															<img src="assets/images/zzan_un.png" width=4% />
+															<img src="assets/images/zzan_un.png" width=5% />
 														</button> <input type="hidden"
 														value='<c:out value="${p.toast_no}" />'></td>
 																	<td> <span
 														id="post_zzan_no"><c:out value="${p.zzan_count}" /></span>
-													</td>
+													</td> --%>
 												</c:otherwise>
 											</c:choose>
 										</tr>
@@ -285,16 +316,13 @@ pageContext.setAttribute("zzanList",zzanList);
 										<summary id="context" style="color: brown; cursor: pointer;">♥
 											댓글 ♥</summary>
 										<%
-                                String toast_no="";
-                              for(int i=0;i<postList.size();i++){
-                                 toast_no = postList.get(i).getToast_no().toString();
-            
-                              List<Toast_com> commList = dao.selectComment(toast_no);
-                                pageContext.setAttribute("commList",commList);
-                                                          
-                                
-                                
-                             %>
+										String toast_no = "";
+										for (int i = 0; i < postList.size(); i++) {
+											toast_no = postList.get(i).getToast_no().toString();
+
+											List<Toast_com> commList = dao.selectComment(toast_no);
+											pageContext.setAttribute("commList", commList);
+										%>
 
 										<c:forEach var="c" items="${commList}">
 											<c:choose>
@@ -307,8 +335,8 @@ pageContext.setAttribute("zzanList",zzanList);
 																	style="border: none; background-color: white;">🥂</button></td>
 															<td width="20%"><c:out value="${c.tc_date}" /><br>
 																<b><c:out value="${c.member_id}" /></b></td>
-															<td><span id="tc_contents_span"><c:out value="${c.tc_contents}" /></span>
-																		<!-- <input type="hidden" name="tc_no" value="${c.tc_no}">
+															<td><span id="tc_contents_span"><c:out
+																		value="${c.tc_contents}" /></span> <!-- <input type="hidden" name="tc_no" value="${c.tc_no}">
                                                	<input type="hidden" id="tc_contents" name="tc_contents" value="${c.tc_contents}"> -->
 															</td>
 															<td><span><c:out value="${c.tc_contents}" /></span></td>
@@ -343,8 +371,8 @@ pageContext.setAttribute("zzanList",zzanList);
 											</c:choose>
 										</c:forEach>
 										<%
-                              }
-                              %>
+										}
+										%>
 									</details>
 									<p></p>
 								</c:forEach>
@@ -370,7 +398,11 @@ pageContext.setAttribute("zzanList",zzanList);
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="copyright_text text-center">
-							<p class=" wow fadeInRight" data-wow-duration="1s">Made with 같이마시조 <i class="fa fa-heart"></i> by <a target="_blank" href="https://shrcampus.com/">스마트인재캠퍼스</a>2022. All Rights Reserved</p>
+							<p class=" wow fadeInRight" data-wow-duration="1s">
+								Made with 같이마시조 <i class="fa fa-heart"></i> by <a
+									target="_blank" href="https://shrcampus.com/">스마트인재캠퍼스</a>2022.
+								All Rights Reserved
+							</p>
 						</div>
 					</div>
 				</div>
@@ -435,7 +467,7 @@ pageContext.setAttribute("zzanList",zzanList);
    </script>
 
 	<!-- 짠테스트 -->
-   <script>
+	<script>
    
 	$(document).on("click", "#post_zzan_un", function(){ 
 	
