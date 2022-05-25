@@ -192,7 +192,7 @@ pageContext.setAttribute("zzanList", zzanList);
 													
 													<c:if test="${loginMember.id eq p.member_id }">
 													<!-- <a href="toast3.jsp">수정</a> -->
-													</td><td width="5%">
+													</td><td width="7%">
 												<button style="border: none; background-color: #fff;">
 													<a href="DeleteCon?toast_no=${p.toast_no}">삭제</a>
 												</button>
@@ -206,9 +206,9 @@ pageContext.setAttribute("zzanList", zzanList);
 														value="${p.toast_date}" /></span></td>
 										</tr>
 										<tr>
-											<td style="height: 300px;" align="center"><img
+											<td style="height: 150px;" align="center"><img
 												src='<c:out value="${p.t_file_path}/${p.t_file_name}" />'
-												alt="게시물이미지"></td>
+												alt="게시물이미지"style="max-width: 95%;"></td>
 											<td colspan="2" style="vertical-align: top; padding: 2%"><c:out
 													value="${p.contents}" /></td>
 										</tr>

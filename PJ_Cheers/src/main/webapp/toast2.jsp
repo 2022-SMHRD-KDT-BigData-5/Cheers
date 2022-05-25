@@ -58,7 +58,7 @@
 	<div class='preloader'>
 		<div class='loaded'>&nbsp;</div>
 	</div>
-	<header id="main_menu" class="header navbar-fixed-top">
+<header id="main_menu" class="header navbar-fixed-top">
 		<div class="main_menu_bg">
 			<div class="container">
 				<div class="row">
@@ -83,37 +83,7 @@
 
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-1">
-									<ul class="nav navbar-nav navbar-right">
-										<!-- 회원정보 -->
-										<c:choose>
-											<c:when test="${empty loginMember}">
-												<!--if절 (조건작성!) - if~else문  -->
-												<li><a href="join2.jsp">회원가입</a></li>
-												<li><a href="login2.jsp">로그인<img src ="assets/images/empty_sm.png"></a></li>
-											</c:when>
-
-											<c:otherwise>
-												<!--else절  -->
-												<li><a>${loginMember.nick}님 환영합니다.</a></li>
-												<li><a href="LogoutCon">로그아웃</a></li>
-												<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">마이페이지</a>
-													<ul class="dropdown-menu">
-												<c:if test="${loginMember.id eq 'admin'}">
-													<!-- 단순 if문 -->
-													<li><a href="select1.jsp">전체회원정보</a></li>
-												</c:if>
-														<li><a href="Favorites.jsp">즐겨찾기</a></li>
-														<li><a href="update2.jsp">회원정보 수정</a></li>
-														<li><a href="DeleteCon?id=${loginMember.id}">회원
-																탈퇴</a></li>
-													</ul></li>
-											</c:otherwise>
-										</c:choose>
-									</ul>
-
-
-								
-									<ul class="nav navbar-nav navbar-right" style = clear:both;>
+								<ul class="nav navbar-nav navbar-right" style = clear:both;>
 
 										<li><a href="aboutus.jsp">슬기로운 혼술생활은?</a></li>
 										<li><a href="recipe_home.jsp">마셔볼래</a></li>
@@ -150,7 +120,7 @@
 						<div class="main_service_area">
 							<div class="single_service_area"></div>
 							<form action="InsertPostCon" enctype="multipart/form-data" method="post">
-								<table width="100%" height="400px" border="1px soild">
+								<table width="100%" height="400px">
 									<tr style="height: 10px">
 										<td width="45%"><input type="file" name= "upload" id="image"
 											accept="image/*" onchange="setThumbnail(event);"></td>

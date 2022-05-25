@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -62,36 +63,7 @@
 
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-1">
-									<ul class="nav navbar-nav navbar-right">
-										<!-- 회원정보 -->
-										<c:choose>
-											<c:when test="${empty loginMember}">
-												<!--if절 (조건작성!) - if~else문  -->
-												<li><a href="join2.jsp">회원가입</a></li>
-												<li><a href="login2.jsp">로그인<img src ="assets/images/empty_sm.png"></a></li>
-											</c:when>
 
-											<c:otherwise>
-												<!--else절  -->
-												<li><a>${loginMember.nick}님 환영합니다.</a></li>
-												<li><a href="LogoutCon">로그아웃</a></li>
-												<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">마이페이지</a>
-													<ul class="dropdown-menu">
-												<c:if test="${loginMember.id eq 'admin'}">
-													<!-- 단순 if문 -->
-													<li><a href="select1.jsp">전체회원정보</a></li>
-												</c:if>
-														<li><a href="Favorites.jsp">즐겨찾기</a></li>
-														<li><a href="update2.jsp">회원정보 수정</a></li>
-														<li><a href="DeleteCon?id=${loginMember.id}">회원
-																탈퇴</a></li>
-													</ul></li>
-											</c:otherwise>
-										</c:choose>
-									</ul>
-
-
-								
 									<ul class="nav navbar-nav navbar-right" style = clear:both;>
 
 										<li><a href="aboutus.jsp">슬기로운 혼술생활은?</a></li>
@@ -122,47 +94,36 @@
                             </div>
 
                             <div class="row">
-                                <div class="contact_contant">
-                                    <div class="col-sm-6 col-xs-12">
-                                        <div class="single_message_right_info">
-                                            <ul>
-                                                <li><i class="fa fa-map-marker"></i> 
-                                                    <span>광주광역시 동구 예술길 31-15 광주아트센터 <br />
-                                                            3층 빅데이터 B반 🍺김주란🍺 팀장</span></li>
+                                <div class="contact_contant" align="center">
 
-                                                <li><i class="fa fa-mobile-phone"></i> <span>010-1234-5678</span></li>
-
-                                                <li><i class="fa fa-envelope-o"></i> <span>ranru@gmail.com</span></li>
-
-                                                <li>기프티콘 선물 환영😀</li>
-                                            </ul>
-
-                                            <div class="work_socail transition">
+                                            <table style="text-align:center;" width="700px">
+                                            <tr>
+                                            	<td align="left"><i class="fa fa-map-marker"></i> 
+                                                    <span>광주광역시 동구 예술길 31-15 광주아트센터 <br/>
+                                                            3층 빅데이터 B반 🍺김주란🍺 팀장</span>
+                                                </td>
+                                                <td>로그인한 닉네임</td>
+                                            </tr>
+                                            
+                                            <tr><td><i class="fa fa-mobile-phone"></i> <span>010-1234-5678</span></td></tr>
+                                            <tr><td><i class="fa fa-envelope-o"></i> <span>ranru@gmail.com</span></td></tr>
+                                            <tr><td><li>기프티콘 선물 환영😀</li></td></tr>
+                                            <tr><td>                                            <div class="work_socail transition">
                                                 <a href="https://t1.daumcdn.net/cfile/tistory/14019E3E4FEC3FAC03"><i class="fa fa-facebook img-circle"></i></a>
                                                 <a href="https://ppss.kr/wp-content/uploads/2015/12/1-31-540x298.jpg"><i class="fa fa-twitter img-circle"></i></a>
                                                 <a href="https://t1.daumcdn.net/cfile/tistory/214B87485593B5291F"><i class="fa fa-google-plus img-circle"></i></a>
                                                 <a href="https://t1.daumcdn.net/cfile/tistory/214B87485593B5291F"><i class="fa fa-pinterest img-circle"></i></a>
                                                 <a href="https://t1.daumcdn.net/cfile/tistory/214B87485593B5291F"><i class="fa fa-instagram img-circle"></i></a>
-                                            </div>
-                                        </div>
-                                    </div><!-- End of col-sm-6 -->
+                                            </div></td>
+                                            <td>
+                                                    <a href="https://naver.me/xcut3oNm" class="btn">문의하러가기</a></td>
+                                            </tr>
+                                            </table>
 
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="single_contant_left margin-top-60">
                                             <form action="#" id="formid">
                                                 <!--<div class="col-lg-8 col-md-8 col-sm-10 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">-->
-
-                                                <div class="form-group">
-                                                    <label>로그인한 이메일</label>
-                                                    <c:otherwise>
-												<li><a>${loginMember.id}님</a></li>
-                                                    </c:otherwise>
-                                                </div>
-
-                                                <div class="btn">
-                                                    <a href="https://naver.me/xcut3oNm">문의하러가기</a>
-                                                    
-                                                </div>
                                                 <!--</div>--> 
                                             </form>
                                         </div>
