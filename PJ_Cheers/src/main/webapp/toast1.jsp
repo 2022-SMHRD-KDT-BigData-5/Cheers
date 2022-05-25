@@ -216,7 +216,7 @@ pageContext.setAttribute("zzanList", zzanList);
 												<c:when test="${p.zzan_count eq 0}">
 
 													<td align="right">
-														<button id="post_zzan_un"
+														<button id="post_zzan_un" onclick="play()"
 															style="border: none; background-color: white; text-align: right;">
 															<img src="assets/images/zzan_un.png" width=5% />
 														</button> <input type="hidden"
@@ -236,7 +236,7 @@ pageContext.setAttribute("zzanList", zzanList);
 																test="${loginMember.id eq pz.member_id and pz.toast_no eq p.toast_no}">
 																<c:if test="${pz.toast_no eq p.toast_no}">
 																	<td align="right">
-																		<button id="post_zzan"
+																		<button id="post_zzan" onclick="play()"
 																			style="border: none; background-color: white; text-align: right;">
 																			<img src="assets/images/zzan.png" width=5% />
 																		</button> <input type="hidden"
@@ -252,7 +252,7 @@ pageContext.setAttribute("zzanList", zzanList);
 																	<c:if
 																		test="${pz.toast_no eq p.toast_no and loginMember.id ne pz.member_id}">
 																		<td align="right">
-																			<button id="post_zzan_un"
+																			<button id="post_zzan_un" onclick="play()"
 																				style="border: none; background-color: white; text-align: right;">
 																				<img src="assets/images/zzan_un.png" width=5% />
 																			</button> <input type="hidden"
@@ -264,7 +264,7 @@ pageContext.setAttribute("zzanList", zzanList);
 																	<c:if
 																		test="${pz.toast_no ne p.toast_no and loginMember.id eq pz.member_id}">
 																		<td align="right">
-																			<button id="post_zzan_un"
+																			<button id="post_zzan_un" onclick="play()"
 																				style="border: none; background-color: white; text-align: right;">
 																				<img src="assets/images/zzan_un.png" width=5% />
 																			</button> <input type="hidden"
@@ -465,6 +465,21 @@ pageContext.setAttribute("zzanList", zzanList);
 	<script>
       function list
    </script>
+   
+   <!-- 짠 클릭 사운드 -->
+   <!-- sound -->
+<audio id='audio_play' src='assets/sound/cheers.wav'></audio> 
+<script type="text/javascript"> 
+function play() { 
+    var audio = document.getElementById('audio_play'); 
+    if (audio.paused) { 
+        audio.play(); 
+    }else{ 
+        audio.pause(); 
+        audio.currentTime = 0 
+    } 
+} 
+</script>
 
 	<!-- 짠테스트 -->
 	<script>
@@ -483,7 +498,7 @@ pageContext.setAttribute("zzanList", zzanList);
 				$(this).parent().next().text(data)
 				
 				/* $(this).next().next().text(data) */
-				$(this).html("<img src = 'assets/images/zzan.png' width = 4% />")
+				$(this).html("<img src = 'assets/images/zzan.png' width = 5% />")
 	            $(this).attr('id','post_zzan')	
 			},
 			error: function(){
@@ -506,7 +521,7 @@ pageContext.setAttribute("zzanList", zzanList);
 				success: function(data){
 					$(this).parent().next().text(data)
 					/* $(this).next().next().text(data) */
-					$(this).html("<img src = 'assets/images/zzan_un.png' width = 4% />")
+					$(this).html("<img src = 'assets/images/zzan_un.png' width = 5% />")
 		            $(this).attr('id','post_zzan_un')	
 				},
 				error: function(){
