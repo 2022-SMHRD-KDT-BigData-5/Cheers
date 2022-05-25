@@ -17,6 +17,18 @@ public class Soto_com {
 	
 	
 	
+	
+	
+	public Soto_com(BigDecimal sc_no, String soto_no) {
+		super();
+		
+		this.soto_no = soto_no;
+	}
+
+
+
+
+
 	public Soto_com(BigDecimal sc_no, String soto_no, String member_id, String sc_contents, Timestamp sc_date,
 			String member_nick) {
 		super();

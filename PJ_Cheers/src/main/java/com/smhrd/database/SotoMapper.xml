@@ -40,4 +40,9 @@
 		update soto_com set sc_contents=#{sc_contents}, sc_date=current_timestamp where sc_no = #{sc_no}
 	</update>
 	
+		<!--댓글개수 -->
+	<select id="countSotoComment" parameterType="string" resultType="int">
+	select count(sc_no) from soto_com group by soto_no having soto_no = #{soto_no} 
+	</select>
+	
 </mapper>

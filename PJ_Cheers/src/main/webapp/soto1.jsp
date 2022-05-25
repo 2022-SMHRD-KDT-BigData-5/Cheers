@@ -69,6 +69,16 @@ button {
 </head>
 
 <body data-spy="scroll" data-target=".navbar-collapse">
+<c:choose>
+<c:when test="${empty loginMember.id}">
+	<script>
+	alert("로그인이 필요한 페이지입니다.\n로그인 후 시도해주십시오.");
+	var link = 'index_test.jsp';
+	location.href=link;
+	</script>
+</c:when>
+<c:otherwise>
+
 	<!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -92,37 +102,34 @@ button {
 											class="icon-bar"></span> <span class="icon-bar"></span> <span
 											class="icon-bar"></span>
 									</button>
-									<a class="navbar-brand" href="index_test.jsp"> <img
-										src="assets/images/logo.png" style="max-height:100px;"/>
+									<a class="navbar-brand" href="index_test.jsp"> <img src="assets/images/logo.png"/>
 									</a>
 								</div>
 
 								<!-- Collect the nav links, forms, and other content for toggling -->
 
 								<div class="collapse navbar-collapse"
-									id="bs-example-navbar-collapse-test">
+									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
 										<!-- 회원정보 -->
 										<c:choose>
 											<c:when test="${empty loginMember}">
 												<!--if절 (조건작성!) - if~else문  -->
 												<li><a href="join2.jsp">회원가입</a></li>
-												<li><a href="login2.jsp">로그인</a></li>
+												<li><a href="login2.jsp">로그인<img src ="assets/images/empty_sm.png"></a></li>
 											</c:when>
 
 											<c:otherwise>
 												<!--else절  -->
 												<li><a>${loginMember.nick}님 환영합니다.</a></li>
 												<li><a href="LogoutCon">로그아웃</a></li>
-												<li class="dropdown"><a href="#"
-													class="dropdown-toggle" data-toggle="dropdown"
-													role="button" aria-haspopup="true">마이페이지</a>
+												<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">마이페이지</a>
 													<ul class="dropdown-menu">
+												<c:if test="${loginMember.id eq 'admin'}">
+													<!-- 단순 if문 -->
+													<li><a href="select1.jsp">전체회원정보</a></li>
+												</c:if>
 														<li><a href="Favorites.jsp">즐겨찾기</a></li>
-														<c:if test="${loginMember.id eq 'admin'}">
-															<!-- 단순 if문 -->
-															<li><a href="select1.jsp">전체회원정보</a></li>
-														</c:if>
 														<li><a href="update2.jsp">회원정보 수정</a></li>
 														<li><a href="DeleteCon?id=${loginMember.id}">회원
 																탈퇴</a></li>
@@ -132,18 +139,15 @@ button {
 									</ul>
 
 
-								</div>
+								
+									<ul class="nav navbar-nav navbar-right" style = clear:both;>
 
-								<div class="collapse navbar-collapse"
-									id="bs-example-navbar-collapse-1">
-									<ul class="nav navbar-nav navbar-right">
-
-										<li><a href="aboutus.html">about us</a></li>
+										<li><a href="aboutus.jsp">슬기로운 혼술생활은?</a></li>
 										<li><a href="recipe_home.jsp">마셔볼래</a></li>
 										<li><a href="toast1.jsp">같이마실래?</a></li>
 										<li><a href="soto1.jsp">같이볼래?</a></li>
-										<li><a href="contact.html">contact</a></li>
-									</ul>
+										<li><a href="contact.jsp">문의</a></li>
+												</ul>
 								</div>
 							</div>
 						</nav>
@@ -193,15 +197,15 @@ button {
 							 	  <c:forEach var="s" items="${SotoList}">
 							  <hr style="border:0px; border-top:2px dashed ">
 							 	   <li class="soto_post">
-									<table width="100%" border="1px solid">
+									<table width="100%">
 										
 										<tr>
 											<td align="left" width="45%">no.<c:out value="${s.soto_no}"/></td>
 											<c:if test="${loginMember.id eq s.member_id }">
-											<td align="right" width="7%">
+											<td align="right">
 													<a href="soto3.jsp?soto_no=${s.soto_no}&soto_contents=${s.soto_contents}">수정</a>
 											</td>
-											<td align="right" width="7%">
+											<td  width="5%">
 												
 													<!-- <form action="soto3.jsp">
 														<input type="hidden" name="soto_no" value="${s.soto_no}">
@@ -221,7 +225,7 @@ button {
 														value="${s.soto_date}" /></span></td>
 										</tr>
 										<tr>
-											<td colspan="3"><c:out value="${s.soto_contents}" /></td>
+											<td colspan="3" ><c:out value="${s.soto_contents}" /></td>
 										</tr>
 									</table>
 
@@ -234,7 +238,8 @@ button {
 										<input type="submit" value="등록" style="border:none;">
 									</form>
 									<details align="left">
-										<summary style="color: brown; cursor: pointer;">♥ 댓글 ♥</summary>
+										<summary  id = "context" style="color: brown; cursor: pointer;">♥ 댓글 ♥</summary>
+										<input type="hidden" name="soto_no" value="${s.soto_no}">
 										<%
                               String soto_no = "";
                               for(int i=0;i<SotoList.size();i++){
@@ -248,9 +253,9 @@ button {
 											<c:choose>
 												<c:when test="${s.soto_no eq d.soto_no}">
 													<hr color='#c06c84'>
-													<table width="100%" border="1px solid">
+													<table width="100%">
 														<tr>
-															<td width="5%" align="center"><button style="border: none; background-color: white;">🥂</button></td>
+															<td width="5%" align="center"><button style="border: none; background-color: white;">💻<td>
 															<td width="20%"><c:out value="${d.sc_date}" /><br>
 																<b><c:out value="${d.member_nick}" /></b></td>
 															 <td class="td_contents">
@@ -277,10 +282,9 @@ button {
                                                				<td width="7%" align="right" class="td_input">
                                                					 <input type="hidden" class="sc_no_update" value="${d.sc_no}">
                                                					 <input type="hidden" class="sc_contents_update" value="${d.sc_contents}">
-                                               					
                                                					 <button id="update_sc" type="button" onclick="clickUp()" style="border: none; background-color: white;">수정</button>
-                                               					 </c:if>
                                              				</td>
+                                               			</c:if>
 															
 															
 															<c:if test="${loginMember.id eq d.member_id }">
@@ -325,24 +329,19 @@ button {
 
 
 	<!-- footer Section -->
-	<footer id="footer" class="footer">
-		<div class="container">
-			<div class="main_footer">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="copyright_text text-center">
-							<p class=" wow fadeInRight" data-wow-duration="1s">
-								Made with <i class="fa fa-heart"></i> by <a target="_blank"
-									href="http://bootstrapthemes.co">Bootstrap Themes</a>2016. All
-								Rights Reserved
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End of container -->
-	</footer>
+<footer id="footer" class="footer">
+        <div class="container">
+            <div class="main_footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="copyright_text text-center">
+                            <p class=" wow fadeInRight" data-wow-duration="1s">Made with 같이마시조 <i class="fa fa-heart"></i> by <a target="_blank" href="https://shrcampus.com/">스마트인재캠퍼스</a>2022. All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 	<!-- End of footer -->
 
 
@@ -397,12 +396,36 @@ button {
 	
 	<script>
 	
-	<%-- 댓글 수정 --%>
-	   
- 	function clickUp(){
- 		
- 		
- 		$.ajax({
+
+
+	   $(document).on("click", "#context", function(){ 
+          console.log($(this).next().val());
+
+           $.ajax({
+              data: {soto_no : $(this).next().val()},
+              url: "CountSotoCommentCon",
+              method : "GET",
+             dataType : "text",
+             context : this,  
+             success: function(data){
+                 $(this).text("♥ 댓글 ♥ " +data);
+             },
+             error: function(){
+                alert("통신실패!")
+             } 
+          })        
+       
+        });
+	   </script>
+	
+	<script>
+   
+   <%-- 댓글 수정 --%>
+      
+    function clickUp(){
+       
+       
+       $.ajax({
             url: "soto1.jsp",
             method : "POST",
             dataType : "text",
@@ -421,29 +444,29 @@ button {
                 
            },
            error:function(request, status, error){
-       		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+             console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
           
         }        
- 		
- 		
- 	})
- 	}
- 	<%-- 
- 	$(".sc_edit").click(function() { --%>
-	function clickUp2(){
-		
-	
- 		var val1 = "";
- 		var val2 = "";
- 		val1 = $(".sc_no_update").val();
- 		val2 = $(".sc_contents_update").val();
- 		//$("input[name=update_contents]").val(); --->controller getparameter();
- 		console.log(val1)
- 		console.log(val2)
- 		
- 		
- 		$.ajax({
- 			data : {sc_no : val1, sc_contents : val2},
+       
+       
+    })
+    }
+    <%-- 
+    $(".sc_edit").click(function() { --%>
+   function clickUp2(){
+      
+   
+       var val1 = "";
+       var val2 = "";
+       val1 = $(".sc_no_update").val();
+       val2 = $(".sc_contents_update").val();
+       //$("input[name=update_contents]").val(); --->controller getparameter();
+       console.log(val1)
+       console.log(val2)
+       
+       
+       $.ajax({
+          data : {sc_no : val1, sc_contents : val2},
             url: "UpdateSotoCommentCon",
             method : "POST",
             dataType : "text",
@@ -460,16 +483,17 @@ button {
                console.log($('.td_input').html());
                
            }
- 	//		,
+    //      ,
     //       error:function(request, status, error){
-    //   		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    //         console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
           
     //   }        
- 		
- 		
- 	  })
- 	}
-	</script>
+       
+       
+      })
+    }
+   </script>
+	
 	
 	<%--
 	<script>
@@ -488,6 +512,7 @@ button {
 		})();
 	</script>
 	 --%>
-
+</c:otherwise>
+</c:choose>
 </body>
 </html>

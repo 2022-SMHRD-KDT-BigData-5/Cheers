@@ -52,37 +52,60 @@
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button>
-                                        <a class="navbar-brand" href="index_test.jsp">
-                                            <img src="assets/images/logo.png"style="max-height:100px;"/>
-                                        </a>
-                                    </div>
+                                        <a class="navbar-brand" href="index_test.jsp"> <img src="assets/images/logo.png"/>
+									</a>
+								</div>
 
-                                    <!-- Collect the nav links, forms, and other content for toggling -->
+								<!-- Collect the nav links, forms, and other content for toggling -->
+
+								<div class="collapse navbar-collapse"
+									id="bs-example-navbar-collapse-1">
+									<ul class="nav navbar-nav navbar-right">
+										<!-- 회원정보 -->
+										<c:choose>
+											<c:when test="${empty loginMember}">
+												<!--if절 (조건작성!) - if~else문  -->
+												<li><a href="join2.jsp">회원가입</a></li>
+												<li><a href="login2.jsp">로그인<img src ="assets/images/empty_sm.png"></a></li>
+											</c:when>
+
+											<c:otherwise>
+												<!--else절  -->
+												<li><a>${loginMember.nick}님 환영합니다.</a></li>
+												<li><a href="LogoutCon">로그아웃</a></li>
+												<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">마이페이지</a>
+													<ul class="dropdown-menu">
+												<c:if test="${loginMember.id eq 'admin'}">
+													<!-- 단순 if문 -->
+													<li><a href="select1.jsp">전체회원정보</a></li>
+												</c:if>
+														<li><a href="Favorites.jsp">즐겨찾기</a></li>
+														<li><a href="update2.jsp">회원정보 수정</a></li>
+														<li><a href="DeleteCon?id=${loginMember.id}">회원
+																탈퇴</a></li>
+													</ul></li>
+											</c:otherwise>
+										</c:choose>
+									</ul>
 
 
+								
+									<ul class="nav navbar-nav navbar-right" style = clear:both;>
 
-                                    <div class="collapse navbar-collapse"
-                           id="bs-example-navbar-collapse-1">
-                           <ul class="nav navbar-nav navbar-right">
-
-                              <li><a href="aboutus.jsp">슬기로운 혼술생활은?</a></li>
-                              <li><a href="recipe_home.jsp">마셔볼래</a></li>
-                              <li><a href="toast1.jsp">같이마실래?</a></li>
-                              <li><a href="soto1.jsp">같이볼래?</a></li>
-                              <li><a href="contact.html">contact</a></li>
-                        
-                           </ul>
-                        </div>
-
-                                </div>
-                            </nav>
-                        </div>   
-                    </div>
-
-                </div>
-
-            </div>
-        </header> <!--End of header -->
+										<li><a href="aboutus.jsp">슬기로운 혼술생활은?</a></li>
+										<li><a href="recipe_home.jsp">마셔볼래</a></li>
+										<li><a href="toast1.jsp">같이마실래?</a></li>
+										<li><a href="soto1.jsp">같이볼래?</a></li>
+										<li><a href="contact.jsp">문의</a></li>
+												</ul>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header> <!--End of header -->
 
 
 
@@ -196,20 +219,20 @@
             </div><!-- End of Container -->
         </section><!-- End of counter Section -->
 
-        <!-- footer section -->
-        <footer id="footer" class="footer">
-            <div class="container">
-                <div class="main_footer">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="copyright_text text-center">
-                                <p class=" wow fadeInRight" data-wow-duration="1s">Made with 같이마시조 <i class="fa fa-heart"></i> by <a target="_blank" href="https://shrcampus.com/">스마트인재캠퍼스</a>2022. All Rights Reserved</p>
-                            </div>
+	<!-- footer Section -->
+<footer id="footer" class="footer">
+        <div class="container">
+            <div class="main_footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="copyright_text text-center">
+                            <p class=" wow fadeInRight" data-wow-duration="1s">Made with 같이마시조 <i class="fa fa-heart"></i> by <a target="_blank" href="https://shrcampus.com/">스마트인재캠퍼스</a>2022. All Rights Reserved</p>
                         </div>
                     </div>
                 </div>
-            </div><!-- End of container -->
-        </footer><!-- End of footer Section-->
+            </div>
+        </div>
+    </footer><!-- End of footer Section-->
 
 
 

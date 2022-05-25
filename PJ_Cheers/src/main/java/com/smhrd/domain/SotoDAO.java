@@ -177,6 +177,28 @@ public class SotoDAO {
 			return cnt;
 		}
 
+		public int countSotoComment(String soto_no) {
+			int cnt=0;
+			
+			try {
+				cnt=sqlSession.selectOne("com.smhrd.domain.SotoDAO.countSotoComment",soto_no);
+			if(cnt>0) {
+					System.out.println("댓글개수");
+					sqlSession.commit();
+				}else {
+					System.out.println("댓글개수 출력 실패");
+					sqlSession.rollback();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}return cnt;
+			
+			
+		}
+
+		
 		
 	}
 

@@ -62,6 +62,15 @@ pageContext.setAttribute("zzanList", zzanList);
 
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
+<c:choose>
+<c:when test="${empty loginMember.id}">
+	<script>
+	alert("로그인이 필요한 페이지입니다.\n로그인 후 시도해주십시오.");
+	var link = 'index_test.jsp';
+	location.href=link;
+	</script>
+</c:when>
+<c:otherwise>
 	<!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -85,36 +94,33 @@ pageContext.setAttribute("zzanList", zzanList);
 											class="icon-bar"></span> <span class="icon-bar"></span> <span
 											class="icon-bar"></span>
 									</button>
-									<a class="navbar-brand" href="index_test.jsp"> <img
-										src="assets/images/logo.png" style="max-height: 100px;" />
+									<a class="navbar-brand" href="index_test.jsp"> <img src="assets/images/logo.png"/>
 									</a>
 								</div>
 
 								<!-- Collect the nav links, forms, and other content for toggling -->
 
 								<div class="collapse navbar-collapse"
-									id="bs-example-navbar-collapse-test">
+									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
 										<!-- 회원정보 -->
 										<c:choose>
 											<c:when test="${empty loginMember}">
 												<!--if절 (조건작성!) - if~else문  -->
 												<li><a href="join2.jsp">회원가입</a></li>
-												<li><a href="login2.jsp">로그인</a></li>
+												<li><a href="login2.jsp">로그인<img src ="assets/images/empty_sm.png"></a></li>
 											</c:when>
 
 											<c:otherwise>
 												<!--else절  -->
-												<c:if test="${loginMember.id eq 'admin'}">
-													<!-- 단순 if문 -->
-													<a href="select1.jsp">전체회원정보</a>
-												</c:if>
 												<li><a>${loginMember.nick}님 환영합니다.</a></li>
 												<li><a href="LogoutCon">로그아웃</a></li>
-												<li class="dropdown"><a href="#"
-													class="dropdown-toggle" data-toggle="dropdown"
-													role="button" aria-haspopup="true">마이페이지</a>
+												<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">마이페이지</a>
 													<ul class="dropdown-menu">
+												<c:if test="${loginMember.id eq 'admin'}">
+													<!-- 단순 if문 -->
+													<li><a href="select1.jsp">전체회원정보</a></li>
+												</c:if>
 														<li><a href="Favorites.jsp">즐겨찾기</a></li>
 														<li><a href="update2.jsp">회원정보 수정</a></li>
 														<li><a href="DeleteCon?id=${loginMember.id}">회원
@@ -125,26 +131,21 @@ pageContext.setAttribute("zzanList", zzanList);
 									</ul>
 
 
-								</div>
-
-								<div class="collapse navbar-collapse"
-									id="bs-example-navbar-collapse-1">
-									<ul class="nav navbar-nav navbar-right">
+								
+									<ul class="nav navbar-nav navbar-right" style = clear:both;>
 
 										<li><a href="aboutus.jsp">슬기로운 혼술생활은?</a></li>
 										<li><a href="recipe_home.jsp">마셔볼래</a></li>
 										<li><a href="toast1.jsp">같이마실래?</a></li>
 										<li><a href="soto1.jsp">같이볼래?</a></li>
 										<li><a href="contact.jsp">문의</a></li>
-									</ul>
+												</ul>
 								</div>
 							</div>
 						</nav>
 					</div>
 				</div>
-
 			</div>
-
 		</div>
 	</header>
 	<!--End of header -->
@@ -174,7 +175,7 @@ pageContext.setAttribute("zzanList", zzanList);
 								<c:set var="tempname" value="" />
 								<c:forEach var="p" items="${postList}">
 									<hr style="border: 0px; border-top: 2px dashed">
-									<table width="100%">
+									<table width="100%" border="1px soild">
 								
 										<tr>
 											<td align="left" width="45%">no.<c:out
@@ -182,23 +183,16 @@ pageContext.setAttribute("zzanList", zzanList);
 											<td align="right">
 												
 													<form action="toast3.jsp">
-														<input type="hidden" name="t_file_path_update"
-															value='<c:out value="${p.t_file_path}" />'> <input
-															type="hidden" name="t_file_name_update"
-															alue='<c:out value="${p.t_file_name}" />'> <input
-															type="hidden" name="toast_no_update"
-															value="${p.toast_no}">
-															<c:if test="${loginMember.id eq p.member_id }">
-															 <input type="hidden"
-															name="contents_update" value="${p.contents}"> <input
-															type="submit" value="수정"
-															style="border: none; background: white; color: black;">
-															</c:if>
+														<input type="hidden" name="t_file_path_update" value='<c:out value="${p.t_file_path}" />'>
+														<input type="hidden" name="t_file_name_update" value='<c:out value="${p.t_file_name}" />'>
+														<input type="hidden" name="toast_no_update" value="${p.toast_no}"> <c:if test="${loginMember.id eq p.member_id }">
+														<input type="hidden" name="contents_update" value="${p.contents}">
+														<input type="submit" value="수정" style="border: none; background: white; color: black;"></c:if>
 													</form>
 													
 													<c:if test="${loginMember.id eq p.member_id }">
 													<!-- <a href="toast3.jsp">수정</a> -->
-												 <span> | </span>
+													</td><td width="5%">
 												<button style="border: none; background-color: #fff;">
 													<a href="DeleteCon?toast_no=${p.toast_no}">삭제</a>
 												</button>
@@ -207,7 +201,7 @@ pageContext.setAttribute("zzanList", zzanList);
 										</tr>
 										
 										<tr>
-											<td colspan="2" align="right"><b><c:out
+											<td colspan="3" align="right"><b><c:out
 														value="${p.member_nick}" /></b><span> | <c:out
 														value="${p.toast_date}" /></span></td>
 										</tr>
@@ -215,7 +209,7 @@ pageContext.setAttribute("zzanList", zzanList);
 											<td style="height: 300px;" align="center"><img
 												src='<c:out value="${p.t_file_path}/${p.t_file_name}" />'
 												alt="게시물이미지"></td>
-											<td style="vertical-align: top; padding: 2%"><c:out
+											<td colspan="2" style="vertical-align: top; padding: 2%"><c:out
 													value="${p.contents}" /></td>
 										</tr>
 										<tr>
@@ -344,25 +338,22 @@ pageContext.setAttribute("zzanList", zzanList);
 															<td width="20%"><c:out value="${c.tc_date}" /><br>
 																<b><c:out value="${c.member_nick}" /></b></td>
 														
-															<td><span><c:out value="${c.tc_contents}" /></span></td>
+															<td class="td_comment_toast">
+																<span class="tc_contents_span"><c:out value="${c.tc_contents}" /></span>
+																<input type="hidden" class="tc_no_update" value="${c.tc_no}">
+                                                  				<input type="hidden" class="tc_contents_list" value="${c.tc_contents}">
+                                                  			  <script>
+                                                				 var jspVar = ${c.tc_contents};
+                                       						  </script>
+															</td>
 														
 														 <c:if test="${loginMember.id eq c.member_id }">
-															<td width="7%" align="right">
-																<!-- 댓글 수정 현재 페이지에서 구현 --> <!-- <form action="updateComment.jsp">
-                                                   <input type="hidden" name="tc_no" value="${c.tc_no}">
-                                                   <input type="hidden" name="tc_contents" value="${c.tc_contents}"> 
-                                                   <input type="submit" value="댓글 수정">
-                                                </form> -->
-                                             
-                                                		 <input	type="hidden" id="tc_no_update" value="${c.tc_no}">
-													  
-																<input type="hidden" id="tc_contents_update"
-																value="${c.tc_contents}">
-																<button id="update_comment" type="button"
-																	onclick="clickUp()"
-																	style="border: none; background-color: white;">수정</button>
-																</td>
-														</c:if>
+															<td width="7%" align="right" class="td_input_toast">
+                                                				<input type="hidden" id="tc_no_update" value="${c.tc_no}">
+																<input type="hidden" id="tc_contents_update" value="${c.tc_contents}">
+                                              					<button type="submit" onclick="clickUp_toast()" style="border: none; background-color: white;">수정</button>
+															</td>
+														 </c:if>
 														 <c:if test="${loginMember.id eq c.member_id }">
 															<td width="7%" align="right">
 																<form method="post" action="DeleteCommentCon">
@@ -402,24 +393,19 @@ pageContext.setAttribute("zzanList", zzanList);
 
 
 	<!-- footer Section -->
-	<footer id="footer" class="footer">
-		<div class="container">
-			<div class="main_footer">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="copyright_text text-center">
-							<p class=" wow fadeInRight" data-wow-duration="1s">
-								Made with 같이마시조 <i class="fa fa-heart"></i> by <a
-									target="_blank" href="https://shrcampus.com/">스마트인재캠퍼스</a>2022.
-								All Rights Reserved
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End of container -->
-	</footer>
+<footer id="footer" class="footer">
+        <div class="container">
+            <div class="main_footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="copyright_text text-center">
+                            <p class=" wow fadeInRight" data-wow-duration="1s">Made with 같이마시조 <i class="fa fa-heart"></i> by <a target="_blank" href="https://shrcampus.com/">스마트인재캠퍼스</a>2022. All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 	<!-- End of footer -->
 
 
@@ -475,6 +461,81 @@ pageContext.setAttribute("zzanList", zzanList);
 	<script>
       function list
    </script>
+   
+   
+   <%-- 댓글 수정 --%>
+    <script>      
+    function clickUp_toast(){
+       
+       
+       $.ajax({
+            url: "toast1.jsp",
+            method : "POST",
+            dataType : "text",
+           success: function(){
+               console.log("통신!!");
+
+               <%--$('#tc_contents').prop("type", "text");
+                   $('#tc_contents').prop("type", "text");--%>
+                let inputName = "<input type='text' class='tc_contents_update' name='update_contents_toast' value='"+$('.tc_contents_list').val()+"'>";
+                let buttons = "<button class='tc_edit' type='button' onclick='clickUp2_toast()' style='border: none;'>수정확인</button>";
+                $('.tc_contents_span').html(inputName);
+                $('.td_input_toast').html(buttons);
+                $('.td_input_toast').html(buttons);
+                console.log($('.td_input_toast').html());
+                
+           },
+           error:function(request, status, error){
+             console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+          
+        }        
+       
+       
+    })
+    }
+    <%-- $(".sc_edit").click(function() { --%>
+   function clickUp2_toast(){
+      
+   
+       var val1 = "";
+       var val2 = "";
+       val1 = $(".tc_no_update").val();
+       val2 = $(".tc_contents_update").val();
+       //$("input[name=update_contents]").val(); --->controller getparameter();
+       console.log(val1)
+       console.log(val2)
+       
+       
+       $.ajax({
+          data : {tc_no : val1, tc_contents : val2},
+            url: "UpdateCommentCon",
+            method : "POST",
+            dataType : "text",
+           success: function(){
+               console.log("통신!!");
+               //$(".sc_contents_span").html(".sc_contents_span");
+
+               //$("input").remove(".td_input")
+               let inputName2 = "<span class='tc_contents_span'>"+jspVar+"</span>";
+               console.log(inputName2);
+               let buttons2 = "<button class='update_tc' type='button' onclick='clickUp_toast()' style='border: none; background-color: white;'>수정</button>";
+               $('.td_comment_toast').html(inputName2);
+               $('.td_input_toast').html(buttons2);
+               console.log($('.td_input_toast').html());
+               
+           }
+    //      ,
+    //       error:function(request, status, error){
+    //         console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+          
+    //   }        
+       
+       
+      })
+    }
+   </script>
+   <!-- 댓글 페이지 내 수정 끝 -->
+   
    
    <!-- 짠 클릭 사운드 -->
    <!-- sound -->
@@ -597,64 +658,6 @@ function play() {
    	
    }); // end on --%>
    
-   <%-- 댓글 수정 --%>
-   
- 	function clickUp(){
- 		var com = $('input[type=text]').val()
- 		
- 		var val1 = "";
- 		var val2 = "";
- 		val1 = $("#tc_no_update").val();
- 		val2 = $("#tc_contents_update").val();
- 		console.log(val1)
- 		console.log(val2)
- 		
- 		$.ajax({
- 			data : {tc_no : val1, tc_contents : val2},
-            url: "UpdateCommentCon",
-            type : "GET",
-            data : "text",
-           success: function(){
-               console.log("통신!!");
-               $("#tc_contents_span").html("<input type='text' value='"+val2+"'/>");
-
-               <%--$('#tc_contents').prop("type", "text");
-                   $('#tc_contents').prop("type", "text");--%>
-               
-           },
-           error: function(){
-              alert("통신실패!")
-           } 
-          
-        })        
- 		
- 		
- 	}
- 	
- 	
-   /* $(document).on("click", "#", function(){ 
-       console.log($(this).next().val());
-       
-    
-    
-        $.ajax({
-           data: {toast_no : $(this).next().val()},
-           url: "CountCommentCon",
-           method: "get",
-           method : "GET",
-          dataType : "text",
-          context : this,  
-          success: function(data){
-              $(this).text("♥ 댓글 ♥ " +data);
-              $('.license_input').attr("type", "text");
-              console.log("통신!!");
-          },
-          error: function(){
-             alert("통신실패!")
-          } 
-       })        
-    
-     }); */
    
    <%-- 짠 연습 --%>
    $(document).on("click", "#context", function(){ 
@@ -709,6 +712,7 @@ function play() {
  
   </script> -->
 
-
+</c:otherwise>
+</c:choose>
 </body>
 </html>
