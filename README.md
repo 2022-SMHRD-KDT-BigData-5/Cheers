@@ -78,7 +78,7 @@
 ![image](https://user-images.githubusercontent.com/104408785/170404056-9d637408-e201-40a3-a1d9-57f63d3c1954.png)
 
 ## 8 팀원 단위 업무 분장 및 결과표
-![image](https://user-images.githubusercontent.com/104408785/170404139-ef64827f-e66e-4aab-9e1e-fc89d198f63f.png)
+![image](https://user-images.githubusercontent.com/104408785/170407412-71bde865-2da1-4781-873b-0b38c95889ea.png)
 
 
 ## 9 트러블슈팅
